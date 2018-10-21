@@ -1,0 +1,9 @@
+{
+  "name": "ohia.ai",
+  "version": "0.0.1",
+  "description":
+    "An open Hawaiian indigenous plant identification and aggregation application.",
+  "main": "server/index.js",
+  "author": "Team ohia.ai",
+  "license": "MIT"
+}
