@@ -4,6 +4,12 @@
   "description":
     "An open Hawaiian indigenous plant identification and aggregation application.",
   "main": "server/index.js",
+  "scripts": {
+    "server": "node server/index.js"
+  },
   "author": "Team ohia.ai",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.16.4"
+  }
 }
