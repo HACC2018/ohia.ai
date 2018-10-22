@@ -1,5 +1,7 @@
 const express = require('express');
 const AWS = require('aws-sdk');
+const fs = require('fs');
+const path = require('path');
 const config = require('./config');
 
 const app = express();
@@ -20,11 +22,13 @@ app.get('/', (req, res) => {
 });
 
 app.post('/images/upload', (req, res) => {
-  const keyName = 'hello_ohia.txt';
+  const keyName = 'ohia_lehua.jpg';
   const params = {
     Bucket: config.bucket,
     Key: keyName,
-    Body: 'Hello ohia.ai',
+    // TODO: This will need to change to accommodate images from the frontend.
+    Body: fs.createReadStream(path.resolve(__dirname, `images/${keyName}`)),
+    ACL: 'public-read',
   };
 
   s3.upload(params, (err, data) => {
