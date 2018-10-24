@@ -1,0 +1,392 @@
+<!DOCTYPE html><html><head>
+<title>Zygopetalum sp. - Plants of Hawaii - Starr Environmental</title>
+<link rel="shortcut icon" type="image/x-icon" href="../graphics/starr_env_icon.jpg">
+<link rel="stylesheet" type="text/css" href="../../css.css">
+<meta charset="UTF-8">
+<meta name="description" content="Images of Zygopetalum sp. (Zygopetalum) - Plants of Hawaii, by Forest and Kim Starr.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script type="text/javascript">
+
+// *************  FLICKR  ********************
+// Create thumbnails with link from Flickr information.
+var y=0
+
+var window_width = window.innerWidth;
+var number_of_images = 300 // Desktop - Need to also change in JSON query to Flickr.
+var image_size = "m"
+if (window_width < 1000) {number_of_images = 100; image_size="q"}  // Mobile
+
+function jsonFlickrApi(rsp) {
+var a = '';
+y=y+1
+//this loop runs through every item and creates HTML
+for (var i=0; i < number_of_images; i++) { 
+//for (var i=0; i < 50; i++) { 
+if (i < rsp.photos.photo.length) {
+photo = rsp.photos.photo[ i ];
+//notice that "x.jpg" is where you change the size of the image s=square, m=medium, t=thumbnail
+t_url = "http://farm" + photo.farm + ".static.flickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_" + image_size + ".jpg";
+//t_url = "http://farm" + photo.farm + ".static.flickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_" + "m.jpg";
+p_url = "https://www.flickr.com/photos/starr-environmental/" + photo.id + "/";
+download_url = "https://www.flickr.com/photos/starr-environmental/" + photo.id + "/sizes/l";
+image_page_url = "../image/?q=" + photo.id +  "" ;
+var image_title = photo.title;
+image_title = image_title.replace("__",", "); 
+image_title = image_title.replace(/_/g," "); 
+var image_title2 = image_title.split("-");
+var uri = ("#" + image_title2[1] + "-" + image_title2[2]);
+// Date stuff - Start
+var image_year = uri.substr(1,2);
+var image_month = uri.substr(3,2);
+var image_day = uri.substr(5,2);
+if (image_year>90){image_year = "19" + image_year}
+if (image_year<90){image_year = "20" + image_year}
+image_month = (image_month-1);
+image_date = new Date(image_year, image_month, image_day);
+image_date = image_date.toDateString();
+image_date = image_date.substr(4);
+image_date = (image_date.substr(0,3) + " " + image_date.substr(4,2) + ", " + image_date.substr(7,4) ) ;
+// Date stuff - End
+image_title = (image_title2[3] + " " + image_title2[4] + ", " + image_title2[5] );
+var image_description_species = ('<a href="../species/?q=' + image_title2[3].replace(" ","+") + '"><i>' + image_title2[3] + '</i></a> ')
+var image_description =(image_description_species + image_title2[4] + ", " + image_title2[5] + ", " + image_title2[6]  );
+
+if ("hide"=="show") {
+a +=  '<div class="image"><a href="' + image_page_url + '">' + '<img class="image_inserted" title="' + image_title  + '. '  + image_date + '. ' + uri + '" src="' + t_url + '"/><\/a><br \/><div class="show_text">' + image_description + '. '  + image_date + '. ' + uri + '.<\/div><\/div>';
+}
+else
+{
+a +=  '<div class="image"><a href="' + image_page_url + '">' + '<img class="image_inserted" title="' + image_title  + '. '  + image_date + '. ' + uri + '" src="' + t_url + '"/><\/a><br \/><\/div>';
+}
+
+}
+}
+if (rsp.photos.photo.length==0) {
+a = '<h3>No matching images for <b>Zygopetalum sp.</b><\h3><h4>* <a href="https://www.google.com/search?q=Zygopetalum sp.+site%3Ahttp%3A%2F%2Fwww.starrenvironmental.com">Check spelling</a> by searching our site on Google for <b>Zygopetalum sp.</b>.</h4>';
+} 
+document.getElementById("flickr_images").innerHTML = a;
+//document.getElementById("results_text").innerHTML = ("Viewing " + rsp.photos.photo.length + " of " + rsp.photos.total + " images.");
+//document.getElementById("results_text_2").innerHTML = ("View All");
+}
+
+</script>
+
+<style type="text/css">
+/* *************** CSS START ***************** */
+/* *** FULL PAGE - START *** */
+
+.page_title {
+  background-color:hsla(0, 0%, 95%, 1);
+  font-size: 20px;
+  padding-bottom:5px;
+  padding-left:15px;
+  padding-top:15px;
+}
+
+.page_title_detail {
+  background-color: hsla(0, 0%, 95%, 1);
+  padding-left:15px;
+  padding-top:10px;
+}
+
+.plants_navigation {
+  background-color: hsla(0, 0%, 95%, 1);
+  font-style:normal;
+  padding-top:15px;
+  padding-bottom:0px;
+  padding-left:15px;
+  text-align:left;
+}
+
+/* *** FULL PAGE - END *** */
+/* *** Desktop Pages - Start *** */
+@media (min-width: 825px) { 
+
+div.image {
+  float:left;
+  padding-bottom:8px;
+  padding-right:12px;
+}
+
+.starr_policy_holder  {
+  background-color:white;
+  border-bottom:1px solid hsla(0, 0%, 88%, 1);
+  height:35px;
+  padding-top:15px;
+}
+
+.starr_policy {
+  float:left;
+  padding-left:15px;
+}
+
+.preferences  {
+  color:hsla(0, 0%, 0%, 0.54);
+  float:right;
+  font-size:14px;
+  padding-right:40px;
+  padding-top:3px;
+}
+
+.repeater_container {
+  padding-bottom:15px;
+  padding-left:15px;
+  padding-top:10px;
+  font-size:14px;
+}
+
+.repeater {
+  text-align:left;
+  font-size:16px;
+}
+
+.filter_species {
+  width:100%;
+  text-align:left;
+  }
+
+.single_species {
+  padding-bottom:15px;
+  padding-left:15px;
+  padding-top:15px;
+  line-height:200%;
+}
+
+.family_link {
+  float:left;
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.species_name {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+div.image_gallery_holder {
+  padding-left:15px;
+  padding-top:15px;
+}
+
+img.image_inserted {height:180px; max-width:600px;}
+
+.image {min-width:115px;}
+
+div.image_show {
+  float:left;
+  font-size:small;
+  height:300px;
+  width:250px;
+}
+
+div.show_text {
+  color: hsla(0,0%,0%,0.54);
+  font-size:small;
+  height:80px;
+  width:200px;
+}
+
+.view_on_flickr {
+  clear:both;
+  font-size:14px;
+  line-height:200%;
+  padding-bottom:25px;
+  padding-top:25px; 
+  text-align:center; 
+}
+
+.pre_footer_desktop {
+  color:hsla(0, 0%, 0%, 0.54);
+  font-size:14px;
+  padding:15px;
+  text-align:center;
+}
+
+.pre_footer_mobile {display:none;}
+
+.footer_no_query_mobile {display:none;}
+
+.footer {
+  text-align:center;
+  padding-left:0px;
+}
+
+.mobile_break {display:none;}
+
+}
+/* *** Desktop Pages - End *** */                                   
+
+/* *** Mobile Pages - Start *** */
+@media (max-width: 825px) {             
+
+.starr_policy_holder  {display:none;}
+
+//.plants_navigation {display:none;}
+
+.repeater_container {
+  border-top:1px solid hsla(0, 0%, 88%, 1);
+  line-height:300%;
+  margin-top:10px;
+  padding-bottom:15px;
+  font-size:14px;
+}
+
+.repeater {
+  border-bottom:1px solid hsla(0, 0%, 88%, 1);
+  font-size:14px;
+  padding-left:15px;
+  text-align:left;
+}
+
+.filter_species {
+  width:100%;
+  text-align:left;
+  }
+
+.single_species {
+  padding-bottom:5px;
+  padding-left:17px;
+  text-align:left;
+}
+
+.species_name {
+  font-size:16px;
+  font-weight:bold;
+  line-height:200%;
+}
+
+.species_notes {display:none;}
+
+.family_link {display:none;}
+
+div.image_gallery_holder {padding-left:15px;}
+
+img.image_inserted {float:left; height:150px; width:150px; padding:2px;}
+
+div.image {float:left;}
+
+div.show_text {display:none;}
+
+.pre_footer_desktop {display:none;}
+
+.pre_footer_mobile {
+  clear:both;
+  line-height:200%;
+  padding-top:15px;
+  padding-bottom:15px;
+}
+
+.mobile_break {display:inline;}
+
+
+}
+/* *** Mobile Pages End *** */
+/* *************** CSS End ***************** */
+</style>
+</head>
+<body> 
+
+<!-- Header Start -->
+<div class="header_container">
+  <div class="logo">
+    <a href="../../"><img src="../graphics/starr_environmental_transparent_large.png" alt="Starr Environmental" style="width:200px;"></a>
+  </div>
+  <div class="logo_small">
+    <a href="../../"><img src="../graphics/starr_environmental_one_line_transparent.png" alt="Starr Environmental" style="width:300px;"></a>
+  </div>
+    <form class="form" action="../search/" method="get">
+      <input class="search_field" id="q" name="q" value=""><button class="button" type="submit"><img alt="Search" class="button_image" src="../graphics/google_search_white_24dp_1x.png"></button>
+    </form>
+</div>
+<!-- Header End -->
+
+<script type="text/javascript">
+document.getElementById('q').value= 'Zygopetalum sp.';	 //add text to search box
+</script>
+
+<div class="starr_policy_holder">
+  <div class="starr_policy">
+    Images by <a href="../../">Forest &amp; Kim Starr</a> (<a href="../../imageusepolicy/">Image use policy</a>)
+  </div>
+  <!-- PREFERENCES -->
+  
+  <div class="preferences">
+    HIDE TEXT&nbsp;&nbsp;|&nbsp; 
+    <a href="?q=Zygopetalum+sp.&amp;sort=interestingness-desc&amp;show=show">SHOW TEXT</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    VIEWS&nbsp;&nbsp;|&nbsp;
+    <a href="?q=Zygopetalum+sp.&amp;sort=date-taken-asc&amp;show=hide">DATE↑</a>&nbsp;&nbsp;|&nbsp;
+    <a href="?q=Zygopetalum+sp.&amp;sort=date-taken-desc&amp;show=hide">DATE↓</a>
+  </div>
+  
+  <!-- PREFERENCES -->
+</div>
+
+<!-- Add in Single Species Info. -->
+
+<div class="plants_navigation"><a href="../">Plants of Hawaii</a> : <a href="../family/?q=Orchidaceae">Orchidaceae</a></div><div class="page_title"><i>Zygopetalum sp.</i> <div class="mobile_break"><br></div>(Zygopetalum)</div>
+<div class="page_title_detail">
+  Non-Native : Cultivated
+    
+  </div>
+
+<!-- Add in Single Species Info. -->
+
+<!-- FILTER BY SPECIES -->
+<form method="post" action="./?q=Zygopetalum+sp." id="repeater">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE2MTkwODYzNDdkZKW6QWRHUK7OkCry88HIwZErlyPnE5P6SXEoa6U+VMHl">
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="885DEE6F">
+</div>
+  
+</form>
+<!-- FILTER BY SPECIES -->
+
+<!-- IMAGES START -->
+<div class="image_gallery_holder">
+  <div id="flickr_images"><div class="image"><a href="../image/?q=24783294860"><img class="image_inserted" title="Zygopetalum sp flowering habit, Kula Botanical Garden. Mar 07, 2011. #110307-2850" src="http://farm2.static.flickr.com/1628/24783294860_80ed44e5af_q.jpg"></a><br></div></div>
+</div>
+<!-- IMAGES END -->
+
+<br style="clear:both;">
+<br>
+<br>
+
+<!-- PRE-FOOTER DESKTOP START -->
+
+  <div class="pre_footer_desktop">
+    <a href="https://www.flickr.com/search/?q=Zygopetalum+sp.&amp;user_id=97499887%40N06&amp;view_all=1">VIEW ON FLICKR</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; 
+    <a href="https://www.google.com/search?q=Zygopetalum+sp.">SEARCH GOOGLE</a>
+  </div>
+
+<!-- PRE-FOOTER DESKTOP END -->
+
+<!-- PRE-FOOTER MOBILE START -->
+<div class="pre_footer_mobile">
+  Images by <a href="../../">Forest &amp; Kim Starr</a>
+  <br>
+  <a href="../../imageusepolicy/">Image use policy</a>
+</div>
+<!-- PRE-FOOTER MOBILE END -->
+
+<!-- FOOTER START -->
+<div class="footer">
+<a href="../../">Starr Environmental</a>
+</div>
+<!-- FOOTER END -->
+
+<!-- CALL TO FLICKR START -->
+
+  <script async="" type="text/javascript" src="https://api.flickr.com/services/rest/?method=flickr.photos.search&amp;api_key=2addf7acb65d08197101cb299189b44f&amp;text=Zygopetalum+sp.&amp;user_id=97499887%40N06&amp;sort=interestingness-desc&amp;per_page=300&amp;format=json"></script>
+
+<!-- CALL TO FLICKR END -->
+
+
+ </body></html>
