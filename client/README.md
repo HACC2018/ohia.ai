@@ -1,54 +1,54 @@
-# ohia.ai client
+# ohia.ai App Client
 
-# Requirements
+## Requirements
 
 1. [Node.js](https://nodejs.org/en/) version 10.12.0
 
-# Installation
+## Installation
 
-## Install Node.js (required)
+### Install Node.js (required)
 1. Install [Node Version Manager](https://github.com/creationix/nvm) by running the following in a terminal:
     ```
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
     ```
 1. Install Node version 10.12.0 by running: `nvm install 10.12.0`.
 
-## Install Vue.js and Quasar (required)
+### Install Vue.js and Quasar (required)
 1. Install Vue CLI: `npm install -g @vue/cli`.
 1. Install Vue CLI addon: `npm install -g @vue/cli-init`.
 1. Install Quasar CLI: `npm install -g quasar-cli`.
 
-## Install XCode and Cordova (iOS)
+### Install XCode and Cordova (iOS)
 1. Download Xcode from the App Store.
 1. Enable Xcode CLI tools: `xcode-select --install`.
 1. Install Apache Cordova: `npm install -g cordova`.
 1. Launch iOS apps from the CLI: `npm install -g ios-deploy`.
 
-## Create the Quasar project folder (required)
-1. This step is only required when creating the `/client` folder for the first time. See **New Project Setup: Create the Quasar project folder** below.
+### Create the Quasar folder (required)
+1. This step is only required when creating the `/client` folder for the first time. See **New Project Setup: Create the Quasar folder** below.
 
-## Create the Cordova folder (iOS)
+### Create the Cordova folder (iOS)
 1. This step is only required when creating the `/client/src-cordova` folder for the first time. See **New Project Setup: Create the Cordova folder** below.
 
-## Check that Cordova is properly installed (iOS)
+### Check that Cordova is properly installed (iOS)
 1. Check that ios got installed: `cordova platform ls`.
 1. Verify that Cordova is set up properly: `cordova requirements`.
 
-## Install the client project dependencies (required)
+### Install the client project dependencies (required)
 1. In the `/client` folder, run `npm install` (or you may use [yarn](https://yarnpkg.com/en/docs/install#windows-stable) instead).
 
-## Run the app in the browser (browser)
+### Run the app in the browser (browser)
 1. See **Running: Run the app in the browser** below.
 
-## Run the app in the iOS simulator (iOS)
+### Run the app in the iOS simulator (iOS)
 1. See **Running: Run the app in the iOS simulator** below.
 
-## Run the app on your iOS device (iOS)
+### Run the app on your iOS device (iOS)
 1. See **Running: Run the app on your iOS device** below.
 
-# New Project Setup
+## New Project Setup
 
-## Create the Quasar project folder (required)
+### Create the Quasar folder (required)
 1. From the root directory of this project, type: `quasar init client`.
     ```
     ▶ quasar init frontend
@@ -66,20 +66,29 @@
     mended) no
     ```
 
-## Create the Cordova folder (iOS)
+### Create the Cordova folder (iOS)
 1. Change into the `/client` folder.
 1. Add Cordova Quasar Mode to the Quasar `/client` folder: `quasar mode -a cordova`.
 1. Change into the newly generated `/client/src-cordova` folder.
 1. Add a Cordova platform (can also replace `ios` with `android`): `cordova platform add ios`.
 
-# Running
+## Running
 
-## Run the client Quasar project in the browser (browser)
-1. Navigate to `/client` folder.
+### Run the client Quasar project in the browser (browser)
+1. Navigate to the `/client` folder.
 1. Run `quasar dev` to view the app in a browser.
 
-## Run the app in the iOS simulator (iOS)
-1. TODO
+### Run the app in the iOS simulator (iOS)
+1. Navigate to the `/client` folder.
+1. Run the following command to create a distribution for iOS:
+    ```
+    quasar build --mode cordova --target ios --theme mat
+    ```
+1. In the terminal (or you can manually open the file instead), open the Xcode project workspace by running:
+    ```
+    open ./client/src-cordova/platforms/ios/ohia.ai.xcworkspace/
+    ```
+1. In Xcode, with the project workspace now open, select a device in the top left-hand corner, such as the `iPhone 6`, and then click the play button icon to run the project in the simulator.
 
-## Run the app on your iOS device (iOS)
+### Run the app on your iOS device (iOS)
 1. TODO
