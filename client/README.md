@@ -2,23 +2,81 @@
 
 # Requirements
 
-1. [Node.js](https://nodejs.org/en/)
-
-# Recommended
-
-1. [yarn](https://yarnpkg.com/en/docs/install#windows-stable)
-2. [Quasar CLI](https://quasar-framework.org/guide/quasar-cli.html)
-
-For yarn, if you have Node/npm installed, type `npm i -g yarn`
-
-For the Quasar CLI, type `npm i -g quasar-cli` or `yarn global add quasar--cli`
+1. [Node.js](https://nodejs.org/en/) version 10.12.0
 
 # Installation
 
-1. Navigate to `/client` folder
-2. Type `npm i` or `yarn install`
+## Install Node.js (required)
+1. Install [Node Version Manager](https://github.com/creationix/nvm) by running `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash` in a terminal.
+1. Install Node version 10.12.0 by running: `nvm install 10.12.0`.
+
+## Install Vue.js and Quasar (required)
+1. Install Vue CLI: `npm install -g @vue/cli`.
+1. Install Vue CLI addon: `npm install -g @vue/cli-init`.
+1. Install Quasar CLI: `npm install -g quasar-cli`.
+
+## Install XCode and Cordova (not required for the browser)
+1. Download Xcode from the App Store.
+1. Enable Xcode CLI tools: `xcode-select --install`.
+1. Install Apache Cordova: `npm install -g cordova`.
+1. Launch iOS apps from the CLI: `npm install -g ios-deploy`.
+
+## Create the Quasar project folder (required)
+1. This step is only required when creating the `/client` folder for the first time. See **New Project Setup: Create the Quasar project folder** below.
+
+## Create the Cordova folder (not required for the browser)
+1. This step is only required when creating the `/client/src-cordova` folder for the first time. See **New Project Setup: Create the Cordova folder** below.
+
+## Check that Cordova is properly installed (required)
+1. Check that ios got installed: `cordova platform ls`.
+1. Verify that Cordova is set up properly: `cordova requirements`.
+
+## Install the client project dependencies (required)
+1. In the `/client` folder, run `npm install` (or you may use [yarn](https://yarnpkg.com/en/docs/install#windows-stable) instead).
+
+## Run the app in the browser (required for the browser)
+1. See **Running: Run the app in the browser** below.
+
+## Run the app in the iOS simulator (not required for the browser)
+1. See **Running: Run the app in the iOS simulator** below.
+
+## Run the app on your iOS device (not required for the browser)
+1. See **Running: Run the app on your iOS device** below.
+
+# New Project Setup
+
+## Create the Quasar project folder (required)
+1. From the root directory of this project, type: `quasar init client`.
+    ```
+    ▶ quasar init frontend
+     Running command: vue init 'quasarframework/quasar-starter-kit' frontend
+
+    ? Project name (internal usage for dev) ohia.ai
+    ? Project product name (official name) ohia.ai
+    ? Project description An open Hawaiian indigenous plant identification and aggre
+    gation application.
+    ? Author Team ohia.ai of HACC 2018
+    ? Check the features needed for your project: ESLint
+    ? Pick an ESLint preset Airbnb
+    ? Cordova id (disregard if not building mobile apps) org.ohia.ai.app
+    ? Should we run `npm install` for you after the project has been created? (recom
+    mended) no
+    ```
+
+## Create the Cordova folder (not required for the browser)
+1. Change into the `/client` folder.
+1. Add Cordova Quasar Mode to the Quasar `/client` folder: `quasar mode -a cordova`.
+1. Change into the newly generated `/client/src-cordova` folder.
+1. Add a Cordova platform (can also replace `ios` with `android`): `cordova platform add ios`.
 
 # Running
 
-1. Navigate to `/client` folder
-2. To run, `quasar dev`
+## Run the client Quasar project in the browser (required for the browser)
+1. Navigate to `/client` folder.
+1. Run `quasar dev` to view the app in a browser.
+
+## Run the app in the iOS simulator (not required for the browser)
+1. TODO
+
+## Running: Run the app on your iOS device
+1. TODO
