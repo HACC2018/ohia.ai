@@ -55,14 +55,17 @@ This README has a lot of steps between installation and running instructions. Th
 
 ### Run the client Quasar project in the browser (browser)
 1. Navigate to the `/client` folder.
-1. Run `quasar dev` to view the app in a browser.
+1. Run `npm run dev` to view the app in a browser.
 
 ### Run the app in the iOS simulator (iOS)
+
+#### Development
 1. Navigate to the `/client` folder.
-1. Run the following command to create a distribution for iOS:
-    ```
-    quasar build --mode cordova --target ios --theme mat
-    ```
+1. Run the following command to dev in the iOS simulator: `npm run dev-ios`. Make changes to a file and see your changes appear instantaneously in the simulator.
+
+#### Production
+1. Navigate to the `/client` folder.
+1. Run the following command to create a distribution for iOS: `npm run prod-ios`.
 1. In the terminal (or you can manually open the file instead), open the Xcode project workspace by running:
     ```
     open ./client/src-cordova/platforms/ios/ohia.ai.xcworkspace/
