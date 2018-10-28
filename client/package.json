@@ -8,7 +8,9 @@
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue src",
-    "test": "echo \"No test specified\" && exit 0"
+    "dev": "quasar dev",
+    "dev-ios": "quasar dev -m cordova -T ios -e iPhone-6",
+    "prod-ios": "quasar build -m cordova -T ios"
   },
   "dependencies": {
     "axios": "^0.18.0",
