@@ -63,7 +63,13 @@ module.exports = function (ctx) {
       // Quasar plugins
       plugins: [
         'Notify'
-      ]
+      ]//,
+      // config: {
+      //   cordova: {
+      //     iosStatusBarPadding: true/false, // add the dynamic top padding on iOS mobile devices
+      //     backButtonExit: true/false // Quasar handles app exit on mobile phone back button
+      //   }
+      // }
       // iconSet: ctx.theme.mat ? 'material-icons' : 'ionicons'
       // i18n: 'de' // Quasar language
     },
