@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    ohia.ai
+    <plant-detection />
   </q-page>
 </template>
 
@@ -8,7 +8,12 @@
 </style>
 
 <script>
+import PlantDetection from './PlantDetection';
+
 export default {
   name: 'PageIndex',
+  components: {
+    PlantDetection,
+  },
 };
 </script>
