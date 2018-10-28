@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <q-btn color="primary" label="Get Picture" @click="captureImage" />
+    <q-btn color="primary" label="Detect Plant" @click="captureImage" />
     <img :src="imageSrc">
   </q-page>
 </template>
