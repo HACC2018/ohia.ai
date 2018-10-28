@@ -28,8 +28,5 @@
     <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
         <string>to identify native and invasive plants found in Hawaii</string>
     </edit-config>
-    <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryAddUsageDescription">
-        <string>to identify native and invasive plants found in Hawaii</string>
-    </edit-config>
     <engine name="ios" spec="4.5.5" />
 </widget>
