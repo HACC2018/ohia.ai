@@ -21,5 +21,6 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-    <engine name="ios" spec="4.5.5" />
+    <engine name="ios" spec="~4.5.5" />
+    <plugin name="cordova-plugin-camera" spec="^4.0.3" />
 </widget>
