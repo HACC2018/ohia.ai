@@ -1,5 +1,10 @@
 # ohia.ai App Client
 
+This README has a lot of steps between installation and running instructions. There are three ways you can follow the steps:
+1. Follow all the steps in order as written if you would like to run the client on your browser and the iOS simulator.
+1. Or you can follow, in order as written, *only* the **required** and **browser** steps if you would like to run the client on your browser.
+1. Lastly, you can choose the second option for now, and then later on, you can install the **iOS**-specific steps, in order as written.
+
 ## Requirements
 
 1. [Node.js](https://nodejs.org/en/) version 10.12.0
@@ -46,6 +51,27 @@
 ### Run the app on your iOS device (iOS)
 1. See **Running: Run the app on your iOS device** below.
 
+## Running
+
+### Run the client Quasar project in the browser (browser)
+1. Navigate to the `/client` folder.
+1. Run `quasar dev` to view the app in a browser.
+
+### Run the app in the iOS simulator (iOS)
+1. Navigate to the `/client` folder.
+1. Run the following command to create a distribution for iOS:
+    ```
+    quasar build --mode cordova --target ios --theme mat
+    ```
+1. In the terminal (or you can manually open the file instead), open the Xcode project workspace by running:
+    ```
+    open ./client/src-cordova/platforms/ios/ohia.ai.xcworkspace/
+    ```
+1. In Xcode, with the project workspace now open, select a device in the top left-hand corner, such as the `iPhone 6`, and then click the play button icon to run the project in the simulator.
+
+### Run the app on your iOS device (iOS)
+1. TODO
+
 ## New Project Setup
 
 ### Create the Quasar folder (required)
@@ -71,24 +97,3 @@
 1. Add Cordova Quasar Mode to the Quasar `/client` folder: `quasar mode -a cordova`.
 1. Change into the newly generated `/client/src-cordova` folder.
 1. Add a Cordova platform (can also replace `ios` with `android`): `cordova platform add ios`.
-
-## Running
-
-### Run the client Quasar project in the browser (browser)
-1. Navigate to the `/client` folder.
-1. Run `quasar dev` to view the app in a browser.
-
-### Run the app in the iOS simulator (iOS)
-1. Navigate to the `/client` folder.
-1. Run the following command to create a distribution for iOS:
-    ```
-    quasar build --mode cordova --target ios --theme mat
-    ```
-1. In the terminal (or you can manually open the file instead), open the Xcode project workspace by running:
-    ```
-    open ./client/src-cordova/platforms/ios/ohia.ai.xcworkspace/
-    ```
-1. In Xcode, with the project workspace now open, select a device in the top left-hand corner, such as the `iPhone 6`, and then click the play button icon to run the project in the simulator.
-
-### Run the app on your iOS device (iOS)
-1. TODO
