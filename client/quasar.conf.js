@@ -50,6 +50,7 @@ module.exports = function (ctx) {
         'QToolbar',
         'QToolbarTitle',
         'QBtn',
+        'QBtnGroup',
         'QIcon',
         'QList',
         'QListHeader',
@@ -66,6 +67,10 @@ module.exports = function (ctx) {
         'QCarousel',
         'QCarouselSlide',
         'QCarouselControl',
+        'QField',
+        'QInput',
+        'QFab',
+        'QFabAction',
       ],
       directives: [
         'Ripple'
