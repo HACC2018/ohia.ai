@@ -6,13 +6,13 @@
       class="row"
     >
       <div
-        class="col-sm-12 col-md-4 q-mr-md q-mb-md"
+        class="col-md-12 col-lg-4 q-mr-md q-mb-md"
       >
         <PlantInformation />
       </div>
 
       <div
-        class="col-sm-12 col-md-7"
+        class="col-md-12 col-lg-7"
       >
         <PlantStory
           class="q-mb-md"
