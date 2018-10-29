@@ -3,28 +3,26 @@
     padding
   >
     <div
-      class="row"
+      class="row gutter-md"
     >
       <div
-        class="col-md-12 col-lg-4 q-mr-md q-mb-md"
+        class="col-md-12 col-lg-4"
       >
         <PlantInformation />
       </div>
 
       <div
-        class="col-md-12 col-lg-7"
+        class="col-md-12 col-lg-8"
       >
-        <PlantStory
-          class="q-mb-md"
-        />
+        <PlantStory />
 
-        <PlantUses
-          class="q-mb-md"
-        />
+        <br />
 
-        <PlantUploads
-          class="q-mb-md"
-        />
+        <PlantUses />
+
+        <br />
+
+        <PlantUploads />
       </div>
     </div>
   </q-page>
