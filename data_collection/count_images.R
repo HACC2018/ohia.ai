@@ -1,6 +1,7 @@
 library(data.table)
 library(stringr)
 
+data_path <- '../data'
 DT <- data.table(species = dir('../data/thumbnails'))
 
 # get genus
@@ -32,6 +33,9 @@ DT[, .(
   by=genus][1:10]
 
 top10_genera <- DT[, .(count = genus_count[1]), by=genus][1:10, genus]
+out_files <- top10_genera[, file.path()]
+in_files <- top10_genera[, file.path()]
+
 for (g in top10_genera) {
   dir.create(sprintf('../data./top10_genera/%s', g), F)
   species_list <- DT[genus == g, species]

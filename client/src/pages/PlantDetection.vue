@@ -1,8 +1,15 @@
 <template>
-  <q-page class="flex flex-center">
-    <q-btn color="primary" label="Detect Plant" @click="captureImage" />
-    <img :src="imageSrc">
-  </q-page>
+  <q-card>
+    <q-card-title>
+      Plant Detection
+    </q-card-title>
+
+    <q-card-main>
+      <q-btn color="primary" label="Detect Plant" @click="captureImage" />
+
+      <img :src="imageSrc">
+    </q-card-main>
+  </q-card>
 </template>
 
 <style>
