@@ -30,6 +30,16 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/identify',
+    component: () => import('layouts/MyLayout.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('pages/PlantIdentification.vue'),
+      },
+    ],
+  },
 ];
 
 // Always leave this as last one
