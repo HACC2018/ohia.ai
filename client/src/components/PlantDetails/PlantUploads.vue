@@ -19,10 +19,18 @@
         ]"
         thumbnails-horizontal
       >
-        <q-carousel-slide img-src="https://wildlifeofhawaii.com/images/flowers/Metrosideros-polymorpha-1.jpg" />
-        <q-carousel-slide img-src="https://wildlifeofhawaii.com/images/flowers/Metrosideros-polymorpha-1.jpg" />
-        <q-carousel-slide img-src="https://wildlifeofhawaii.com/images/flowers/Metrosideros-polymorpha-1.jpg" />
-        <q-carousel-slide img-src="https://wildlifeofhawaii.com/images/flowers/Metrosideros-polymorpha-1.jpg" />
+        <q-carousel-slide
+          img-src="https://wildlifeofhawaii.com/images/flowers/Metrosideros-polymorpha-1.jpg"
+        />
+        <q-carousel-slide
+          img-src="https://wildlifeofhawaii.com/images/flowers/Metrosideros-polymorpha-1.jpg"
+        />
+        <q-carousel-slide
+          img-src="https://wildlifeofhawaii.com/images/flowers/Metrosideros-polymorpha-1.jpg"
+        />
+        <q-carousel-slide
+          img-src="https://wildlifeofhawaii.com/images/flowers/Metrosideros-polymorpha-1.jpg"
+        />
       </q-carousel>
     </q-card-main>
   </q-card>
@@ -30,7 +38,11 @@
 
 <script>
 export default {
-
+  props: {
+    images: {
+      type: Array,
+    },
+  },
 };
 </script>
 

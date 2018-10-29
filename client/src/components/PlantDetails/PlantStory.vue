@@ -22,7 +22,11 @@
 
 <script>
 export default {
-
+  props: {
+    story: {
+      type: String,
+    },
+  },
 };
 </script>
 

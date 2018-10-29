@@ -10,14 +10,23 @@
       <q-card-main>
         <q-list no-border>
           <q-item>
-            <q-item-main label="Eating" />
+            <q-item-main
+            label="Eating"
+            sublabel="Its great taste made it suitable for eating."
+          />
           </q-item>
           <q-item-separator />
           <q-item>
-            <q-item-main label="Cleaning" />
+            <q-item-main
+            label="Cleaning"
+            sublabel="Its great cleaning powers were used."
+          />
           </q-item>
           <q-item>
-            <q-item-main label="Medicine" />
+            <q-item-main
+              label="Medicine"
+              sublabel="Its great healing powers were used."
+            />
           </q-item>
         </q-list>
       </q-card-main>
@@ -27,7 +36,11 @@
 
 <script>
 export default {
-
+  props: {
+    uses: {
+      type: Array,
+    },
+  },
 };
 </script>
 

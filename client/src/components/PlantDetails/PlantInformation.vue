@@ -1,14 +1,23 @@
 <template>
   <q-card inline>
     <q-card-media>
-      <img src="https://www.hawaiimagazine.com/sites/default/files/field/image/25040492391_b5f4f063c2_k.jpg">
+      <img
+        src="https://www.hawaiimagazine.com/sites/default/files/field/image/25040492391_b5f4f063c2_k.jpg"
+      >
     </q-card-media>
 
     <q-card-title>
       Metrosideros polymorpha
 
-      <div slot="right" class="row items-center">
-        <span class="text-red">Endangered</span>
+      <div
+        slot="right"
+        class="row items-center"
+      >
+        <span
+          class="text-red"
+        >
+          Endangered
+        </span>
       </div>
     </q-card-title>
 
@@ -40,7 +49,26 @@
 
 <script>
 export default {
-
+  props: {
+    image: {
+      type: String,
+    },
+    endangered: {
+      type: String,
+    },
+    genus: {
+      type: String,
+    },
+    species: {
+      type: String,
+    },
+    commonName: {
+      type: String,
+    },
+    hawaiianName: {
+      type: String,
+    },
+  },
 };
 </script>
 
