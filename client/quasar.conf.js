@@ -69,6 +69,8 @@ module.exports = function (ctx) {
         'QCarouselControl',
         'QField',
         'QInput',
+        'QFab',
+        'QFabAction',
       ],
       directives: [
         'Ripple'

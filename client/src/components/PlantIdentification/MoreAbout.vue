@@ -22,6 +22,16 @@
               >
             </q-card-media>
 
+            <q-card-title class="relative-position">
+              <q-btn
+                color="green"
+                label="62%"
+                class="absolute"
+                style="top: 0; right: 8px; transform: translateY(-50%);"
+                no-ripple
+              />
+            </q-card-title>
+
             <q-card-actions
               class="q-pa-md"
               align="center"
@@ -49,6 +59,16 @@
                 src="https://farm2.staticflickr.com/1366/5187357067_639509a494_o.jpg"
               >
             </q-card-media>
+
+            <q-card-title class="relative-position">
+              <q-btn
+                color="orange"
+                label="13%"
+                class="absolute"
+                style="top: 0; right: 8px; transform: translateY(-50%);"
+                no-ripple
+              />
+            </q-card-title>
 
             <q-card-actions
               class="q-pa-md"
@@ -78,6 +98,16 @@
                 src="http://tropical.theferns.info/plantimages/2/b/2b1c373166074481ad5668eeb23211b09f8bcc22.jpg"
               />
             </q-card-media>
+
+            <q-card-title class="relative-position">
+              <q-btn
+                color="red"
+                label="3%"
+                class="absolute"
+                style="top: 0; right: 8px; transform: translateY(-50%);"
+                no-ripple
+              />
+            </q-card-title>
 
             <q-card-actions
               class="q-pa-md"
