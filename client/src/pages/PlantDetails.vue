@@ -4,7 +4,7 @@
       <div class="col-sm-12 col-md-4 q-mr-md">
         <PlantInformation></PlantInformation>
       </div>
-      
+
       <div class="col-sm-12 col-md-7">
         <PlantStory class="q-mb-md"></PlantStory>
 

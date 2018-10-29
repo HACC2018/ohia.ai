@@ -6,7 +6,7 @@
 
     <q-card-title>
       Metrosideros polymorpha
-      
+
       <div slot="right" class="row items-center">
         <span class="text-red">Endangered</span>
       </div>
@@ -19,7 +19,7 @@
         <span>Genus・</span>
         <span class="text-faded">Metrosideros</span>
       </p>
-      
+
       <p>
         <span>Species・</span>
         <span class="text-faded">Polymorpha</span>
