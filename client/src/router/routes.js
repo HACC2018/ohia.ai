@@ -20,6 +20,16 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/plant',
+    component: () => import('layouts/MyLayout.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('pages/PlantDetails.vue'),
+      },
+    ],
+  },
 ];
 
 // Always leave this as last one
