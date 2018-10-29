@@ -1,16 +1,30 @@
 <template>
-  <q-page padding>
-    <div class="row">
-      <div class="col-sm-12 col-md-4 q-mr-md q-mb-md">
-        <PlantInformation></PlantInformation>
+  <q-page
+    padding
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="col-sm-12 col-md-4 q-mr-md q-mb-md"
+      >
+        <PlantInformation />
       </div>
 
-      <div class="col-sm-12 col-md-7">
-        <PlantStory class="q-mb-md"></PlantStory>
+      <div
+        class="col-sm-12 col-md-7"
+      >
+        <PlantStory
+          class="q-mb-md"
+        />
 
-        <PlantUses class="q-mb-md"></PlantUses>
+        <PlantUses
+          class="q-mb-md"
+        />
 
-        <PlantUploads class="q-mb-md"></PlantUploads>
+        <PlantUploads
+          class="q-mb-md"
+        />
       </div>
     </div>
   </q-page>
