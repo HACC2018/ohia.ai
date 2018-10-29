@@ -1,7 +1,13 @@
 library(data.table)
 library(stringr)
 
-data_path <- '../data'
+plant_meta <- fread('data/plant_categories_v3.csv')
+plant_meta[, .(.N, species), by=genus][N>1, species]
+
+plant_meta[species  == ]
+
+dir('data')
+
 DT <- data.table(species = dir('../data/thumbnails'))
 
 # get genus
