@@ -7,6 +7,7 @@ const knex = require('knex')({
   client: 'pg',
   connection: {
     host: config.db.host,
+    port: config.db.port,
     user: config.db.username,
     password: config.db.password,
     database: config.db.name,
@@ -14,6 +15,8 @@ const knex = require('knex')({
   },
 });
 const bookshelf = require('bookshelf')(knex);
+
+console.log(config);
 
 const app = express();
 const s3 = new AWS.S3({

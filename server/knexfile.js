@@ -1,13 +1,14 @@
 const config = require('./config');
 
 module.exports = {
-
   development: {
     client: 'postgresql',
     connection: {
-      database: config.db.name,
+      host: config.db.host,
+      port: config.db.port,
       user: config.db.username,
       password: config.db.password,
+      database: config.db.name,
     },
   },
 
