@@ -1,7 +1,7 @@
 library(data.table)
 
 # load data
-DT <- fread('data/meta_data.csv')
+DT <- fread('data/plant_meta.csv')
 
 # combine genus with multiple species
 select_species <- DT[, .(x=species[1]), keyby=genus]$x
@@ -51,4 +51,4 @@ setcolorder(DT, c(
   'genus', 'species', 'description', 'story', 'uses'
 ))
 
-fwrite(DT, 'data/meta_data_v3.csv')
+fwrite(DT, 'data/plant_meta_v3.csv')

@@ -50,7 +50,7 @@ for (g in unique(plantnet_meta$Genus)) {
 }
 
 # load local meta
-local_meta <- fread('data/local_meta_v3.csv')
+local_meta <- fread('data/plant_meta_v3.csv')
 local_meta[, .(species, genus, common_name, status)]
 
 # find intersection between local and plantnet
