@@ -1,12 +1,14 @@
-// Update with your config settings.
+const config = require('./config');
 
 module.exports = {
 
   development: {
     client: 'postgresql',
     connection: {
-      filename: './dev.sqlite3'
-    }
+      database: config.db.name,
+      user: config.db.username,
+      password: config.db.password,
+    },
   },
 
   staging: {

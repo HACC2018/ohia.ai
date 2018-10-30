@@ -4,12 +4,12 @@ exports.up = (knex, Promise) => {
 
     table.string('plant_name');
     table.string('status');
-    table.string('description');
     table.string('genus');
     table.string('species');
     table.string('common_name');
     table.string('hawaiian_name');
     table.string('scientific_name');
+    table.text('description');
     table.text('story');
     table.text('use');
     table.enu('endangered',
@@ -17,6 +17,7 @@ exports.up = (knex, Promise) => {
       'critically endangered',
       'endangered',
       'vulnerable',
+      'not endangered',
     ]);
 
     table.timestamps();

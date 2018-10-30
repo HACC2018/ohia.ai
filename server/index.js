@@ -9,7 +9,7 @@ const knex = require('knex')({
     host: config.db.host,
     user: config.db.username,
     password: config.db.password,
-    database: 'ohia_db_dev',
+    database: config.db.name,
     charset: 'utf8',
   },
 });
