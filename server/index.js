@@ -3,6 +3,17 @@ const AWS = require('aws-sdk');
 const fs = require('fs');
 const path = require('path');
 const config = require('./config');
+const knex = require('knex')({
+  client: 'pg',
+  connection: {
+    host: config.db.host,
+    user: config.db.username,
+    password: config.db.password,
+    database: 'ohia_db_dev',
+    charset: 'utf8',
+  },
+});
+const bookshelf = require('bookshelf')(knex);
 
 const app = express();
 const s3 = new AWS.S3({
