@@ -1,10 +1,14 @@
 library(data.table)
 
 # load data
-DT <- fread('data/plant_categories_v2.csv')
+DT <- fread('data/meta_data.csv')
+
+# combine genus with multiple species
+select_species <- DT[, .(x=species[1]), keyby=genus]$x
+DT <- DT[species %in% select_species]
 
 # clean text
-clean_text <- function( x){
+clean_text <- function(x) {
   x <- gsub('\n', ' ', x)         # replace new lines with space
   x <- gsub('\\[\\d+\\]', '', x)  # remove references [\\d+]
   x <- gsub('\\"+', '\\"', x)     # remove double quotes
@@ -16,13 +20,17 @@ DT[, description := clean_text(description)]
 DT[, story := clean_text(story)]
 DT[, uses := clean_text(uses)]
 
+# change common to non-native
+DT[status=='common', status := 'non-native']
+
 # capatilize all words
 capatilize_all <- function(x) {
   s <- strsplit(x, " ")[[1]]
-  paste(toupper(substring(s, 1,1)), substring(s, 2), sep="", collapse=" ")
+  paste(toupper(substring(s, 1, 1)), substring(s, 2), sep="", collapse=" ")
 }
 DT[, hawaiian_name := sapply(hawaiian_name, capatilize_all)]
 DT[, common_name := sapply(common_name, capatilize_all)]
+DT[, status := sapply(status, capatilize_first)]
 
 # capatilize first word
 capatilize_first <- function(x) {
@@ -43,4 +51,4 @@ setcolorder(DT, c(
   'genus', 'species', 'description', 'story', 'uses'
 ))
 
-fwrite(DT, 'data/plant_categories_v3.csv')
+fwrite(DT, 'data/meta_data_v3.csv')
