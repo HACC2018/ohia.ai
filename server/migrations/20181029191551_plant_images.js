@@ -1,6 +1,4 @@
-const knex = require('knex');
-
-exports.up = () => {
+exports.up = (knex, Promise) => {
   knex.schema.createTable('plant_images', (table) => {
     table.increments('id').primary();
     table.foreign('plant_id').unique().references('plants.id');
