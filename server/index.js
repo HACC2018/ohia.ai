@@ -25,9 +25,17 @@ const upload = multer({
   storage: multerS3({
     s3,
     bucket: config.bucket,
+    acl: 'public-read',
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+    // Tell browsers and CDNs to cache the file for one year
+    cacheControl: 'max-age=31536000',
+    metadata(req, file, cb) {
+      cb(null, Object.assign({}, req.body));
+    },
     key(req, file, cb) {
-      console.log('file', file);
-      cb(null, file.originalname);
+      // The file is always a JPEG
+      const filename = `${Date.now().toString()}.jpg`;
+      cb(null, filename);
     },
   }),
 });
@@ -47,8 +55,11 @@ app.use(bodyParser.urlencoded({ // Form request data
 app.post('/images/upload', upload.array('image', 1), (req, res) => {
   console.log('req.body', req.body);
   console.log('req.files', req.files);
+  const image = req.files.length > 0 ? req.files[0] : { key: '', size: 0 };
   return res.json({
     success: true,
+    name: image.key,
+    size: image.size,
   });
 });
 

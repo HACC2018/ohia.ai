@@ -45,11 +45,11 @@ export default {
                   const arrayBufferView = new Uint8Array(this.result);
                   const blob = new Blob([arrayBufferView], { type: 'image/jpeg' });
                   const formData = new FormData();
-                  formData.append('image.latitude', view.latitude);
-                  formData.append('image.longitude', view.longitude);
+                  formData.append('latitude', view.latitude);
+                  formData.append('longitude', view.longitude);
                   formData.append('image', blob);
 
-                  const appHost = 'http://localhost:3000';
+                  const appHost = 'https://8e7ef90d.ngrok.io';
                   const imageUploadUrl = `${appHost}/images/upload`;
                   view.$axios.post(imageUploadUrl, formData)
                     .then((res) => {
