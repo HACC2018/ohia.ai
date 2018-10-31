@@ -33,8 +33,6 @@ export default {
       camera.getPicture(
         (filePath) => {
           const view = this;
-          window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
-            console.log('File system open:', fs.name);
             window.resolveLocalFileSystemURL(filePath, function(fileEntry) {
               fileEntry.file(function(file) {
                 const reader = new FileReader();
@@ -73,9 +71,6 @@ export default {
             }, function(err) {
               console.error('Error resolving the local file system URL:', err);
             });
-          }, function(err) {
-            console.error('Error getting persistent fs:', err);
-          });
         },
         () => {
           this.$q.notify('Could not access device camera.');
