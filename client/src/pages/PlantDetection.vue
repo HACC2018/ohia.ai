@@ -7,13 +7,16 @@
     <q-card-main>
       <q-btn color="primary" label="Detect Plant" @click="captureImage" />
 
-      <img :src="imageSrc">
-      {{ testing }}
+      <img :src="imageSrc" class="image">
     </q-card-main>
   </q-card>
 </template>
 
 <style>
+.image {
+  width: 100%;
+  height: auto;
+}
 </style>
 
 <script>
@@ -21,7 +24,6 @@ export default {
   name: 'PlantDetection',
   data() {
     return {
-      testing: 'start',
       imageSrc: '',
       latitude: 10,
       longitude: 12,
@@ -78,7 +80,7 @@ export default {
             const imageUploadUrl = `${appHost}/images/upload`;
             view.$axios.post(imageUploadUrl, formData)
               .then((res) => {
-                view.testing = res.data.success;
+                console.log('res.data', res.data);
               })
               .catch(() => {
                 displayErrorMessage();
