@@ -76,7 +76,7 @@ export default {
           function uploadImage() {
             const blob = convertImageToBlob(this.result);
             const formData = constructFormData(blob);
-            const appHost = 'https://8e7ef90d.ngrok.io';
+            const appHost = 'http://localhost:3000';
             const imageUploadUrl = `${appHost}/images/upload`;
             view.$axios.post(imageUploadUrl, formData)
               .then((res) => {
