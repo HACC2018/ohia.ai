@@ -1,20 +1,24 @@
 {
   "name": "ohia.ai",
   "version": "0.0.1",
-  "description":
-    "An open Hawaiian indigenous plant identification and aggregation application.",
+  "description": "An open Hawaiian indigenous plant identification and aggregation application.",
   "main": "server/index.js",
   "engines": {
     "node": "10.12.0"
   },
   "scripts": {
-    "dev-server": "nodemon server/index.js"
+    "dev-server": "nodemon server/index.js",
+    "db:migrate": "knex migrate:latest --knexfile server/knexfile.js"
   },
   "author": "Team ohia.ai",
   "license": "MIT",
   "dependencies": {
     "aws-sdk": "2.339.0",
-    "express": "4.16.4"
+    "bookshelf": "0.13.3",
+    "dotenv": "6.1.0",
+    "express": "4.16.4",
+    "knex": "0.13.0",
+    "pg": "7.6.0"
   },
   "devDependencies": {
     "nodemon": "1.18.4"
