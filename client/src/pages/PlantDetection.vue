@@ -56,6 +56,8 @@ export default {
 
       camera.getPicture(
         (filePath) => {
+          const fullPath = filePath.replace('assets-library://', 'cdvfile://localhost/assets-library/');
+          view.imageSrc = fullPath;
           const convertImageToBlob = (result) => {
             // Create a blob based on the FileReader "result",
             // which we asked to be retrieved as an ArrayBuffer
