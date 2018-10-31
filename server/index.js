@@ -1,14 +1,18 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const AWS = require('aws-sdk');
-const fs = require('fs');
-const path = require('path');
+const multer = require('multer');
+const multerS3 = require('multer-s3');
 const config = require('./config');
 
 const app = express();
 const s3 = new AWS.S3({
   apiVersion: '2006-03-01',
 });
-const port = 3000;
+
+const PORT = 3000;
+const FILE_SIZE_LIMIT = '50mb'; // Should match param limit
+const PARAM_LIMIT = 50000; // In MB; should match file size limit
 
 function initializeServices() {
   const awsConfig = new AWS.Config({
@@ -17,45 +21,38 @@ function initializeServices() {
   });
 }
 
+const upload = multer({
+  storage: multerS3({
+    s3,
+    bucket: config.bucket,
+    key(req, file, cb) {
+      console.log('file', file);
+      cb(null, file.originalname);
+    },
+  }),
+});
+
 // Middleware
-app.use(express.json());
-// Required for browser POST requests
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
+app.use(bodyParser.json({ // JSON request data
+  limit: FILE_SIZE_LIMIT,
+}));
 
-app.get('/', (req, res) => {
-  res.send('Hello ohia.ai');
-});
+app.use(bodyParser.urlencoded({ // Form request data
+  extended: false,
+  limit: FILE_SIZE_LIMIT,
+  parameterLimit: PARAM_LIMIT,
+})); 
 
-app.post('/images/upload', (req, res) => {
-  const keyName = 'ohia_lehua.jpg';
-  const params = {
-    Bucket: config.bucket,
-    Key: keyName,
-    // TODO: This will need to change to accommodate images from the frontend.
-    Body: fs.createReadStream(path.resolve(__dirname, `images/${keyName}`)),
-    ACL: 'public-read',
-  };
-
-  s3.upload(params, (err, data) => {
-    if (err) {
-      console.error(err);
-      return res.json({
-        success: false,
-      });
-    }
-    console.log('Successfully uploaded data to the S3 bucket');
-    res.json({
-      success: true,
-      imageUrl: data['Location'],
-    });
+// Routes
+app.post('/images/upload', upload.array('image', 1), (req, res) => {
+  console.log('req.body', req.body);
+  console.log('req.files', req.files);
+  return res.json({
+    success: true,
   });
 });
 
-app.listen(port, () => {
-  console.log(`Server for ohia.ai listening on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server for ohia.ai listening on port ${PORT}`);
   initializeServices();
 });
