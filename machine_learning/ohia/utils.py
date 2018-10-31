@@ -1,42 +1,54 @@
 import re
 import numpy as np
+from PIL import Image
 
 def predict_lr(model, images):
     preds  = np.squeeze(model.predict(images[:,:,::-1]))[:,:,::-1]
     preds += np.squeeze(model.predict(images))
     return preds/2
 
-def str_extract(pattern, x):
-    found = re.search(pattern, x)
-    return found.group(1) if found else ''
-
-def get_id(prefix=None):
-    x = str(datetime.datetime.now())
-    x = re.sub(" ", "_", x)
-    x = re.sub(":", "-", x)
-    x = x.split(".")[0]
-    return f"{prefix}_{x}" if prefix else x
-
-class ProgressLogger(object):
+def resize_smaller_dim(img, size=224):
+    """ Resize the smaller dimension on an image
     
-    def __init__(self):
-        self.messages = []
+    Args:
+        img: Input image opened from PIL  
+        size: New size of the smaller dimension
+        
+    Returns: Resized image
+    """
+    w, h = img.size
+    
+    # width > height
+    if w > h: 
+        w = round(size*w/h)
+        img = img.resize((w, size), resample=Image.LANCZOS)
 
-    def append(self, line, level=0, verbose=True):
-        line = '   '*level + line
-        if verbose: print(line)
-        self.messages.append(line)
+    # height > width
+    else: 
+        h = round(size*h/w)
+        img = img.resize((size, h), resample=Image.LANCZOS)
+    
+    return img
+
+
+def crop_square(img):
+    """ Crop larger dimension to produce a square image
+    
+    Args:
+        img: Input image opened from PIL  
+
+    Returns: Cropped image
+    """
+    w, h = img.size
         
-    def display(self):
-        for line in self.messages: print(line)
-            
-    def save(self, save_name):
-        fwrite = open(save_name, "w") 
-        for line in self.messages: fwrite.write(f"{line}\n") 
-        fwrite.close()     
+    # width > height
+    if w > h: 
+        c = round(w//2 + np.random.uniform(-1, 1, 1)[0] * (w-h)//2)
+        img = img.crop((c-h//2, 0, c+h//2, h))
         
-def save_log(save_name, progress_log):
-    fwrite = open(save_name, "w") 
-    for line in progress_log: 
-        fwrite.write(f"{line}\n") 
-    fwrite.close()     
+    # height > width
+    else:
+        c = round(h//2 + np.random.uniform(-1, 1, 1)[0] * (h-w)//2)    
+        img = img.crop((0, c-w//2, w, c+w//2))
+        
+    return img
