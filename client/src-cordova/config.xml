@@ -28,7 +28,7 @@
     <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
         <string>to identify native and invasive plants found in Hawaii</string>
     </edit-config>
-    <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryAddUsageDescription">
+    <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
         <string>to identify native and invasive plants found in Hawaii</string>
     </edit-config>
     <plugin name="cordova-plugin-file" spec="6.0.1" />
