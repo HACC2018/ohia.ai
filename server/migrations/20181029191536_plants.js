@@ -16,7 +16,7 @@ exports.up = function(knex, Promise) {
     table.string('species').notNullable();
     table.text('description');
     table.text('story');
-    table.text('use');
+    table.text('uses');
     table.enu('endangered',
     [
       'Critically endangered',
@@ -25,7 +25,8 @@ exports.up = function(knex, Promise) {
       'Not endangered',
     ]);
 
-    table.timestamps();
+    table.timestamp('created_at').defaultTo(knex.fn.now());
+    table.timestamp('updated_at').defaultTo(knex.fn.now());
   });
 };
 
