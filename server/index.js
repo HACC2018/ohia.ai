@@ -4,6 +4,7 @@ const AWS = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 const config = require('./config');
+
 const knex = require('knex')({
   client: 'pg',
   connection: {
@@ -16,8 +17,8 @@ const knex = require('knex')({
   },
 });
 const bookshelf = require('bookshelf')(knex);
-
-console.log(config);
+const Plant = require('./models/Plant')(knex);
+const PlantImage = require('./models/PlantImage')(knex);
 
 const app = express();
 const s3 = new AWS.S3({
@@ -69,12 +70,32 @@ app.use(bodyParser.urlencoded({ // Form request data
 app.post('/images/upload', upload.array('image', 1), (req, res) => {
   console.log('req.body', req.body);
   console.log('req.files', req.files);
-  const image = req.files.length > 0 ? req.files[0] : { key: '', size: 0 };
-  return res.json({
-    success: true,
-    name: image.key,
-    size: image.size,
-  });
+
+  if (req.files.length === 0) {
+    return res.json({
+      success: false,
+      message: 'Image upload failed',
+    });
+  }
+
+  const meta = req.body;
+  const image = req.files[0];
+
+  // Save the image to the database
+  return new PlantImage({
+    identified: false,
+    latitude: meta.latitude,
+    longitude: meta.longitude,
+    image_url: image.location,
+  })
+    .save()
+    .then((model) => {
+      return res.json({
+        success: true,
+        name: image.key,
+        size: image.size,
+      });
+    });
 });
 
 app.listen(PORT, () => {

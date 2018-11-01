@@ -1,9 +1,11 @@
-const bookshelf = require('bookshelf');
-const Plant = require('./Plant');
+module.exports = (knex) => {
+  const bookshelf = require('bookshelf')(knex);
+  const Plant = require('./Plant');
 
-module.exports = bookshelf.Model.extend({
-  tableName: 'plant_images',
-  plant() {
-    return this.belongsTo(Plant);
-  }
-})
+  return bookshelf.Model.extend({
+    tableName: 'plant_images',
+    plant() {
+      return this.belongsTo(Plant, 'plant_id');
+    },
+  });
+};

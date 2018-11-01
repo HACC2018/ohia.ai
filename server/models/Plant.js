@@ -1,9 +1,11 @@
-const bookshelf = require('bookshelf');
-const PlantImages = require('./PlantImage');
+module.exports = (knex) => {
+  const bookshelf = require('bookshelf')(knex);
+  const PlantImages = require('./PlantImage');
 
-module.exports = bookshelf.Model.extend({
-  tableName: 'plants',
-  images() {
-    return this.hasMany(PlantImages);
-  }
-})
+  return bookshelf.Model.extend({
+    tableName: 'plants',
+    images() {
+      return this.hasMany(PlantImages);
+    },
+  });
+};
