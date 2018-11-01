@@ -75,7 +75,7 @@ class FastLabelEncoder():
     
     def fit(self, x): 
         labels = np.unique(x, return_inverse=True)[1]
-        self.lookup = dict(zip(x.flatten(),labels))    
+        self.lookup = dict(zip(x, labels))    
         
     def transform(self, x): 
         return np.vectorize(self.lookup.get)(x)

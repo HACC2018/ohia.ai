@@ -1,50 +1,55 @@
-import os, re, multiprocessing
+import os, re, glob, multiprocessing
 import numpy as np
 from PIL import Image
+from collections import Counter
 from ohia.utils import resize_smaller_dim, crop_square
 
-REMOVE_BAD = True
-IMAGE_PATH = '/home/matt/repos/ohia.ai/data'
-INPUT_DIR  = 'images'
-OUTPUT_DIR = 'preprocessed_images'
+MIN_COUNT = 100
+FILE_PATH = '/home/matt/repos/ohia.ai/data'
+INPUT_DIR = 'images'
+OUTPUT_DIR = 'preprocessed_images' # 'resized_images'
 
 # create wrapper to parallelize
 def resize_crop_and_save(f):
     try:
         img = Image.open(f)
-        img = resize_smaller_dim(img)
-        img = crop_square(img)
-        img.save(re.sub(INPUT_DIR, OUTPUT_DIR, f))
-        return(1)
-    except:
-        if REMOVE_BAD:
-            print(f'Removing {f}')
-            os.remove(f)
+        if img.mode == 'RGB':
+            img = resize_smaller_dim(img)
+            img = crop_square(img)
+            img.save(re.sub(INPUT_DIR, OUTPUT_DIR, f))
+            return(1)
         else:
             print(f'Skipping {f}')
+            return(0)
+        
+    except:
+        print(f'Skipping {f}')
         return(0)
     
+# create a directory if it doesn't already exist
+def make_dir(dir_name):
+    if not os.path.exists(dir_name):
+        os.makedirs(dir_name)
+
 if __name__ == '__main__':
 
-    # create directory
-    if not os.path.exists(f'{IMAGE_PATH}/{OUTPUT_DIR}'):
-        os.makedirs(f'{IMAGE_PATH}/{OUTPUT_DIR}')
+    # get list of images
+    file_list = glob.glob(f'{FILE_PATH}/{INPUT_DIR}/**/*.jpg', recursive=True)
+        
+    # filter images
+    label_list = [re.split('/', f)[-2] for f in file_list]
+    label_counts = Counter(label_list)
+    filtered_labels = [k for k,v in label_counts.items() if v>MIN_COUNT]
+    filtered_file_list = [f for f,n in zip(file_list, label_list) if n in filtered_labels]
 
     # create subdirectories
-    dir_list = os.listdir(f'{IMAGE_PATH}/{INPUT_DIR}')
-    for d in dir_list:
-        dname = f'{IMAGE_PATH}/{OUTPUT_DIR}/{d}'
-        if not os.path.exists(dname):
-            os.makedirs(dname)
-
-    # get list of images
-    file_list = [os.path.join(dp, f) 
-                 for dp, dn, fnames in os.walk(f'{IMAGE_PATH}/{INPUT_DIR}')
-                 for f in fnames if os.path.splitext(f)[1]=='.jpg']        
+    make_dir(f'{FILE_PATH}/{OUTPUT_DIR}')
+    for dir_name in filtered_labels:
+        make_dir(f'{FILE_PATH}/{OUTPUT_DIR}/{dir_name}')
 
     # resize and save (in parallel)
     pool = multiprocessing.Pool(10)
-    successes = pool.map(resize_crop_and_save, file_list)
+    successes = pool.map(resize_crop_and_save, filtered_file_list)
     pool.close()
 
     print(f'{np.sum(successes)} resized ({100*np.mean(successes)}%)')
