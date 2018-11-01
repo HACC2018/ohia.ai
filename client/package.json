@@ -1,0 +1,41 @@
+{
+  "name": "ohia.ai",
+  "version": "1.0.0",
+  "description": "An open Hawaiian indigenous plant identification and aggregation application.",
+  "productName": "ohia.ai",
+  "cordovaId": "org.ohia.ai.app",
+  "author": "Team ohia.ai of HACC 2018",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.vue src",
+    "dev": "quasar dev",
+    "dev-ios": "quasar dev -m cordova -T ios -e iPhone-6",
+    "prod-ios": "quasar build -m cordova -T ios"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "vue-cordova": "^0.1.2",
+    "vue-i18n": "^7.3.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-vue": "^4.3.0",
+    "quasar-cli": "^0.17.0",
+    "strip-ansi": "=3.0.1"
+  },
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.6.0",
+    "yarn": ">= 1.6.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ]
+}
