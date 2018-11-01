@@ -3,6 +3,7 @@ import numpy as np
 from PIL import Image
 from ohia.utils import resize_smaller_dim, crop_square
 
+REMOVE_BAD = True
 IMAGE_PATH = '/home/matt/repos/ohia.ai/data'
 INPUT_DIR  = 'images'
 OUTPUT_DIR = 'preprocessed_images'
@@ -16,6 +17,11 @@ def resize_crop_and_save(f):
         img.save(re.sub(INPUT_DIR, OUTPUT_DIR, f))
         return(1)
     except:
+        if REMOVE_BAD:
+            print(f'Removing {f}')
+            os.remove(f)
+        else:
+            print(f'Skipping {f}')
         return(0)
     
 if __name__ == '__main__':
