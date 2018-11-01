@@ -80,7 +80,7 @@ export default {
             const imageUploadUrl = `${appHost}/images/upload`;
             view.$axios.post(imageUploadUrl, formData)
               .then((res) => {
-                console.log('res.data', res.data);
+                console.log('res.data', JSON.stringify(res.data.predictions));
               })
               .catch(() => {
                 displayErrorMessage();

@@ -98,13 +98,23 @@ app.post('/images/upload', upload.array('image', 1), (req, res) => {
         encoding: null,
       }, (err, resp, buffer) => {
         // Make predictions
-        const predictions = Model.detectPlant(buffer);
-
-        return res.json({
-          success: true,
-          name: image.key,
-          size: image.size,
-        });
+        return Model.detectPlant(buffer)
+          .then((predictions) => {
+            console.log('predictions', predictions);
+            return res.json({
+              success: true,
+              name: image.key,
+              size: image.size,
+              predictions,
+            });
+          })
+          .catch((err) => {
+            console.error('Error making predictions:', err);
+            return res.json({
+              success: false,
+              message: 'Failed to make predictions',
+            });
+          });
       });
     });
 });

@@ -53,7 +53,7 @@ const convertImageToInput = (image, numChannels) => {
 const loadModel = async (modelPath) => {
   // Manually create the MobileNet class
   const model = new mobilenet.MobileNet(1, 1);
-  // Overwrite the HTTP address of the model with a local filesystem path
+  // Overwrite the HTTP address of the model with a local file system path
   model.path = `file://${modelPath}`;
   await model.load();
   return model;
@@ -64,8 +64,7 @@ const detectPlant = async (modelPath, imageBuffer) => {
   const input = convertImageToInput(image, NUMBER_OF_CHANNELS);
 
   const model = await loadModel(modelPath);
-  const predictions = await model.classify(input);
-  return predictions;
+  return await model.classify(input);
 };
 
 module.exports = {
