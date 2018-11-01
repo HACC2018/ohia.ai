@@ -1,8 +1,10 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const AWS = require('aws-sdk');
-const fs = require('fs');
-const path = require('path');
+const multer = require('multer');
+const multerS3 = require('multer-s3');
 const config = require('./config');
+
 const knex = require('knex')({
   client: 'pg',
   connection: {
@@ -15,14 +17,17 @@ const knex = require('knex')({
   },
 });
 const bookshelf = require('bookshelf')(knex);
-
-console.log(config);
+const Plant = require('./models/Plant')(knex);
+const PlantImage = require('./models/PlantImage')(knex);
 
 const app = express();
 const s3 = new AWS.S3({
   apiVersion: '2006-03-01',
 });
-const port = 3000;
+
+const PORT = 3000;
+const FILE_SIZE_LIMIT = '50mb'; // Should match param limit
+const PARAM_LIMIT = 50000; // In MB; should match file size limit
 
 function initializeServices() {
   const awsConfig = new AWS.Config({
@@ -31,36 +36,69 @@ function initializeServices() {
   });
 }
 
-app.get('/', (req, res) => {
-  res.send('Hello ohia.ai');
+const upload = multer({
+  storage: multerS3({
+    s3,
+    bucket: config.bucket,
+    acl: 'public-read',
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+    // Tell browsers and CDNs to cache the file for one year
+    cacheControl: 'max-age=31536000',
+    metadata(req, file, cb) {
+      cb(null, Object.assign({}, req.body));
+    },
+    key(req, file, cb) {
+      // The file is always a JPEG
+      const filename = `${Date.now().toString()}.jpg`;
+      cb(null, filename);
+    },
+  }),
 });
 
-app.post('/images/upload', (req, res) => {
-  const keyName = 'ohia_lehua.jpg';
-  const params = {
-    Bucket: config.bucket,
-    Key: keyName,
-    // TODO: This will need to change to accommodate images from the frontend.
-    Body: fs.createReadStream(path.resolve(__dirname, `images/${keyName}`)),
-    ACL: 'public-read',
-  };
+// Middleware
+app.use(bodyParser.json({ // JSON request data
+  limit: FILE_SIZE_LIMIT,
+}));
 
-  s3.upload(params, (err, data) => {
-    if (err) {
-      console.error(err);
-      return res.json({
-        success: false,
-      });
-    }
-    console.log('Successfully uploaded data to the S3 bucket');
-    res.json({
-      success: true,
-      imageUrl: data['Location'],
+app.use(bodyParser.urlencoded({ // Form request data
+  extended: false,
+  limit: FILE_SIZE_LIMIT,
+  parameterLimit: PARAM_LIMIT,
+})); 
+
+// Routes
+app.post('/images/upload', upload.array('image', 1), (req, res) => {
+  console.log('req.body', req.body);
+  console.log('req.files', req.files);
+
+  if (req.files.length === 0) {
+    return res.json({
+      success: false,
+      message: 'Image upload failed',
     });
-  });
+  }
+
+  const meta = req.body;
+  const image = req.files[0];
+
+  // Save the image to the database
+  return new PlantImage({
+    identified: false,
+    latitude: meta.latitude,
+    longitude: meta.longitude,
+    image_url: image.location,
+  })
+    .save()
+    .then((model) => {
+      return res.json({
+        success: true,
+        name: image.key,
+        size: image.size,
+      });
+    });
 });
 
-app.listen(port, () => {
-  console.log(`Server for ohia.ai listening on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server for ohia.ai listening on port ${PORT}`);
   initializeServices();
 });
