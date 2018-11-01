@@ -10,6 +10,16 @@ module.exports = {
       password: config.db.password,
       database: config.db.name,
     },
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      tableName: 'knex_migrations'
+    },
+    seeds: {
+      directory: './seeds/dev'
+    }
   },
 
   staging: {
@@ -25,6 +35,9 @@ module.exports = {
     },
     migrations: {
       tableName: 'knex_migrations'
+    },
+    seeds: {
+      directory: './seeds/staging'
     }
   },
 
@@ -41,6 +54,9 @@ module.exports = {
     },
     migrations: {
       tableName: 'knex_migrations'
+    },
+    seeds: {
+      directory: './seeds/prod'
     }
   }
 

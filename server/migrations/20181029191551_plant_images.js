@@ -10,7 +10,8 @@ exports.up = function(knex, Promise) {
     table.text('image_url').notNullable();
     table.json('bounding_box');
   
-    table.timestamps();
+    table.timestamp('created_at').defaultTo(knex.fn.now());
+    table.timestamp('updated_at').defaultTo(knex.fn.now());
   });
 };
 
