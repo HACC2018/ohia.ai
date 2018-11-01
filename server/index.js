@@ -1,9 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const request = require('request');
 const AWS = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 const config = require('./config');
+const Model = require('./model');
 
 const knex = require('knex')({
   client: 'pg',
@@ -89,11 +91,30 @@ app.post('/images/upload', upload.array('image', 1), (req, res) => {
     image_url: image.location,
   })
     .save()
-    .then((model) => {
-      return res.json({
-        success: true,
-        name: image.key,
-        size: image.size,
+    .then(() => {
+      // Download and produce a buffer with the image data
+      request({
+        url: image.location,
+        encoding: null,
+      }, (err, resp, buffer) => {
+        // Make predictions
+        return Model.detectPlant(buffer)
+          .then((predictions) => {
+            console.log('predictions', predictions);
+            return res.json({
+              success: true,
+              name: image.key,
+              size: image.size,
+              predictions,
+            });
+          })
+          .catch((err) => {
+            console.error('Error making predictions:', err);
+            return res.json({
+              success: false,
+              message: 'Failed to make predictions',
+            });
+          });
       });
     });
 });
