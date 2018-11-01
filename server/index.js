@@ -4,6 +4,20 @@ const AWS = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 const config = require('./config');
+const knex = require('knex')({
+  client: 'pg',
+  connection: {
+    host: config.db.host,
+    port: config.db.port,
+    user: config.db.username,
+    password: config.db.password,
+    database: config.db.name,
+    charset: 'utf8',
+  },
+});
+const bookshelf = require('bookshelf')(knex);
+
+console.log(config);
 
 const app = express();
 const s3 = new AWS.S3({
