@@ -20,8 +20,12 @@ const modelPath = path.resolve(__dirname, 'models', 'mobilenet', 'model.json');
 // MobileNet model has 3 color channels
 const NUMBER_OF_CHANNELS = 3;
 
-const readImage = path => {
-  const buffer = fs.readFileSync(path);
+const readImage = (imagePath) => {
+  const buffer = fs.readFileSync(imagePath);
+  return decodeBuffer(buffer);
+};
+
+const decodeBuffer = (buffer) => {
   // Return a `Uint8Array` with 4 channel values (RGBA) for each pixel
   return jpeg.decode(buffer, true);
 };
@@ -55,14 +59,17 @@ const loadModel = async (modelPath) => {
   return model;
 };
 
-const detectPlant = async (modelPath, imagePath) => {
-  const image = readImage(imagePath);
+const detectPlant = async (modelPath, imageBuffer) => {
+  const image = decodeBuffer(imageBuffer);
   const input = convertImageToInput(image, NUMBER_OF_CHANNELS);
 
   const model = await loadModel(modelPath);
   const predictions = await model.classify(input);
-  console.log('Identification Results:', predictions);
+  return predictions;
 };
 
-const imagePath = path.resolve(__dirname, 'images', 'flowers.jpg');
-detectPlant(modelPath, imagePath);
+module.exports = {
+  detectPlant(imageBuffer) {
+    return detectPlant(modelPath, imageBuffer);
+  },
+};
