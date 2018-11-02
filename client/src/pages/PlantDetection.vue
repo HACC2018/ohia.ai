@@ -1,19 +1,18 @@
 <template>
-  <q-card>
-    <q-card-title>
-      Plant Detection
-    </q-card-title>
-
-    <q-card-main>
-      <q-btn color="primary" @click="captureImage">Detect Plant</q-btn>
-      <img :src="imageSrc" class="image">
-    </q-card-main>
-  </q-card>
+  <q-btn v-bind="button" @click="captureImage">{{ text }}</q-btn>
 </template>
 
 <script>
 export default {
   name: 'PlantDetection',
+  props: {
+    text: {
+      type: String,
+    },
+    button: {
+      type: Object,
+    },
+  },
   data() {
     return {
       imageSrc: '',
@@ -53,7 +52,7 @@ export default {
         (filePath) => {
           // TODO: There's a noticeable delay before the spinner and overlay appears
           view.$q.loading.show({
-            delay: 0, // ms
+            delay: 100, // ms
             message: 'Uploading and identifying...',
           });
           const convertImageToBlob = (result) => {
@@ -119,8 +118,4 @@ export default {
 </script>
 
 <style>
-.image {
-  width: 100%;
-  height: auto;
-}
 </style>

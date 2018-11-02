@@ -26,8 +26,16 @@
             size="lg" icon="spa" to="/" />
           <q-btn flat round dense class="button" 
             size="lg" icon="help" to="/help" />
-          <q-btn flat round dense class="button" 
-            size="lg" icon="camera_alt" to="/detector" />
+          <PlantDetection
+            v-bind:button="{
+              flat: true,
+              round: true,
+              dense: true,
+              class: 'button',
+              size: 'lg',
+              icon: 'camera_alt',
+            }"
+          />
           <q-btn flat round dense class="button" 
             size="lg" icon="image_search" to="/identify" />
         </div>
@@ -37,8 +45,13 @@
 </template>
 
 <script>
+import PlantDetection from '../pages/PlantDetection';
+
 export default {
   name: 'Layout',
+  components: {
+    PlantDetection,
+  },
 };
 </script>
 

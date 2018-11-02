@@ -74,7 +74,10 @@
 
       <q-card-actions>
         <div class="actions">
-          <q-btn color="primary" to="/detector">I'm ready to detect plants</q-btn>
+          <PlantDetection
+            v-bind:button="{ color: 'primary' }"
+            text="I'm ready to detect plants"
+          />
         </div>
       </q-card-actions>
     </q-card>
@@ -82,8 +85,13 @@
 </template>
 
 <script>
+import PlantDetection from '../../pages/PlantDetection';
+
 export default {
   name: 'Stepper',
+  components: {
+    PlantDetection,
+  },
 };
 </script>
 
