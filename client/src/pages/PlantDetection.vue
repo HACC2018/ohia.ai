@@ -60,6 +60,7 @@ export default {
         (filePath) => {
           // TODO: There's a noticeable delay before the spinner and overlay appears
           view.$q.loading.show({
+            delay: 0, // ms
             message: 'Uploading and identifying...',
           });
           const convertImageToBlob = (result) => {
