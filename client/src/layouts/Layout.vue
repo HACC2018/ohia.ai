@@ -9,7 +9,7 @@
         <q-toolbar-title>
           <router-link to="/" style="text-decoration: none; color: white;">ohia.ai</router-link>
           <div slot="subtitle">
-            Helping to identify native and invasive plants in Hawaii.
+            Help identify native and invasive plants in Hawaii.
           </div>
         </q-toolbar-title>
       </q-toolbar>
@@ -25,7 +25,7 @@
           <q-btn flat round dense style="margin-right: 28px;" 
             size="lg" icon="home" to="/" />
           <q-btn flat round dense style="margin-right: 28px;" 
-            size="lg" icon="info" to="/about" />
+            size="lg" icon="info" to="/help" />
           <q-btn flat round dense style="margin-right: 28px;" 
             size="lg" icon="camera_alt" to="/detector" />
           <q-btn flat round dense style="margin-right: 28px;" 

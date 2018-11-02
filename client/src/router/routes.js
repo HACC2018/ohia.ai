@@ -11,6 +11,16 @@ const routes = [
     ],
   },
   {
+    path: '/help',
+    component: () => import('layouts/Layout.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('pages/Help.vue'),
+      },
+    ],
+  },
+  {
     path: '/detector',
     component: () => import('layouts/Layout.vue'),
     children: [
