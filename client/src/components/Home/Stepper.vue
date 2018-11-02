@@ -74,7 +74,7 @@
 
       <q-card-actions>
         <div class="actions">
-          <PlantDetection
+          <CameraButton
             v-bind:button="{ color: 'primary' }"
             text="I'm ready to detect plants"
           />
@@ -85,12 +85,12 @@
 </template>
 
 <script>
-import PlantDetection from '../../pages/PlantDetection';
+import CameraButton from '../PlantIdentification/CameraButton';
 
 export default {
   name: 'Stepper',
   components: {
-    PlantDetection,
+    CameraButton,
   },
 };
 </script>

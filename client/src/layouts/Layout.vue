@@ -26,7 +26,7 @@
             size="lg" icon="spa" to="/" />
           <q-btn flat round dense class="button" 
             size="lg" icon="help" to="/help" />
-          <PlantDetection
+          <CameraButton
             v-bind:button="{
               flat: true,
               round: true,
@@ -45,12 +45,12 @@
 </template>
 
 <script>
-import PlantDetection from '../pages/PlantDetection';
+import CameraButton from '../components/PlantIdentification/CameraButton';
 
 export default {
   name: 'Layout',
   components: {
-    PlantDetection,
+    CameraButton,
   },
 };
 </script>

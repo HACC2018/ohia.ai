@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'PlantDetection',
+  name: 'CameraButton',
   props: {
     text: {
       type: String,
@@ -71,7 +71,7 @@ export default {
           function uploadImage() {
             const blob = convertImageToBlob(this.result);
             const formData = constructFormData(blob);
-            const appHost = 'http://localhost:3000';
+            const appHost = 'https://78d4349c.ngrok.io';
             const imageUploadUrl = `${appHost}/images/upload`;
             view.$axios.post(imageUploadUrl, formData)
               .then((res) => {

@@ -20,16 +20,6 @@ const routes = [
     ],
   },
   {
-    path: '/detector',
-    component: () => import('layouts/Layout.vue'),
-    children: [
-      {
-        path: '',
-        component: () => import('pages/PlantDetection.vue'),
-      },
-    ],
-  },
-  {
     path: '/plant',
     component: () => import('layouts/Layout.vue'),
     children: [
