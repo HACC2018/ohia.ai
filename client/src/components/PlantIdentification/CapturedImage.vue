@@ -1,7 +1,7 @@
 <template>
   <q-card>
     <q-card-title>
-      Plant Identification
+      Plant Identification Results
     </q-card-title>
 
     <q-card-media>
@@ -9,7 +9,7 @@
 
     </q-card-media>
 
-    <q-card-main>Classify the following plant:</q-card-main>
+    <q-card-main>Classify the plant above:</q-card-main>
 
     <q-card-separator />
 
@@ -25,7 +25,7 @@
     <q-input
       class="q-ma-md"
       v-model="selfIdentify"
-      float-label="Self-Identify"
+      float-label="Enter the plant name if you know it"
     />
 
     <br />
