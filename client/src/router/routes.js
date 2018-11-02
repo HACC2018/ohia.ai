@@ -1,8 +1,7 @@
-
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/MyLayout.vue'),
+    component: () => import('layouts/Layout.vue'),
     children: [
       {
         path: '',
@@ -11,18 +10,18 @@ const routes = [
     ],
   },
   {
-    path: '/detector',
-    component: () => import('layouts/MyLayout.vue'),
+    path: '/help',
+    component: () => import('layouts/Layout.vue'),
     children: [
       {
         path: '',
-        component: () => import('pages/PlantDetection.vue'),
+        component: () => import('pages/Help.vue'),
       },
     ],
   },
   {
     path: '/plant',
-    component: () => import('layouts/MyLayout.vue'),
+    component: () => import('layouts/Layout.vue'),
     children: [
       {
         path: '',
@@ -32,7 +31,7 @@ const routes = [
   },
   {
     path: '/identify',
-    component: () => import('layouts/MyLayout.vue'),
+    component: () => import('layouts/Layout.vue'),
     children: [
       {
         path: '',

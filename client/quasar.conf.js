@@ -44,6 +44,7 @@ module.exports = function (ctx) {
       components: [
         'QLayout',
         'QLayoutHeader',
+        'QLayoutFooter',
         'QLayoutDrawer',
         'QPageContainer',
         'QPage',
@@ -80,13 +81,15 @@ module.exports = function (ctx) {
         'QInput',
         'QFab',
         'QFabAction',
+        'QItemSeparator',
       ],
       directives: [
         'Ripple'
       ],
       // Quasar plugins
       plugins: [
-        'Notify'
+        'Notify',
+        'Loading',
       ]//,
       // config: {
       //   cordova: {

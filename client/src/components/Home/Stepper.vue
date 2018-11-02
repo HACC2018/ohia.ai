@@ -73,19 +73,30 @@
       <q-card-separator />
 
       <q-card-actions>
-        <q-btn flat>Detect Plant</q-btn>
+        <div class="actions">
+          <CameraButton
+            v-bind:button="{ color: 'primary' }"
+            text="I'm ready to detect plants"
+          />
+        </div>
       </q-card-actions>
     </q-card>
   </div>
 </template>
 
 <script>
-export default {
+import CameraButton from '../PlantIdentification/CameraButton';
 
+export default {
+  name: 'Stepper',
+  components: {
+    CameraButton,
+  },
 };
 </script>
 
-
 <style>
-
+.actions {
+  margin: 16px;
+}
 </style>

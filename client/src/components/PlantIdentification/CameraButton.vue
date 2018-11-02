@@ -1,32 +1,23 @@
 <template>
-  <q-card>
-    <q-card-title>
-      Plant Detection
-    </q-card-title>
-
-    <q-card-main>
-      <q-btn color="primary" label="Detect Plant" @click="captureImage" />
-
-      <img :src="imageSrc" class="image">
-    </q-card-main>
-  </q-card>
+  <q-btn v-bind="button" @click="captureImage">{{ text }}</q-btn>
 </template>
-
-<style>
-.image {
-  width: 100%;
-  height: auto;
-}
-</style>
 
 <script>
 export default {
-  name: 'PlantDetection',
+  name: 'CameraButton',
+  props: {
+    text: {
+      type: String,
+    },
+    button: {
+      type: Object,
+    },
+  },
   data() {
     return {
       imageSrc: '',
-      latitude: 10,
-      longitude: 12,
+      latitude: 0,
+      longitude: 0,
     };
   },
   methods: {
@@ -48,6 +39,7 @@ export default {
         cameraDirection: camera.Direction.BACK, // Use the back-facing camera
       };
       const displayErrorMessage = () => {
+        view.$q.loading.hide();
         view.$q.notify({
           color: 'negative',
           position: 'top',
@@ -58,8 +50,11 @@ export default {
 
       camera.getPicture(
         (filePath) => {
-          const fullPath = filePath.replace('assets-library://', 'cdvfile://localhost/assets-library/');
-          view.imageSrc = fullPath;
+          // TODO: There's a noticeable delay before the spinner and overlay appears
+          view.$q.loading.show({
+            delay: 100, // ms
+            message: 'Uploading and identifying...',
+          });
           const convertImageToBlob = (result) => {
             // Create a blob based on the FileReader "result",
             // which we asked to be retrieved as an ArrayBuffer
@@ -76,11 +71,15 @@ export default {
           function uploadImage() {
             const blob = convertImageToBlob(this.result);
             const formData = constructFormData(blob);
-            const appHost = 'http://localhost:3000';
+            const appHost = 'https://78d4349c.ngrok.io';
             const imageUploadUrl = `${appHost}/images/upload`;
             view.$axios.post(imageUploadUrl, formData)
               .then((res) => {
                 console.log('res.data', JSON.stringify(res.data.predictions));
+                view.$q.loading.hide();
+                const fullPath = filePath
+                  .replace('assets-library://', 'cdvfile://localhost/assets-library/');
+                view.imageSrc = fullPath;
               })
               .catch(() => {
                 displayErrorMessage();
@@ -103,6 +102,7 @@ export default {
         },
         (err) => {
           console.error('Error accessing the device camera:', err);
+          view.$q.loading.hide();
           view.$q.notify({
             color: 'negative',
             position: 'top',
@@ -116,3 +116,6 @@ export default {
   },
 };
 </script>
+
+<style>
+</style>

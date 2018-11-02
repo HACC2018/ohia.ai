@@ -1,51 +1,48 @@
 <template>
-  <q-card>
-    <q-card-main>
+  <q-card-main>
+    <q-table
+      grid
+      hide-header
+      :data="tableData"
+      :columns="columns"
+      :filter="filter"
+      :selection="selection"
+      :selected.sync="selected"
+      :visible-columns="visibleColumns"
+      row-key="name"
+    >
+      <template slot="top" slot-scope="props">
+        <q-search hide-underline clearable v-model="filter" />
+      </template>
 
-      <q-table
-        grid
-        hide-header
-        :data="tableData"
-        :columns="columns"
-        :filter="filter"
-        :selection="selection"
-        :selected.sync="selected"
-        :visible-columns="visibleColumns"
-        row-key="name"
+      <div
+        slot="item"
+        slot-scope="props"
+        class="q-pa-xs col-xs-12 col-sm-6 col-md-4 transition-generic"
+        :style="props.selected ? 'transform: scale(0.95);' : ''"
       >
-        <template slot="top-right" slot-scope="props">
-          <q-search hide-underline clearable v-model="filter" />
-        </template>
-
-        <div
-          slot="item"
-          slot-scope="props"
-          class="q-pa-xs col-xs-12 col-sm-6 col-md-4 transition-generic"
-          :style="props.selected ? 'transform: scale(0.95);' : ''"
+        <q-card
+          class="transition-generic cursor-pointer"
+          :class="props.selected ? 'bg-grey-2' : ''"
+          @click.native="props.selected = !props.selected"
         >
-          <q-card
-            class="transition-generic cursor-pointer"
-            :class="props.selected ? 'bg-grey-2' : ''"
-            @click.native="props.selected = !props.selected"
-          >
-            <q-card-title class="relative-position">
-              {{ props.row.name }}
-            </q-card-title>
+          <q-card-title class="relative-position">
+            {{ props.row.name }}
+          </q-card-title>
 
-            <q-card-separator />
+          <q-card-separator />
 
-            <q-card-media>
-              <img :src="props.row.image" />
-            </q-card-media>
+          <q-card-media>
+            <img :src="props.row.image" />
+          </q-card-media>
 
-            <q-card-actions align=center>
-              <q-btn flat>Information <q-icon name="keyboard_arrow_right" /></q-btn>
-            </q-card-actions>
-          </q-card>
-        </div>
-      </q-table>
-    </q-card-main>
-  </q-card>
+          <q-card-actions align=center>
+            <q-btn flat>Information <q-icon name="keyboard_arrow_right" /></q-btn>
+          </q-card-actions>
+        </q-card>
+      </div>
+    </q-table>
+  </q-card-main>
 </template>
 
 <script>
