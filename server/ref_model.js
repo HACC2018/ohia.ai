@@ -59,6 +59,16 @@ const detectPlant = async (modelPath, imagePath) => {
 };
 
 // const imagePath = path.resolve(__dirname, 'images', 'flowers.jpg');
+<<<<<<< HEAD
 const imagePath = path.resolve(__dirname, 'images', 'mug.jpeg');
 // const imagePath = path.resolve(__dirname, 'images', 'cat.jpg');
+=======
+<<<<<<< HEAD
+const imagePath = path.resolve(__dirname, 'images', 'mug.jpeg');
+// const imagePath = path.resolve(__dirname, 'images', 'cat.jpg');
+=======
+// const imagePath = path.resolve(__dirname, 'images', 'mug.jpeg');
+const imagePath = path.resolve(__dirname, 'images', 'cat.jpg');
+>>>>>>> custom-model-tensorflowjs
+>>>>>>> custom-model-tensorflowjs
 detectPlant(modelPath, imagePath);
