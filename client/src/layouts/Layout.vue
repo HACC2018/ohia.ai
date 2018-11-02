@@ -22,9 +22,9 @@
     <q-layout-footer>
       <q-toolbar color="secondary" inverted>
         <div class="nav-bar">
-          <q-btn flat round dense class="button" 
+          <q-btn flat round dense class="button"
             size="lg" icon="spa" to="/" />
-          <q-btn flat round dense class="button" 
+          <q-btn flat round dense class="button"
             size="lg" icon="help" to="/help" />
           <CameraButton
             v-bind:button="{
@@ -36,7 +36,7 @@
               icon: 'camera_alt',
             }"
           />
-          <q-btn flat round dense class="button" 
+          <q-btn flat round dense class="button"
             size="lg" icon="image_search" to="/identify" />
         </div>
       </q-toolbar>
