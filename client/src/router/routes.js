@@ -2,7 +2,7 @@
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/MyLayout.vue'),
+    component: () => import('layouts/Layout.vue'),
     children: [
       {
         path: '',
@@ -12,7 +12,7 @@ const routes = [
   },
   {
     path: '/detector',
-    component: () => import('layouts/MyLayout.vue'),
+    component: () => import('layouts/Layout.vue'),
     children: [
       {
         path: '',
@@ -22,7 +22,7 @@ const routes = [
   },
   {
     path: '/plant',
-    component: () => import('layouts/MyLayout.vue'),
+    component: () => import('layouts/Layout.vue'),
     children: [
       {
         path: '',
@@ -32,7 +32,7 @@ const routes = [
   },
   {
     path: '/identify',
-    component: () => import('layouts/MyLayout.vue'),
+    component: () => import('layouts/Layout.vue'),
     children: [
       {
         path: '',

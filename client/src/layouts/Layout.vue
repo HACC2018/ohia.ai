@@ -40,7 +40,7 @@
 
 <script>
 export default {
-  name: 'MyLayout',
+  name: 'Layout',
 };
 </script>
 
