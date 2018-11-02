@@ -4,9 +4,6 @@
   </q-page>
 </template>
 
-<style>
-</style>
-
 <script>
 import Stepper from '../components/Home/Stepper';
 
@@ -17,3 +14,6 @@ export default {
   },
 };
 </script>
+
+<style>
+</style>

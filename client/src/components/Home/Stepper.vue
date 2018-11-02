@@ -87,7 +87,6 @@ export default {
 };
 </script>
 
-
 <style>
 .actions {
   margin: 16px;

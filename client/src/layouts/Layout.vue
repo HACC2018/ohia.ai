@@ -7,7 +7,7 @@
         :inverted="$q.theme === 'ios'"
       >
         <q-toolbar-title>
-          <router-link to="/" style="text-decoration: none; color: white;">ohia.ai</router-link>
+          <router-link to="/" class="title">ohia.ai</router-link>
           <div slot="subtitle">
             Help identify native and invasive plants in Hawaii.
           </div>
@@ -21,7 +21,7 @@
 
     <q-layout-footer>
       <q-toolbar color="secondary" inverted>
-        <div style="display: flex; justify-content: space-around;">
+        <div class="nav-bar">
           <q-btn flat round dense class="button" 
             size="lg" icon="spa" to="/" />
           <q-btn flat round dense class="button" 
@@ -43,7 +43,15 @@ export default {
 </script>
 
 <style>
+.title {
+  text-decoration: none;
+  color: white;
+}
 .button {
   margin-right: 54px;
+}
+.nav-bar {
+  display: flex;
+  justify-content: space-around;
 }
 </style>
