@@ -18,22 +18,29 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+
+    <q-layout-footer>
+      <q-toolbar color="secondary" inverted>
+        <div style="display: flex; justify-content: space-around;">
+          <q-btn flat round dense style="margin-right: 28px;" 
+            size="lg" icon="home" to="/" />
+          <q-btn flat round dense style="margin-right: 28px;" 
+            size="lg" icon="info" to="/about" />
+          <q-btn flat round dense style="margin-right: 28px;" 
+            size="lg" icon="camera_alt" to="/detector" />
+          <q-btn flat round dense style="margin-right: 28px;" 
+            size="lg" icon="spa" to="/plant" />
+          <q-btn flat round dense style="margin-right: 28px;" 
+            size="lg" icon="image_search" to="/identify" />
+        </div>
+      </q-toolbar>
+    </q-layout-footer>
   </q-layout>
 </template>
 
 <script>
-import { openURL } from 'quasar';
-
 export default {
   name: 'MyLayout',
-  data() {
-    return {
-      leftDrawerOpen: this.$q.platform.is.desktop,
-    };
-  },
-  methods: {
-    openURL,
-  },
 };
 </script>
 

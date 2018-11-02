@@ -11,13 +11,6 @@
   </q-card>
 </template>
 
-<style>
-.image {
-  width: 100%;
-  height: auto;
-}
-</style>
-
 <script>
 export default {
   name: 'PlantDetection',
@@ -124,3 +117,10 @@ export default {
   },
 };
 </script>
+
+<style>
+.image {
+  width: 100%;
+  height: auto;
+}
+</style>
