@@ -5,8 +5,7 @@
     </q-card-title>
 
     <q-card-main>
-      <q-btn color="primary" label="Detect Plant" @click="captureImage" />
-
+      <q-btn color="primary" @click="captureImage">Detect Plant</q-btn>
       <img :src="imageSrc" class="image">
     </q-card-main>
   </q-card>
@@ -25,8 +24,8 @@ export default {
   data() {
     return {
       imageSrc: '',
-      latitude: 10,
-      longitude: 12,
+      latitude: 0,
+      longitude: 0,
     };
   },
   methods: {
@@ -48,6 +47,7 @@ export default {
         cameraDirection: camera.Direction.BACK, // Use the back-facing camera
       };
       const displayErrorMessage = () => {
+        view.$q.loading.hide();
         view.$q.notify({
           color: 'negative',
           position: 'top',
@@ -58,8 +58,10 @@ export default {
 
       camera.getPicture(
         (filePath) => {
-          const fullPath = filePath.replace('assets-library://', 'cdvfile://localhost/assets-library/');
-          view.imageSrc = fullPath;
+          // TODO: There's a noticeable delay before the spinner and overlay appears
+          view.$q.loading.show({
+            message: 'Uploading and identifying...',
+          });
           const convertImageToBlob = (result) => {
             // Create a blob based on the FileReader "result",
             // which we asked to be retrieved as an ArrayBuffer
@@ -81,6 +83,10 @@ export default {
             view.$axios.post(imageUploadUrl, formData)
               .then((res) => {
                 console.log('res.data', JSON.stringify(res.data.predictions));
+                view.$q.loading.hide();
+                const fullPath = filePath
+                  .replace('assets-library://', 'cdvfile://localhost/assets-library/');
+                view.imageSrc = fullPath;
               })
               .catch(() => {
                 displayErrorMessage();
@@ -103,6 +109,7 @@ export default {
         },
         (err) => {
           console.error('Error accessing the device camera:', err);
+          view.$q.loading.hide();
           view.$q.notify({
             color: 'negative',
             position: 'top',
