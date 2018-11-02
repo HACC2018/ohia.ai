@@ -22,15 +22,13 @@
     <q-layout-footer>
       <q-toolbar color="secondary" inverted>
         <div style="display: flex; justify-content: space-around;">
-          <q-btn flat round dense style="margin-right: 28px;" 
-            size="lg" icon="home" to="/" />
-          <q-btn flat round dense style="margin-right: 28px;" 
-            size="lg" icon="info" to="/help" />
-          <q-btn flat round dense style="margin-right: 28px;" 
+          <q-btn flat round dense class="button" 
+            size="lg" icon="spa" to="/" />
+          <q-btn flat round dense class="button" 
+            size="lg" icon="help" to="/help" />
+          <q-btn flat round dense class="button" 
             size="lg" icon="camera_alt" to="/detector" />
-          <q-btn flat round dense style="margin-right: 28px;" 
-            size="lg" icon="spa" to="/plant" />
-          <q-btn flat round dense style="margin-right: 28px;" 
+          <q-btn flat round dense class="button" 
             size="lg" icon="image_search" to="/identify" />
         </div>
       </q-toolbar>
@@ -45,4 +43,7 @@ export default {
 </script>
 
 <style>
+.button {
+  margin-right: 54px;
+}
 </style>

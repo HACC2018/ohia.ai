@@ -73,7 +73,9 @@
       <q-card-separator />
 
       <q-card-actions>
-        <q-btn flat>Detect Plant</q-btn>
+        <div class="actions">
+          <q-btn color="primary" to="/detector">I'm ready to detect plants</q-btn>
+        </div>
       </q-card-actions>
     </q-card>
   </div>
@@ -81,11 +83,13 @@
 
 <script>
 export default {
-
+  name: 'Stepper',
 };
 </script>
 
 
 <style>
-
+.actions {
+  margin: 16px;
+}
 </style>
