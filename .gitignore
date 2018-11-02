@@ -2,12 +2,11 @@
 server/seeds/data
 
 # tensorflow models
-**/group[0.-9]*-shard[0.-9]*of[0.-9]*
+**/group[0-9]*-shard[0-9]*of[0-9]*
 
 # Data
 data/*
 
-**/group[0-9]*-shard[0-9]*of[0-9]*
 
 # Logs
 logs
