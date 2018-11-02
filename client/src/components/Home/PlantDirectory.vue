@@ -11,7 +11,7 @@
       :visible-columns="visibleColumns"
       row-key="name"
     >
-      <template slot="top-right" slot-scope="props">
+      <template slot="top" slot-scope="props">
         <q-search hide-underline clearable v-model="filter" />
       </template>
 
