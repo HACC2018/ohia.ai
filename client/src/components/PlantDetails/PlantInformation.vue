@@ -2,7 +2,7 @@
   <q-card>
     <q-card-media>
       <img
-        src="https://www.hawaiimagazine.com/sites/default/files/field/image/25040492391_b5f4f063c2_k.jpg"
+        :src="image"
       >
     </q-card-media>
 

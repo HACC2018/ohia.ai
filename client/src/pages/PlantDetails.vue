@@ -9,6 +9,7 @@
         class="col-md-12 col-lg-4"
       >
         <plant-information
+          :image="image"
           :genus="genus"
           :species="species"
           :plant_name="plant_name"
@@ -35,7 +36,9 @@
 
         <br />
 
-        <plant-uploads />
+        <plant-uploads
+          :image="image"
+        />
       </div>
     </div>
   </q-page>
@@ -67,6 +70,7 @@ export default {
       description: '',
       story: '',
       uses: '',
+      image: '',
     };
   },
   methods: {
@@ -90,8 +94,11 @@ export default {
         })
         .then(() => {
           this.$axios
-            .get(`http://localhost:3000/api/${this.$route.params.id}`)
-            .then(() => {
+            .get(`http://localhost:3000/api/image/single/${this.$route.params.id}`)
+            .then((response) => {
+              const { data } = response;
+              // eslint-ignore-next-line
+              this.image = data.image_url;
             });
         })
         .catch((err) => {
