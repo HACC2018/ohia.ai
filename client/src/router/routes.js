@@ -20,7 +20,7 @@ const routes = [
     ],
   },
   {
-    path: '/plant',
+    path: '/plant/:id',
     component: () => import('layouts/Layout.vue'),
     children: [
       {

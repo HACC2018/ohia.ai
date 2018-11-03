@@ -4,6 +4,7 @@ const request = require('request');
 const AWS = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
+const cors = require('cors');
 const config = require('./config');
 const Model = require('./model');
 const resources = require('./resources');
@@ -60,6 +61,9 @@ const upload = multer({
   }),
 });
 
+// CORS
+app.use(cors());
+
 // Middleware
 app.use(bodyParser.json({ // JSON request data
   limit: FILE_SIZE_LIMIT,
@@ -72,12 +76,12 @@ app.use(bodyParser.urlencoded({ // Form request data
 })); 
 
 // Required for browser requests
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//   res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+//   next();
+// });
 
 // Routes
 app.use('/api', resources);

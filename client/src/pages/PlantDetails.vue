@@ -8,21 +8,38 @@
       <div
         class="col-md-12 col-lg-4"
       >
-        <PlantInformation />
+        <plant-information
+          :image="image"
+          :genus="genus"
+          :species="species"
+          :plant_name="plant_name"
+          :common_name="common_name"
+          :hawaiian_name="hawaiian_name"
+          :scientific_name="scientific_name"
+          :status="status"
+          :description="description"
+        />
       </div>
 
       <div
         class="col-md-12 col-lg-8"
       >
-        <PlantStory />
+        <plant-story
+          :story="story"
+        />
 
         <br />
 
-        <PlantUses />
+        <plant-uses
+          :uses="uses"
+        />
 
         <br />
 
-        <PlantUploads />
+        <plant-uploads
+          :image="image"
+          :id="$route.params.id"
+        />
       </div>
     </div>
   </q-page>
@@ -40,6 +57,59 @@ export default {
     PlantStory,
     PlantUses,
     PlantUploads,
+  },
+  data() {
+    return {
+      fetching: true,
+      genus: '',
+      species: '',
+      plant_name: '',
+      common_name: '',
+      hawaiian_name: '',
+      scientific_name: '',
+      status: '',
+      description: '',
+      story: '',
+      uses: '',
+      image: '',
+    };
+  },
+  methods: {
+    fetchPlantDetails() {
+      this.$axios
+        .get(`http://localhost:3000/api/plant/${this.$route.params.id}`)
+        .then((response) => {
+          const { data } = response;
+
+          this.genus = data.genus;
+          this.species = data.species;
+          this.plant_name = data.plant_name;
+          this.common_name = data.common_name;
+          this.hawaiian_name = data.hawaiian_name;
+          this.scientific_name = data.scientific_name;
+          this.status = data.status;
+          this.description = data.description;
+          this.story = data.story;
+          this.uses = data.uses;
+        })
+        .then(() => {
+          this.$axios
+            .get(`http://localhost:3000/api/images/single/${this.$route.params.id}`)
+            .then((response) => {
+              this.fetching = false;
+              const { data } = response;
+              // eslint-ignore-next-line
+              this.image = data.image_url;
+            });
+        })
+        .catch((err) => {
+          this.fetching = false;
+          console.log(err);
+        });
+    },
+  },
+  mounted() {
+    this.fetchPlantDetails();
   },
 };
 </script>
