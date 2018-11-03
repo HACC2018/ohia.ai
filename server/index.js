@@ -6,18 +6,9 @@ const multer = require('multer');
 const multerS3 = require('multer-s3');
 const config = require('./config');
 const Model = require('./model');
+const resources = require('./resources');
+const knex = require('./knex')();
 
-const knex = require('knex')({
-  client: 'pg',
-  connection: {
-    host: config.db.host,
-    port: config.db.port,
-    user: config.db.username,
-    password: config.db.password,
-    database: config.db.name,
-    charset: 'utf8',
-  },
-});
 const bookshelf = require('bookshelf')(knex);
 const Plant = require('./models/Plant')(knex);
 const PlantImage = require('./models/PlantImage')(knex);
@@ -69,6 +60,8 @@ app.use(bodyParser.urlencoded({ // Form request data
 })); 
 
 // Routes
+app.use('/api', resources);
+
 app.post('/images/upload', upload.array('image', 1), (req, res) => {
   console.log('req.body', req.body);
   console.log('req.files', req.files);
