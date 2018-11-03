@@ -9,7 +9,11 @@
         <div
           class="col-sm-12 col-md-4"
         >
-          <captured-image :imageSrc="imageSrc" :predictions="predictions" />
+          <captured-image
+            :imageId="imageId"
+            :imageSrc="imageSrc"
+            :predictions="predictions"
+          />
         </div>
         <div
           class="col-sm-12 col-md-8"
@@ -38,6 +42,7 @@ export default {
   },
   data() {
     return {
+      imageId: 0,
       imageSrc: '',
       predictions: [],
       latitude: 0,
@@ -91,6 +96,7 @@ export default {
             console.log('res.data', JSON.stringify(res.data.predictions));
             const fullPath = filePath
               .replace('assets-library://', 'cdvfile://localhost/assets-library/');
+            view.imageId = res.data.id;
             view.imageSrc = fullPath;
             view.predictions = res.data.predictions.map((pred, index) => ({
               ...pred,

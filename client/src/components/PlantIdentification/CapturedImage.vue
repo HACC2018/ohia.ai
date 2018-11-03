@@ -19,12 +19,12 @@
           v-bind:key="pred.id"
           flat
           :color="pred.color"
-          @click="classifyPlant"
+          @click="classifyPlant(pred.id)"
         >
           {{ pred.className }}
         </q-btn>
       </template>
-      <q-btn @click="classifyPlant" flat>I don't know</q-btn>
+      <q-btn @click="classifyPlant(null)" flat>I don't know</q-btn>
     </q-card-actions>
 
     <q-card-separator />
@@ -44,6 +44,9 @@
 export default {
   name: 'CapturedImage',
   props: {
+    imageId: {
+      type: Number,
+    },
     imageSrc: {
       type: String,
     },
@@ -57,8 +60,25 @@ export default {
     };
   },
   methods: {
-    classifyPlant() {
-      // TODO
+    classifyPlant(plantId) {
+      const appHost = 'https://7abf2851.ngrok.io';
+      const imageUpdateUrl = `${appHost}/api/plant-image/${this.imageId}`;
+      this.$axios.put(imageUpdateUrl, {
+        plant_id: plantId,
+        identified: !!plantId,
+      })
+        .then(() => {
+          // const todo = res.data.plantImage;
+        })
+        .catch((err) => {
+          console.error('Error updating plant image data:', err);
+          this.$q.notify({
+            color: 'negative',
+            position: 'top',
+            message: 'Classifying plant failed',
+            icon: 'report_problem',
+          });
+        });
     },
   },
 };

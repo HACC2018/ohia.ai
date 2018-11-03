@@ -96,7 +96,7 @@ app.post('/images/upload', upload.array('image', 1), (req, res) => {
     image_url: image.location,
   })
     .save()
-    .then(() => {
+    .then((saved) => {
       // Download and produce a buffer with the image data
       request({
         url: image.location,
@@ -130,6 +130,7 @@ app.post('/images/upload', upload.array('image', 1), (req, res) => {
 
                 return res.json({
                   success: true,
+                  id: saved.serialize().id,
                   name: image.key,
                   size: image.size,
                   predictions,
