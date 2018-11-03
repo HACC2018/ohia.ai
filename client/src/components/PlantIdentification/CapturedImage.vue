@@ -19,24 +19,32 @@
           v-bind:key="pred.id"
           flat
           :color="pred.color"
-          @click="classifyPlant(pred.id)"
+          @click="classifyPlant(pred.id, null)"
         >
           {{ pred.className }}
         </q-btn>
       </template>
-      <q-btn @click="classifyPlant(null)" flat>I don't know</q-btn>
+      <q-btn @click="classifyPlant(null, null)" flat>I don't know</q-btn>
     </q-card-actions>
 
     <q-card-separator />
 
-    <q-input
-      class="q-ma-md"
-      v-model="selfIdentify"
-      float-label="Enter the plant name if you know it"
-    />
-
-    <br />
-
+    <div class="guess-block">
+      <q-input
+        class="q-ma-md"
+        v-model="userGuess"
+        float-label="Or enter the plant name if you know it"
+      />
+      <div align="right" class="guess-submit">
+        <q-btn
+          flat
+          color="secondary"
+          @click="classifyPlant(null, userGuess)"
+        >
+          Submit Name
+        </q-btn>
+      </div>
+    </div>
   </q-card>
 </template>
 
@@ -56,16 +64,17 @@ export default {
   },
   data() {
     return {
-      selfIdentify: '',
+      userGuess: '',
     };
   },
   methods: {
-    classifyPlant(plantId) {
-      const appHost = 'https://7abf2851.ngrok.io';
+    classifyPlant(plantId, userGuess) {
+      const appHost = 'http://localhost:3000';
       const imageUpdateUrl = `${appHost}/api/plant-image/${this.imageId}`;
       this.$axios.put(imageUpdateUrl, {
         plant_id: plantId,
         identified: !!plantId,
+        user_guess: userGuess,
       })
         .then(() => {
           // const todo = res.data.plantImage;
@@ -85,6 +94,12 @@ export default {
 </script>
 
 <style>
+.guess-block {
+  padding-bottom: 10px;
+}
+.guess-submit {
+  padding-right: 16px;
+}
 .image-background {
   background: #E6E6E6;
 }
