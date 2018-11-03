@@ -10,8 +10,20 @@ const resources = require('./resources');
 const knex = require('./knex')();
 
 const bookshelf = require('bookshelf')(knex);
-const Plant = require('./models/Plant')(knex);
-const PlantImage = require('./models/PlantImage')(knex);
+bookshelf.plugin('pagination');
+
+const PlantImage = bookshelf.Model.extend({
+  tableName: 'plant_images',
+  plant() {
+    return this.belongsTo(Plant, 'plant_id');
+  },
+});
+const Plant = bookshelf.Model.extend({
+  tableName: 'plants',
+  plantImages() {
+    return this.hasMany(PlantImage);
+  },
+});
 
 const app = express();
 const s3 = new AWS.S3({
