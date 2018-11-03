@@ -14,10 +14,17 @@
     <q-card-separator />
 
     <q-card-actions align="center">
-      <q-btn flat color="orange">Metrosideros Polymorpha</q-btn>
-      <q-btn flat color="red">Acacia Koa</q-btn>
-      <q-btn flat color="purple">Musa x paradisiaca</q-btn>
-      <q-btn flat>I don't know</q-btn>
+      <template v-for="pred in predictions">
+        <q-btn
+          v-bind:key="pred.id"
+          flat
+          :color="pred.color"
+          @click="classifyPlant"
+        >
+          {{ pred.className }}
+        </q-btn>
+      </template>
+      <q-btn @click="classifyPlant" flat>I don't know</q-btn>
     </q-card-actions>
 
     <q-card-separator />
@@ -40,12 +47,19 @@ export default {
     imageSrc: {
       type: String,
     },
+    predictions: {
+      type: Array,
+    },
   },
   data() {
     return {
-      type: '',
       selfIdentify: '',
     };
+  },
+  methods: {
+    classifyPlant() {
+      // TODO
+    },
   },
 };
 </script>

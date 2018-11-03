@@ -9,12 +9,12 @@
         <div
           class="col-sm-12 col-md-4"
         >
-          <captured-image :imageSrc="imageSrc" />
+          <captured-image :imageSrc="imageSrc" :predictions="predictions" />
         </div>
         <div
           class="col-sm-12 col-md-8"
         >
-          <more-about />
+          <more-about :predictions="predictions" />
         </div>
       </div>
     </div>
@@ -39,6 +39,7 @@ export default {
   data() {
     return {
       imageSrc: '',
+      predictions: [],
       latitude: 0,
       longitude: 0,
     };
@@ -87,10 +88,11 @@ export default {
         view.$axios.post(imageUploadUrl, formData)
           .then((res) => {
             console.log('res.data', JSON.stringify(res.data.predictions));
-            view.$q.loading.hide();
             const fullPath = filePath
               .replace('assets-library://', 'cdvfile://localhost/assets-library/');
             view.imageSrc = fullPath;
+            view.predictions = res.data.predictions;
+            view.$q.loading.hide();
           })
           .catch(() => {
             displayErrorMessage();
