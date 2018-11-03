@@ -1,7 +1,21 @@
 const router = require('express').Router();
 const knex = require('../knex')();
 
-const Plant = require('../models/Plant')(knex);
+const bookshelf = require('bookshelf')(knex);
+bookshelf.plugin('pagination');
+
+const PlantImage = bookshelf.Model.extend({
+  tableName: 'plant_images',
+  plant() {
+    return this.belongsTo(Plant, 'plant_id');
+  },
+});
+const Plant = bookshelf.Model.extend({
+  tableName: 'plants',
+  plantImages() {
+    return this.hasMany(PlantImage);
+  },
+});
 
 router.get(
   '/plants/:limit/:offset',

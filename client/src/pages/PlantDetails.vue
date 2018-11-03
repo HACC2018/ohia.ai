@@ -99,7 +99,7 @@ export default {
               this.fetching = false;
               const { data } = response;
               // eslint-ignore-next-line
-              this.image = data.image_url;
+              this.image = data ? data.image_url : '';
             });
         })
         .catch((err) => {

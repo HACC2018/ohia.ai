@@ -2,18 +2,24 @@
   <q-page
     padding
   >
-    <div
-      class="row gutter-sm"
-    >
+    <div v-if="imageSrc">
       <div
-        class="col-sm-12 col-md-4"
+        class="row gutter-sm"
       >
-        <captured-image />
-      </div>
-      <div
-        class="col-sm-12 col-md-8"
-      >
-        <more-about />
+        <div
+          class="col-sm-12 col-md-4"
+        >
+          <captured-image
+            :imageId="imageId"
+            :imageSrc="imageSrc"
+            :predictions="predictions"
+          />
+        </div>
+        <div
+          class="col-sm-12 col-md-8"
+        >
+          <more-about :predictions="predictions" />
+        </div>
       </div>
     </div>
   </q-page>
@@ -24,13 +30,102 @@ import CapturedImage from '../components/PlantIdentification/CapturedImage';
 import MoreAbout from '../components/PlantIdentification/MoreAbout';
 
 export default {
+  name: 'PlantIdentification',
   components: {
     CapturedImage,
     MoreAbout,
+  },
+  props: {
+    filePath: {
+      type: String,
+    },
+  },
+  data() {
+    return {
+      imageId: 0,
+      imageSrc: '',
+      predictions: [],
+      latitude: 0,
+      longitude: 0,
+    };
+  },
+  mounted() {
+    if (this.filePath) {
+      this.uploadAndIdentify(this.filePath);
+    }
+  },
+  methods: {
+    uploadAndIdentify(filePath) {
+      const view = this;
+      const CANDIDATE_COLORS = ['green', 'orange', 'red'];
+      // TODO: There's a noticeable delay before the spinner and overlay appears
+      view.$q.loading.show({
+        delay: 100, // ms
+        message: 'Uploading and identifying...',
+      });
+
+      const displayErrorMessage = () => {
+        view.$q.loading.hide();
+        view.$q.notify({
+          color: 'negative',
+          position: 'top',
+          message: 'Image upload failed',
+          icon: 'report_problem',
+        });
+      };
+      const convertImageToBlob = (result) => {
+        // Create a blob based on the FileReader "result",
+        // which we asked to be retrieved as an ArrayBuffer
+        const arrayBufferView = new Uint8Array(result);
+        return new Blob([arrayBufferView], { type: 'image/jpeg' });
+      };
+      const constructFormData = (blob) => {
+        const formData = new FormData();
+        formData.append('latitude', view.latitude);
+        formData.append('longitude', view.longitude);
+        formData.append('image', blob);
+        return formData;
+      };
+      function uploadImage() {
+        const blob = convertImageToBlob(this.result);
+        const formData = constructFormData(blob);
+        const appHost = 'http://localhost:3000';
+        const imageUploadUrl = `${appHost}/images/upload`;
+        view.$axios.post(imageUploadUrl, formData)
+          .then((res) => {
+            console.log('res.data', JSON.stringify(res.data.predictions));
+            const fullPath = filePath
+              .replace('assets-library://', 'cdvfile://localhost/assets-library/');
+            view.imageId = res.data.id;
+            view.imageSrc = fullPath;
+            view.predictions = res.data.predictions.map((pred, index) => ({
+              ...pred,
+              color: CANDIDATE_COLORS[index],
+            }));
+            view.$q.loading.hide();
+          })
+          .catch(() => {
+            displayErrorMessage();
+          });
+      }
+      window.resolveLocalFileSystemURL(filePath, (fileEntry) => {
+        fileEntry.file((file) => {
+          const reader = new FileReader();
+          reader.onloadend = uploadImage;
+          // Read the file as an ArrayBuffer
+          reader.readAsArrayBuffer(file);
+        }, (err) => {
+          console.error('Error retrieving the fileEntry file:', err);
+          displayErrorMessage();
+        });
+      }, (err) => {
+        console.error('Error resolving the local file system URL:', err);
+        displayErrorMessage();
+      });
+    },
   },
 };
 </script>
 
 <style>
-
 </style>

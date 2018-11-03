@@ -82,9 +82,10 @@ module.exports = function (ctx) {
         'QFab',
         'QFabAction',
         'QItemSeparator',
+        'QModal',
       ],
       directives: [
-        'Ripple'
+        'Ripple',
       ],
       // Quasar plugins
       plugins: [

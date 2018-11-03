@@ -35,7 +35,9 @@ const routes = [
     children: [
       {
         path: '',
+        name: 'identify',
         component: () => import('pages/PlantIdentification.vue'),
+        props: true,
       },
     ],
   },

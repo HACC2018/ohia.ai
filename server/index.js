@@ -11,8 +11,20 @@ const resources = require('./resources');
 const knex = require('./knex')();
 
 const bookshelf = require('bookshelf')(knex);
-const Plant = require('./models/Plant')(knex);
-const PlantImage = require('./models/PlantImage')(knex);
+bookshelf.plugin('pagination');
+
+const PlantImage = bookshelf.Model.extend({
+  tableName: 'plant_images',
+  plant() {
+    return this.belongsTo(Plant, 'plant_id');
+  },
+});
+const Plant = bookshelf.Model.extend({
+  tableName: 'plants',
+  plantImages() {
+    return this.hasMany(PlantImage);
+  },
+});
 
 const app = express();
 const s3 = new AWS.S3({
@@ -63,6 +75,14 @@ app.use(bodyParser.urlencoded({ // Form request data
   parameterLimit: PARAM_LIMIT,
 })); 
 
+// Required for browser requests
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//   res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+//   next();
+// });
+
 // Routes
 app.use('/api', resources);
 
@@ -88,7 +108,7 @@ app.post('/images/upload', upload.array('image', 1), (req, res) => {
     image_url: image.location,
   })
     .save()
-    .then(() => {
+    .then((saved) => {
       // Download and produce a buffer with the image data
       request({
         url: image.location,
@@ -96,14 +116,38 @@ app.post('/images/upload', upload.array('image', 1), (req, res) => {
       }, (err, resp, buffer) => {
         // Make predictions
         return Model.detectPlant(buffer)
-          .then((predictions) => {
-            console.log('predictions', predictions);
-            return res.json({
-              success: true,
-              name: image.key,
-              size: image.size,
-              predictions,
-            });
+          .then((probabilities) => {
+            let predictions = probabilities.slice(0, 3);
+            const plantNames = predictions.map(pred => pred.className);
+
+            return Plant
+              .where('plant_name', 'IN', plantNames)
+              .fetchAll({
+                columns: ['id', 'plant_name'],
+                withRelated: ['plantImages'],
+              })
+              .then((models) => {
+                const plants = models.serialize();
+                predictions = predictions.map(pred => {
+                  let match = plants.find(item =>
+                    item.plant_name === pred.className);
+                  match = match ? match : { id: 0, plantImages: [] };
+                  return {
+                    ...pred,
+                    id: match.id,
+                    plantImages: match.plantImages,
+                  };
+                });
+                console.log('predictions', predictions);
+
+                return res.json({
+                  success: true,
+                  id: saved.serialize().id,
+                  name: image.key,
+                  size: image.size,
+                  predictions,
+                });
+              });
           })
           .catch((err) => {
             console.error('Error making predictions:', err);
