@@ -23,7 +23,11 @@ router.route('/plant-image/:id')
     const { id } = req.params;
 
     // Get plant image properties
-    const { plant_id, identified } = req.body;
+    const {
+      plant_id,
+      identified,
+      user_guess,
+    } = req.body;
 
     // Update plant image
     return PlantImage
@@ -34,6 +38,7 @@ router.route('/plant-image/:id')
           .save({
             plant_id,
             identified,
+            user_guess,
           })
           .then((plantImage) => {
             return res.json({ plantImage: plantImage.serialize() });

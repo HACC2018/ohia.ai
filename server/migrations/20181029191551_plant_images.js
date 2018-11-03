@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
     table.decimal('latitude', 15);
     table.decimal('longitude', 15);
     table.text('image_url').notNullable();
+    table.string('user_guess');
     table.json('bounding_box');
   
     table.timestamp('created_at').defaultTo(knex.fn.now());
