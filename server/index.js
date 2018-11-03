@@ -4,6 +4,7 @@ const request = require('request');
 const AWS = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
+const cors = require('cors');
 const config = require('./config');
 const Model = require('./model');
 const resources = require('./resources');
@@ -47,6 +48,9 @@ const upload = multer({
     },
   }),
 });
+
+// CORS
+app.use(cors());
 
 // Middleware
 app.use(bodyParser.json({ // JSON request data

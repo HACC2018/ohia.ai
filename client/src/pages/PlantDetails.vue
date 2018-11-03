@@ -41,6 +41,18 @@ export default {
     PlantUses,
     PlantUploads,
   },
+  methods: {
+    fetchPlantDetails() {
+      this.$axios
+        .get(`http://localhost:3000/api/plant/${this.$route.params.id}`)
+        .then((response) => {
+          console.log(response);
+        });
+    },
+  },
+  mounted() {
+    this.fetchPlantDetails();
+  },
 };
 </script>
 
