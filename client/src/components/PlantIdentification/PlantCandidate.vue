@@ -26,6 +26,7 @@
     >
       <q-btn
         flat
+        :to="`/plant/${prediction.id}`"
       >
         {{ prediction.className }}
         <q-icon

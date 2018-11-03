@@ -3,13 +3,16 @@
     <q-table
       grid
       hide-header
+      :pagination.sync="serverPagination"
       :data="tableData"
       :columns="columns"
       :filter="filter"
       :selection="selection"
       :selected.sync="selected"
       :visible-columns="visibleColumns"
-      row-key="name"
+      :loading="loading"
+      row-key="plant_name"
+      @request="request"
     >
       <template slot="top" slot-scope="props">
         <q-search hide-underline clearable v-model="filter" />
@@ -27,7 +30,7 @@
           @click.native="props.selected = !props.selected"
         >
           <q-card-title class="relative-position">
-            {{ props.row.name }}
+            {{ props.row.plant_name }}
           </q-card-title>
 
           <q-card-separator />
@@ -36,8 +39,11 @@
             <img :src="props.row.image" />
           </q-card-media>
 
-          <q-card-actions align=center>
-            <q-btn flat>Information <q-icon name="keyboard_arrow_right" /></q-btn>
+          <q-card-actions align="center">
+            <q-btn flat :to="`/plant/${props.row.id}`">
+              Information
+              <q-icon name="keyboard_arrow_right" />
+            </q-btn>
           </q-card-actions>
         </q-card>
       </div>
@@ -49,23 +55,12 @@
 export default {
   data() {
     return {
-      tableData: [
-        {
-          name: 'Metrosideros polymorpha',
-          image: 'https://www.casaegiardino.it/images/2015/04/20150320_101549-600x450.jpg',
-          desc: 'hi',
-        },
-        {
-          name: 'Acacia Koa',
-          image: 'https://farm2.staticflickr.com/1366/5187357067_639509a494_o.jpg',
-          desc: 'hi',
-        },
-        {
-          name: 'Argemone Glauca',
-          image: 'https://www.molokaiseedcompany.com/wp-content/uploads/2017/08/Argemone_glauca_glauca-31-sized.jpg',
-          desc: 'hi',
-        },
-      ],
+      serverPagination: {
+        page: 1,
+        rowsNumber: 10,
+        rowsPerPage: 9,
+      },
+      tableData: [],
       columns: [
         {
           name: 'desc',
@@ -74,12 +69,6 @@ export default {
           align: 'left',
           field: 'name',
           sortable: true,
-        },
-        {
-          name: 'calories', label: 'Calories', field: 'calories', sortable: true,
-        },
-        {
-          name: 'fat', label: 'Fat (g)', field: 'fat', sortable: true,
         },
       ],
       filter: '',
@@ -98,7 +87,7 @@ export default {
         page: 2,
       },
       paginationControl: {
-        rowsPerPage: 3,
+        rowsPerPage: 9,
         page: 1,
       },
       loading: false,
@@ -109,6 +98,56 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    request({ pagination }) {
+      // we set QTable to "loading" state
+      this.loading = true;
+
+      // we do the server data fetch, based on pagination and filter received
+      // (using Axios here, but can be anything; parameters vary based on backend implementation)
+
+      console.log(pagination);
+
+      this.$axios
+        .get(`http://localhost:3000/api/plants/100/${(pagination.page - 1) * 9}`)
+        .then(({ data }) => {
+          // updating pagination to reflect in the UI
+          this.serverPagination = pagination;
+
+          // we also set (or update) rowsNumber
+          this.serverPagination.rowsNumber = data.rowsNumber;
+
+          // then we update the rows with the fetched ones
+          this.tableData = data;
+
+          // finally we tell QTable to exit the "loading" state
+          this.loading = false;
+        })
+        .catch(() => {
+          // there's an error... do SOMETHING
+
+          // we tell QTable to exit the "loading" state
+          this.loading = false;
+        });
+    },
+  },
+  mounted() {
+    // once mounted, we need to trigger the initial server data fetch
+
+    this.$axios
+      .get('http://localhost:3000/api/count/plant')
+      .then((response) => {
+        const { data } = response;
+
+        console.log(this.serverPagination.rowsNumber);
+        this.serverPagination.rowsNumber = data.count;
+      });
+
+    this.request({
+      pagination: this.serverPagination,
+      filter: this.filter,
+    });
   },
 };
 </script>

@@ -58,6 +58,23 @@ router.get(
   },
 );
 
+router.get(
+  '/count/plant',
+  async (req, res, next) => {
+    try {
+      // Fetch plant by ID from database
+      const plant = await new Plant()
+        .count();
+
+      res.json({ count: plant });
+    } catch (error) {
+      next(error);
+    }
+
+    return next();
+  },
+);
+
 router.post(
   '/plant',
   async (req, res, next) => {
