@@ -92,7 +92,13 @@ app.post('/images/upload', upload.array('image', 1), (req, res) => {
       }, (err, resp, buffer) => {
         // Make predictions
         return Model.detectPlant(buffer)
-          .then((predictions) => {
+          .then((probabilities) => {
+            const predictions = probabilities
+              .slice(0, 3)
+              .map((pred) => {
+                // pred.className
+                return pred;
+              });
             console.log('predictions', predictions);
             return res.json({
               success: true,
