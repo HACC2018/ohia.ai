@@ -2,7 +2,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('plants', (table) => {
     table.increments('id').primary();
 
-    table.string('plant_name').notNullable();
+    table.string('plant_name').notNullable().unique();
     table.enu('status',
     [
       'Native',
