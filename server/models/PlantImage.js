@@ -1,5 +1,6 @@
 module.exports = (knex) => {
   const bookshelf = require('bookshelf')(knex);
+  bookshelf.plugin('pagination');
   const Plant = require('./Plant');
 
   return bookshelf.Model.extend({

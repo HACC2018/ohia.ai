@@ -11,25 +11,13 @@
         color="white"
         arrows
         height="300px"
-        :thumbnails="[
-          'https://wildlifeofhawaii.com/images/flowers/Metrosideros-polymorpha-1.jpg',
-          'https://wildlifeofhawaii.com/images/flowers/Metrosideros-polymorpha-1.jpg',
-          'https://wildlifeofhawaii.com/images/flowers/Metrosideros-polymorpha-1.jpg',
-          'https://wildlifeofhawaii.com/images/flowers/Metrosideros-polymorpha-1.jpg',
-        ]"
+        :thumbnails="images"
         thumbnails-horizontal
       >
         <q-carousel-slide
-          img-src="https://wildlifeofhawaii.com/images/flowers/Metrosideros-polymorpha-1.jpg"
-        />
-        <q-carousel-slide
-          img-src="https://wildlifeofhawaii.com/images/flowers/Metrosideros-polymorpha-1.jpg"
-        />
-        <q-carousel-slide
-          img-src="https://wildlifeofhawaii.com/images/flowers/Metrosideros-polymorpha-1.jpg"
-        />
-        <q-carousel-slide
-          img-src="https://wildlifeofhawaii.com/images/flowers/Metrosideros-polymorpha-1.jpg"
+          v-for="(image, i) in images"
+          :img-src="image"
+          :key="i"
         />
       </q-carousel>
     </q-card-main>
@@ -39,9 +27,27 @@
 <script>
 export default {
   props: {
-    images: {
-      type: Array,
+    id: {
+      type: Number,
     },
+  },
+  data() {
+    return {
+      images: [],
+    };
+  },
+  mounted() {
+    this.$axios
+      .get(`http://localhost:3000/api/images/${this.id}`)
+      .then((response) => {
+        const { data } = response;
+        console.log(data);
+        // eslint-ignore-next-line
+        this.images = data.map(image => image.image_url);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };
 </script>

@@ -38,6 +38,7 @@
 
         <plant-uploads
           :image="image"
+          :id="$route.params.id"
         />
       </div>
     </div>
@@ -78,7 +79,6 @@ export default {
       this.$axios
         .get(`http://localhost:3000/api/plant/${this.$route.params.id}`)
         .then((response) => {
-          this.fetching = false;
           const { data } = response;
 
           this.genus = data.genus;
@@ -94,8 +94,9 @@ export default {
         })
         .then(() => {
           this.$axios
-            .get(`http://localhost:3000/api/image/single/${this.$route.params.id}`)
+            .get(`http://localhost:3000/api/images/single/${this.$route.params.id}`)
             .then((response) => {
+              this.fetching = false;
               const { data } = response;
               // eslint-ignore-next-line
               this.image = data.image_url;

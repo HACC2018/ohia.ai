@@ -18,7 +18,7 @@
 export default {
   props: {
     uses: {
-      type: Array,
+      type: String,
     },
   },
 };

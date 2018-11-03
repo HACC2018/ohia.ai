@@ -4,15 +4,38 @@ const knex = require('../knex')();
 const PlantImage = require('../models/PlantImage')(knex);
 
 router.get(
-  '/image/single/:plantId/',
+  '/images/single/:plantId/',
   async (req, res, next) => {
     try {
       const { plantId } = req.params;
 
-      const plant = await new PlantImage({ plant_id: plantId })
+      const plantImage = await new PlantImage({ plant_id: plantId })
         .fetch();
 
-      res.json(plant);
+      res.json(plantImage);
+    } catch (error) {
+      next(error);
+    }
+
+    return next();
+  },
+);
+
+router.get(
+  '/images/:plantId/',
+  async (req, res, next) => {
+    try {
+      const { plantId } = req.params;
+
+      const plantImage = await new PlantImage()
+        .where('plant_id', plantId)
+        .where('identified', true)
+        .fetchPage({
+          limit: 10,
+          columns: ['image_url']
+        });
+
+      res.json(plantImage);
     } catch (error) {
       next(error);
     }
