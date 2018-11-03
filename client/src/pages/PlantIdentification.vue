@@ -52,6 +52,7 @@ export default {
   methods: {
     uploadAndIdentify(filePath) {
       const view = this;
+      const CANDIDATE_COLORS = ['green', 'orange', 'red'];
       // TODO: There's a noticeable delay before the spinner and overlay appears
       view.$q.loading.show({
         delay: 100, // ms
@@ -91,7 +92,10 @@ export default {
             const fullPath = filePath
               .replace('assets-library://', 'cdvfile://localhost/assets-library/');
             view.imageSrc = fullPath;
-            view.predictions = res.data.predictions;
+            view.predictions = res.data.predictions.map((pred, index) => ({
+              ...pred,
+              color: CANDIDATE_COLORS[index],
+            }));
             view.$q.loading.hide();
           })
           .catch(() => {
