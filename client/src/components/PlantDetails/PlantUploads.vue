@@ -19,6 +19,20 @@
           :img-src="image"
           :key="i"
         />
+
+        <q-carousel-control
+          slot="control-button"
+          slot-scope="carousel"
+          position="bottom-right"
+          :offset="[18, 22]"
+        >
+          <q-btn
+            round dense push
+            color="primary"
+            :icon="carousel.inFullscreen ? 'fullscreen_exit' : 'fullscreen'"
+            @click="carousel.toggleFullscreen()"
+          />
+        </q-carousel-control>
       </q-carousel>
     </q-card-main>
   </q-card>
