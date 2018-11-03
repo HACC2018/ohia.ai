@@ -13,13 +13,6 @@ export default {
       type: Object,
     },
   },
-  data() {
-    return {
-      imageSrc: '',
-      latitude: 0,
-      longitude: 0,
-    };
-  },
   methods: {
     captureImage() {
       const view = this;

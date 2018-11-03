@@ -4,13 +4,13 @@
       Plant Identification Results
     </q-card-title>
 
-    <q-card-media>
-      <img src="https://www.hawaiimagazine.com/sites/default/files/field/image/25040492391_b5f4f063c2_k.jpg">
-
-    </q-card-media>
+    <q-card-separator />
+    <div class="image-background">
+      <img :src="imageSrc" class="image" />
+    </div>
+    <q-card-separator />
 
     <q-card-main>Classify the plant above:</q-card-main>
-
     <q-card-separator />
 
     <q-card-actions align="center">
@@ -35,6 +35,12 @@
 
 <script>
 export default {
+  name: 'CapturedImage',
+  props: {
+    imageSrc: {
+      type: String,
+    },
+  },
   data() {
     return {
       type: '',
@@ -45,5 +51,13 @@ export default {
 </script>
 
 <style>
-
+.image-background {
+  background: #E6E6E6;
+}
+.image {
+  width: auto;
+  height: 270px;
+  display: block;
+  margin: 0 auto;
+}
 </style>

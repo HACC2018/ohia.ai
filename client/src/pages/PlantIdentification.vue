@@ -2,14 +2,14 @@
   <q-page
     padding
   >
-    <div v-if="loaded">
+    <div v-if="imageSrc">
       <div
         class="row gutter-sm"
       >
         <div
           class="col-sm-12 col-md-4"
         >
-          <captured-image />
+          <captured-image :imageSrc="imageSrc" />
         </div>
         <div
           class="col-sm-12 col-md-8"
@@ -38,19 +38,19 @@ export default {
   },
   data() {
     return {
-      loaded: false,
       imageSrc: '',
       latitude: 0,
       longitude: 0,
     };
   },
   mounted() {
-    this.uploadAndIdentify();
+    if (this.filePath) {
+      this.uploadAndIdentify(this.filePath);
+    }
   },
   methods: {
-    uploadAndIdentify() {
+    uploadAndIdentify(filePath) {
       const view = this;
-      const filePath = view.filePath;
       // TODO: There's a noticeable delay before the spinner and overlay appears
       view.$q.loading.show({
         delay: 100, // ms
@@ -91,7 +91,6 @@ export default {
             const fullPath = filePath
               .replace('assets-library://', 'cdvfile://localhost/assets-library/');
             view.imageSrc = fullPath;
-            view.loaded = true;
           })
           .catch(() => {
             displayErrorMessage();
