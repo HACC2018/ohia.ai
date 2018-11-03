@@ -50,6 +50,10 @@ export default {
 
       camera.getPicture(
         (filePath) => {
+          view.$router.push({
+            name: 'identify',
+            params: { loaded: true },
+          });
           // TODO: There's a noticeable delay before the spinner and overlay appears
           view.$q.loading.show({
             delay: 100, // ms
