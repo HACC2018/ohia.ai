@@ -130,7 +130,7 @@ class PlantNetGenerator(keras.utils.Sequence):
             for i, f in enumerate(batch_files):
                 img = Image.open(f)
                 img = crop_square(img, 'triangular')
-                img = np.array(img, dtype=np.float)/255.
+                img = 2*np.array(img, dtype=np.float)/255. - 1.0
                 img = keras.preprocessing.image.random_brightness(img, (0.75,  1.25))
                 if np.random.rand()>0.5:
                     img = img[:,::-1,:]
@@ -139,7 +139,7 @@ class PlantNetGenerator(keras.utils.Sequence):
             for i, f in enumerate(batch_files):
                 img = Image.open(f)
                 img = crop_square(img)
-                img = np.array(img, dtype=np.float)/255.
+                img = 2*np.array(img, dtype=np.float)/255. - 1.0
                 X[i] = img
         return X, y
     
