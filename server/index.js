@@ -105,19 +105,36 @@ app.post('/images/upload', upload.array('image', 1), (req, res) => {
         // Make predictions
         return Model.detectPlant(buffer)
           .then((probabilities) => {
-            const predictions = probabilities
-              .slice(0, 3)
-              .map((pred) => {
-                // pred.className
-                return pred;
+            let predictions = probabilities.slice(0, 3);
+            const plantNames = predictions.map(pred => pred.className);
+
+            return Plant
+              .where('plant_name', 'IN', plantNames)
+              .fetchAll({
+                columns: ['id', 'plant_name'],
+                withRelated: ['plantImages'],
+              })
+              .then((models) => {
+                const plants = models.serialize();
+                predictions = predictions.map(pred => {
+                  let match = plants.find(item =>
+                    item.plant_name === pred.className);
+                  match = match ? match : { id: 0, plantImages: [] };
+                  return {
+                    ...pred,
+                    id: match.id,
+                    plantImages: match.plantImages,
+                  };
+                });
+                console.log('predictions', predictions);
+
+                return res.json({
+                  success: true,
+                  name: image.key,
+                  size: image.size,
+                  predictions,
+                });
               });
-            console.log('predictions', predictions);
-            return res.json({
-              success: true,
-              name: image.key,
-              size: image.size,
-              predictions,
-            });
           })
           .catch((err) => {
             console.error('Error making predictions:', err);
