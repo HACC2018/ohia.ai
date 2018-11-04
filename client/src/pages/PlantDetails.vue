@@ -5,6 +5,7 @@
     <q-btn
       @click="goToPreviousPage"
     >
+      <q-icon name="keyboard_arrow_left" />
       Previous Page
     </q-btn>
     <br />
@@ -86,8 +87,9 @@ export default {
       this.$router.go(-1);
     },
     fetchPlantDetails() {
+      const plantUrl = `${process.env.API_HOST}/api/plant/${this.$route.params.id}`;
       this.$axios
-        .get(`http://localhost:3000/api/plant/${this.$route.params.id}`)
+        .get(plantUrl)
         .then((response) => {
           const { data } = response;
 
@@ -103,8 +105,9 @@ export default {
           this.uses = data.uses;
         })
         .then(() => {
+          const plantImageUrl = `${process.env.API_HOST}/api/images/single/${this.$route.params.id}`;
           this.$axios
-            .get(`http://localhost:3000/api/images/single/${this.$route.params.id}`)
+            .get(plantImageUrl)
             .then((response) => {
               this.fetching = false;
               const { data } = response;

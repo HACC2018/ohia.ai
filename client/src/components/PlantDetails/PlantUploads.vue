@@ -57,8 +57,9 @@ export default {
     };
   },
   mounted() {
+    const url = `${process.env.API_HOST}/api/images/${this.id}`;
     this.$axios
-      .get(`http://localhost:3000/api/images/${this.id}`)
+      .get(url)
       .then((response) => {
         const { data } = response;
 

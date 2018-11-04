@@ -114,9 +114,8 @@ export default {
   },
   methods: {
     classifyPlant(plantId, userGuess) {
-      const appHost = 'http://localhost:3000';
-      const imageUpdateUrl = `${appHost}/api/plant-image/${this.imageId}`;
-      this.$axios.put(imageUpdateUrl, {
+      const url = `${process.env.API_HOST}/api/plant-image/${this.imageId}`;
+      this.$axios.put(url, {
         plant_id: plantId,
         identified: !!plantId,
         user_guess: userGuess,

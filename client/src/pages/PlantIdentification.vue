@@ -23,6 +23,12 @@
         </div>
       </div>
     </div>
+    <div v-else align="center" class="absolute-center loading-block">
+      <q-spinner color="primary" :size="84" />
+      <div class="loading-text">
+        <q-title padding>Uploading and identifying...</q-title>
+      </div>
+    </div>
   </q-page>
 </template>
 
@@ -63,14 +69,8 @@ export default {
     uploadAndIdentify(filePath) {
       const view = this;
       const CANDIDATE_COLORS = ['green', 'orange', 'red'];
-      // TODO: There's a noticeable delay before the spinner and overlay appears
-      view.$q.loading.show({
-        delay: 100, // ms
-        message: 'Uploading and identifying...',
-      });
 
       const displayErrorMessage = () => {
-        view.$q.loading.hide();
         view.$q.notify({
           color: 'negative',
           position: 'top',
@@ -99,9 +99,8 @@ export default {
       function uploadImage() {
         const blob = convertImageToBlob(this.result);
         const formData = constructFormData(blob);
-        const appHost = 'http://localhost:3000';
-        const imageUploadUrl = `${appHost}/images/upload`;
-        view.$axios.post(imageUploadUrl, formData)
+        const url = `${process.env.API_HOST}/images/upload`;
+        view.$axios.post(url, formData)
           .then((res) => {
             console.log('res.data', JSON.stringify(res.data.predictions));
             const fullPath = filePath
@@ -112,7 +111,6 @@ export default {
               ...pred,
               color: CANDIDATE_COLORS[index],
             }));
-            view.$q.loading.hide();
           })
           .catch(() => {
             displayErrorMessage();
@@ -138,4 +136,10 @@ export default {
 </script>
 
 <style>
+.loading-block {
+  width: 260px;
+}
+.loading-text {
+  margin-top: 32px;
+}
 </style>

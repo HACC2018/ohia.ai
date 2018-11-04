@@ -27,6 +27,7 @@ router.get(
         .fetchPage({
           limit,
           offset,
+          withRelated: ['plantImages'],
         });
 
       res.json(plant);

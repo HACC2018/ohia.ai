@@ -24,8 +24,6 @@
         <div class="nav-bar">
           <q-btn flat round dense class="button"
             size="lg" icon="spa" to="/" />
-          <q-btn flat round dense class="button"
-            size="lg" icon="help" to="/help" />
           <CameraButton
             v-bind:button="{
               flat: true,
@@ -37,7 +35,7 @@
             }"
           />
           <q-btn flat round dense class="button"
-            size="lg" icon="image_search" to="/identify" />
+            size="lg" icon="help" to="/help" />
         </div>
       </q-toolbar>
     </q-layout-footer>
@@ -61,9 +59,10 @@ export default {
   color: white;
 }
 .button {
-  margin-right: 54px;
+  margin-right: 90px;
 }
 .nav-bar {
+  padding-left: 14px;
   display: flex;
   justify-content: space-around;
 }

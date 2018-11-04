@@ -40,10 +40,10 @@
 
             <q-card-separator />
 
-            <q-card-media>
-              <img
-                :src="props.row.image"
-              />
+            <q-card-media
+              v-if="props.row.plantImages && props.row.plantImages.length > 0"
+            >
+              <img :src="props.row.plantImages[0].image_url" />
             </q-card-media>
 
             <q-card-actions align="center">
@@ -91,8 +91,10 @@ export default {
       // we do the server data fetch, based on pagination and filter received
       // (using Axios here, but can be anything; parameters vary based on backend implementation)
 
+      const offset = (pagination.page - 1) * pagination.rowsPerPage;
+      const url = `${process.env.API_HOST}/api/plants/${pagination.rowsPerPage}/${offset}`;
       this.$axios
-        .get(`http://localhost:3000/api/plants/${pagination.rowsPerPage}/${(pagination.page - 1) * pagination.rowsPerPage}`)
+        .get(url)
         .then(({ data }) => {
           // updating pagination to reflect in the UI
           this.serverPagination = pagination;
@@ -110,8 +112,9 @@ export default {
   },
   mounted() {
     // once mounted, we need to trigger the initial server data fetch
+    const url = `${process.env.API_HOST}/api/count/plant`;
     this.$axios
-      .get('http://localhost:3000/api/count/plant')
+      .get(url)      
       .then((response) => {
         const { data } = response;
 
@@ -138,5 +141,4 @@ export default {
 </script>
 
 <style>
-
 </style>
