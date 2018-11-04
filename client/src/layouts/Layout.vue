@@ -36,8 +36,6 @@
               icon: 'camera_alt',
             }"
           />
-          <q-btn flat round dense class="button"
-            size="lg" icon="image_search" to="/identify" />
         </div>
       </q-toolbar>
     </q-layout-footer>
@@ -61,9 +59,10 @@ export default {
   color: white;
 }
 .button {
-  margin-right: 54px;
+  margin-right: 90px;
 }
 .nav-bar {
+  padding-left: 14px;
   display: flex;
   justify-content: space-around;
 }
