@@ -83,6 +83,7 @@ module.exports = function (ctx) {
         'QFabAction',
         'QItemSeparator',
         'QModal',
+        'QSpinner',
       ],
       directives: [
         'Ripple',
@@ -90,7 +91,6 @@ module.exports = function (ctx) {
       // Quasar plugins
       plugins: [
         'Notify',
-        'Loading',
       ]//,
       // config: {
       //   cordova: {
