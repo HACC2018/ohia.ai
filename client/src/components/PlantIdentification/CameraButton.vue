@@ -43,13 +43,14 @@ export default {
                 longitude: position.coords.longitude,
               },
             });
-          }, (err) => {
-            console.error('Error retrieving the device GPS coordinates:', err);
-            view.$q.notify({
-              color: 'negative',
-              position: 'top',
-              message: 'Could not retrieve device coordinates',
-              icon: 'report_problem',
+          }, () => { // The user declined to share their coordinates
+            view.$router.push({
+              name: 'identify',
+              params: {
+                filePath,
+                latitude: null,
+                longitude: null,
+              },
             });
           });
         },

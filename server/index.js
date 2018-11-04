@@ -103,8 +103,8 @@ app.post('/images/upload', upload.array('image', 1), (req, res) => {
   // Save the image to the database
   return new PlantImage({
     identified: false,
-    latitude: meta.latitude,
-    longitude: meta.longitude,
+    latitude: meta.latitude !== 'null' ? meta.latitude : null,
+    longitude: meta.longitude !== 'null' ? meta.longitude : null,
     image_url: image.location,
   })
     .save()
