@@ -27,7 +27,9 @@
           :offset="[18, 22]"
         >
           <q-btn
-            round dense push
+            round
+            dense
+            push
             color="primary"
             :icon="carousel.inFullscreen ? 'fullscreen_exit' : 'fullscreen'"
             @click="carousel.toggleFullscreen()"

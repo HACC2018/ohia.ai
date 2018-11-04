@@ -1,7 +1,5 @@
 <template>
-  <q-page>
-    <q-card-title>Browse the flora of Hawaii</q-card-title>
-    <q-card-separator />
+  <q-page padding>
     <plant-directory />
   </q-page>
 </template>
