@@ -19,10 +19,11 @@ exports.up = function(knex, Promise) {
     table.text('uses');
     table.enu('endangered',
     [
-      'Critically endangered',
       'Endangered',
-      'Vulnerable',
-      'Not endangered',
+      'Threatened',
+      'Candidate for listing',
+      'Species of concern',
+      'Not listed by state',
     ]);
 
     table.timestamp('created_at').defaultTo(knex.fn.now());
