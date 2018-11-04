@@ -24,8 +24,6 @@
         <div class="nav-bar">
           <q-btn flat round dense class="button"
             size="lg" icon="spa" to="/" />
-          <q-btn flat round dense class="button"
-            size="lg" icon="help" to="/help" />
           <CameraButton
             v-bind:button="{
               flat: true,
@@ -36,6 +34,8 @@
               icon: 'camera_alt',
             }"
           />
+          <q-btn flat round dense class="button"
+            size="lg" icon="help" to="/help" />
         </div>
       </q-toolbar>
     </q-layout-footer>
