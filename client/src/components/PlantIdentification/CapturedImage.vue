@@ -6,12 +6,17 @@
       </q-card-title>
 
       <q-card-separator />
+
       <div class="image-background">
         <img :src="imageSrc" class="image" />
       </div>
+
       <q-card-separator />
 
-      <q-card-main>Classify the plant above:</q-card-main>
+      <q-card-main>
+        Classify the plant above:
+      </q-card-main>
+
       <q-card-separator />
 
       <q-card-actions align="center">
@@ -25,7 +30,12 @@
             {{ pred.className }}
           </q-btn>
         </template>
-        <q-btn @click="classifyPlant(null, null)" flat>I don't know</q-btn>
+        <q-btn
+          @click="classifyPlant(null, null)"
+          flat
+        >
+          I don't know
+        </q-btn>
       </q-card-actions>
 
       <q-card-separator />
@@ -47,6 +57,7 @@
         </div>
       </div>
     </q-card>
+
     <q-modal
       v-model="opened"
       align="center"
@@ -55,9 +66,20 @@
       no-backdrop-dismiss
     >
       <div class="modal-block">
-        <q-card-title>Classification complete!</q-card-title>
-        <q-icon name="spa" size="36px" color="secondary" />
-        <p class="text">Mahalo for helping to identify the flora of Hawaii.</p>
+        <q-card-title>
+          Classification complete!
+        </q-card-title>
+
+        <q-icon
+          name="spa"
+          size="36px"
+          color="secondary"
+        />
+
+        <p class="text">
+          Mahalo for helping to identify the flora of Hawaii.
+        </p>
+
         <q-btn
           flat
           color="secondary"

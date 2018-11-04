@@ -1,5 +1,10 @@
 <template>
-  <q-btn v-bind="button" @click="captureImage">{{ text }}</q-btn>
+  <q-btn
+    v-bind="button"
+    @click="captureImage"
+  >
+    {{ text }}
+  </q-btn>
 </template>
 
 <script>

@@ -10,7 +10,9 @@
       >
     </q-card-media>
 
-    <q-card-title class="relative-position">
+    <q-card-title
+      class="relative-position"
+    >
       <q-btn
         :color="prediction.color"
         :label="this.formatPercentage()"
@@ -29,6 +31,7 @@
         :to="`/plant/${prediction.id}`"
       >
         {{ prediction.className }}
+
         <q-icon
           name="keyboard_arrow_right"
         />

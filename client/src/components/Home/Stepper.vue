@@ -8,7 +8,10 @@
       <q-card-separator />
 
       <q-card-main>
-        <q-timeline responsive color="secondary">
+        <q-timeline
+          responsive
+          color="primary"
+        >
           <q-timeline-entry
             title="Allow us to use your camera."
             side="right"
@@ -72,7 +75,9 @@
 
       <q-card-separator />
 
-      <q-card-actions>
+      <q-card-actions
+        align="center"
+      >
         <div class="actions">
           <CameraButton
             v-bind:button="{ color: 'primary' }"
