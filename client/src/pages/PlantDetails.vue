@@ -6,7 +6,7 @@
       class="row gutter-md"
     >
       <div
-        class="col-md-12 col-lg-4"
+        class="col-xs-12 col-sm-12 col-md-12 col-lg-4"
       >
         <plant-information
           :image="image"
@@ -22,7 +22,7 @@
       </div>
 
       <div
-        class="col-md-12 col-lg-8"
+        class="col-xs-12 col-sm-12 col-md-12 col-lg-8"
       >
         <plant-story
           :story="story"

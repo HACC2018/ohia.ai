@@ -72,15 +72,12 @@ export default {
         },
       ],
       filter: '',
-      visibleColumns: [
-        'desc', 'fat', 'carbs', 'protein', 'sodium', 'calcium', 'iron',
-      ],
       separator: 'horizontal',
       selection: 'multiple',
       selected: [
         // initial selection
         {
-          name: 'Ice cream sandwich',
+          name: '',
         },
       ],
       pagination: {
