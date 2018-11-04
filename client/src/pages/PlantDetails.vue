@@ -2,11 +2,18 @@
   <q-page
     padding
   >
+    <q-btn
+      @click="goToPreviousPage"
+    >
+      Previous Page
+    </q-btn>
+    <br />
+    <br />
     <div
       class="row gutter-md"
     >
       <div
-        class="col-md-12 col-lg-4"
+        class="col-xs-12 col-sm-12 col-md-12 col-lg-4"
       >
         <plant-information
           :image="image"
@@ -22,7 +29,7 @@
       </div>
 
       <div
-        class="col-md-12 col-lg-8"
+        class="col-xs-12 col-sm-12 col-md-12 col-lg-8"
       >
         <plant-story
           :story="story"
@@ -75,6 +82,9 @@ export default {
     };
   },
   methods: {
+    goToPreviousPage() {
+      this.$router.go(-1);
+    },
     fetchPlantDetails() {
       this.$axios
         .get(`http://localhost:3000/api/plant/${this.$route.params.id}`)
