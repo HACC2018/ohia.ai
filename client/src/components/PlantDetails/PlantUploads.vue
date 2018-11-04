@@ -55,8 +55,7 @@ export default {
     };
   },
   mounted() {
-    const appHost = 'https://9dde116b.ngrok.io';
-    const url = `${appHost}/api/images/${this.id}`;
+    const url = `${process.env.API_HOST}/api/images/${this.id}`;
     this.$axios
       .get(url)
       .then((response) => {

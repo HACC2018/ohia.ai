@@ -1,4 +1,5 @@
 // Configuration for your app
+const config = require('./config');
 
 module.exports = function (ctx) {
   return {
@@ -19,6 +20,15 @@ module.exports = function (ctx) {
     ],
     supportIE: false,
     build: {
+      env: ctx.dev
+        ? {
+          NODE_ENV: JSON.stringify(config.NODE_ENV),
+          API_HOST: JSON.stringify(config.API_HOST),
+        }
+        : {
+          NODE_ENV: JSON.stringify(config.NODE_ENV),
+          API_HOST: JSON.stringify(config.API_HOST),
+        },
       scopeHoisting: true,
       vueRouterMode: 'history',
       // vueCompiler: true,
