@@ -16,7 +16,7 @@ export default {
   methods: {
     captureImage() {
       const view = this;
-      const { camera } = navigator;
+      const { camera, geolocation } = navigator;
       const cameraOptions = {
         // Camera options
         // Refer to:
@@ -34,9 +34,23 @@ export default {
 
       camera.getPicture(
         (filePath) => {
-          view.$router.push({
-            name: 'identify',
-            params: { filePath },
+          geolocation.getCurrentPosition((position) => {
+            view.$router.push({
+              name: 'identify',
+              params: {
+                filePath,
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude,
+              },
+            });
+          }, (err) => {
+            console.error('Error retrieving the device GPS coordinates:', err);
+            view.$q.notify({
+              color: 'negative',
+              position: 'top',
+              message: 'Could not retrieve device coordinates',
+              icon: 'report_problem',
+            });
           });
         },
         (err) => {
