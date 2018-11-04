@@ -5,6 +5,7 @@
     <q-btn
       @click="goToPreviousPage"
     >
+      <q-icon name="keyboard_arrow_left" />
       Previous Page
     </q-btn>
     <br />
