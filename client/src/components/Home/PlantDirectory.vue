@@ -31,13 +31,13 @@
 
           <q-card-separator />
 
-          <q-card-media>
-            <img :src="props.row.image" />
+          <q-card-media v-if="props.row.plantImages && props.row.plantImages.length > 0">
+            <img :src="props.row.plantImages[0].image_url" />
           </q-card-media>
 
           <q-card-actions align="center">
             <q-btn flat :to="`/plant/${props.row.id}`">
-              Information
+              Details
               <q-icon name="keyboard_arrow_right" />
             </q-btn>
           </q-card-actions>
@@ -118,5 +118,4 @@ export default {
 </script>
 
 <style>
-
 </style>
