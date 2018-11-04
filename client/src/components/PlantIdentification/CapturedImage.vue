@@ -92,9 +92,9 @@ export default {
   },
   methods: {
     classifyPlant(plantId, userGuess) {
-      const appHost = 'http://localhost:3000';
-      const imageUpdateUrl = `${appHost}/api/plant-image/${this.imageId}`;
-      this.$axios.put(imageUpdateUrl, {
+      const appHost = 'https://9dde116b.ngrok.io';
+      const url = `${appHost}/api/plant-image/${this.imageId}`;
+      this.$axios.put(url, {
         plant_id: plantId,
         identified: !!plantId,
         user_guess: userGuess,

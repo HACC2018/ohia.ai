@@ -87,8 +87,10 @@ export default {
       this.$router.go(-1);
     },
     fetchPlantDetails() {
+      const appHost = 'https://9dde116b.ngrok.io';
+      const plantUrl = `${appHost}/api/plant/${this.$route.params.id}`;
       this.$axios
-        .get(`http://localhost:3000/api/plant/${this.$route.params.id}`)
+        .get(plantUrl)
         .then((response) => {
           const { data } = response;
 
@@ -104,8 +106,9 @@ export default {
           this.uses = data.uses;
         })
         .then(() => {
+          const plantImageUrl = `${appHost}/api/images/single/${this.$route.params.id}`;
           this.$axios
-            .get(`http://localhost:3000/api/images/single/${this.$route.params.id}`)
+            .get(plantImageUrl)
             .then((response) => {
               this.fetching = false;
               const { data } = response;

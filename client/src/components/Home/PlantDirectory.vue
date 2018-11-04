@@ -74,8 +74,11 @@ export default {
       // we do the server data fetch, based on pagination and filter received
       // (using Axios here, but can be anything; parameters vary based on backend implementation)
 
+      const appHost = 'https://9dde116b.ngrok.io';
+      const offset = (pagination.page - 1) * pagination.rowsPerPage;
+      const url = `${appHost}/api/plants/${pagination.rowsPerPage}/${offset}`;
       this.$axios
-        .get(`http://localhost:3000/api/plants/${pagination.rowsPerPage}/${(pagination.page - 1) * pagination.rowsPerPage}`)
+        .get(url)
         .then(({ data }) => {
           // updating pagination to reflect in the UI
           this.serverPagination = pagination;
@@ -93,13 +96,12 @@ export default {
   },
   mounted() {
     // once mounted, we need to trigger the initial server data fetch
+    const appHost = 'https://9dde116b.ngrok.io';
+    const url = `${appHost}/api/count/plant`;
     this.$axios
-      .get('http://localhost:3000/api/count/plant')
+      .get(url)
       .then((response) => {
         const { data } = response;
-
-        console.log(data.count);
-
         this.serverPagination.rowsNumber = data.count;
       })
       .then(() => {
