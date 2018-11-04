@@ -13,14 +13,20 @@
         slot="right"
         class="row items-center"
       >
+        <span>
+          {{ status }}
+        </span>
+        <span>・</span>
         <span
           :class="{
-            'text-green': status === 'Native' ? true : null,
-            'text-red': status === 'Invasive' ? true : null,
-            'text-orange': status === 'Non-native' ? true : null
+            'text-red': endangered === 'Endangered' ? true : null,
+            'text-pink': endangered === 'Threatened' ? true : null,
+            'text-deep-orange': endangered === 'Candidate for listing'? true : null,
+            'text-orange': endangered === 'Species of concern'? true : null,
+            'text-green': endangered === 'Not listed by state' ? true : null,
           }"
         >
-          {{ status }}
+          {{ endangered }}
         </span>
       </div>
     </q-card-title>
@@ -119,6 +125,9 @@ export default {
       type: String,
     },
     description: {
+      type: String,
+    },
+    endangered: {
       type: String,
     },
   },

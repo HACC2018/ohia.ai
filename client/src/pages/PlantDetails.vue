@@ -24,6 +24,7 @@
           :common_name="common_name"
           :hawaiian_name="hawaiian_name"
           :scientific_name="scientific_name"
+          :endangered="endangered"
           :status="status"
           :description="description"
         />
@@ -79,6 +80,7 @@ export default {
       description: '',
       story: '',
       uses: '',
+      endangered: '',
       image: '',
     };
   },
@@ -103,6 +105,7 @@ export default {
           this.description = data.description;
           this.story = data.story;
           this.uses = data.uses;
+          this.endangered = data.endangered;
         })
         .then(() => {
           const plantImageUrl = `${process.env.API_HOST}/api/images/single/${this.$route.params.id}`;
