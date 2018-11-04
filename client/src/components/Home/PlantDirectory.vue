@@ -114,7 +114,7 @@ export default {
     // once mounted, we need to trigger the initial server data fetch
     const url = `${process.env.API_HOST}/api/count/plant`;
     this.$axios
-      .get(url)      
+      .get(url)
       .then((response) => {
         const { data } = response;
 
