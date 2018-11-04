@@ -2,6 +2,13 @@
   <q-page
     padding
   >
+    <q-btn
+      @click="goToPreviousPage"
+    >
+      Previous Page
+    </q-btn>
+    <br />
+    <br />
     <div
       class="row gutter-md"
     >
@@ -75,6 +82,9 @@ export default {
     };
   },
   methods: {
+    goToPreviousPage() {
+      this.$router.go(-1);
+    },
     fetchPlantDetails() {
       this.$axios
         .get(`http://localhost:3000/api/plant/${this.$route.params.id}`)
