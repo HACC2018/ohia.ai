@@ -39,14 +39,18 @@ export default {
     filePath: {
       type: String,
     },
+    latitude: {
+      type: Number,
+    },
+    longitude: {
+      type: Number,
+    },
   },
   data() {
     return {
       imageId: 0,
       imageSrc: '',
       predictions: [],
-      latitude: 0,
-      longitude: 0,
     };
   },
   mounted() {
@@ -81,8 +85,10 @@ export default {
       };
       const constructFormData = (blob) => {
         const formData = new FormData();
-        formData.append('latitude', view.latitude);
-        formData.append('longitude', view.longitude);
+        const latitude = typeof view.latitude === 'number' ? view.latitude : null;
+        const longitude = typeof view.longitude === 'number' ? view.longitude : null;
+        formData.append('latitude', latitude);
+        formData.append('longitude', longitude);
         formData.append('image', blob);
         return formData;
       };
