@@ -76,6 +76,9 @@ export default {
           message: 'Image upload failed',
           icon: 'report_problem',
         });
+        view.$router.push({
+          path: '/',
+        });
       };
       const convertImageToBlob = (result) => {
         // Create a blob based on the FileReader "result",
