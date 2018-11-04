@@ -7,8 +7,12 @@
 
       <q-card-separator />
 
-      <q-card-main>
+      <q-card-main v-if="story">
         {{ story }}
+      </q-card-main>
+
+      <q-card-main v-else>
+        No story provided.
       </q-card-main>
     </q-card>
   </div>

@@ -6,7 +6,7 @@
 
     <q-card-separator />
 
-    <q-card-main>
+    <q-card-main v-if="images.length > 0">
       <q-carousel
         color="white"
         arrows
@@ -35,6 +35,10 @@
         </q-carousel-control>
       </q-carousel>
     </q-card-main>
+
+    <q-card-main v-else>
+      No images taken.
+    </q-card-main>
   </q-card>
 </template>
 
@@ -55,8 +59,7 @@ export default {
       .get(`http://localhost:3000/api/images/${this.id}`)
       .then((response) => {
         const { data } = response;
-        console.log(data);
-        // eslint-ignore-next-line
+
         this.images = data.map(image => image.image_url);
       })
       .catch((err) => {
