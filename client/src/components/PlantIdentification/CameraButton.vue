@@ -60,13 +60,7 @@ export default {
           });
         },
         (err) => {
-          console.error('Error accessing the device camera:', err);
-          view.$q.notify({
-            color: 'negative',
-            position: 'top',
-            message: 'Could not access device camera',
-            icon: 'report_problem',
-          });
+          console.error('Error accessing the device camera or it was canceled:', err);
         },
         cameraOptions,
       );
