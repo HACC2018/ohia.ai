@@ -7,7 +7,10 @@
     "node": "10.12.0"
   },
   "scripts": {
+    "dev": "cd client && quasar dev",
+    "dev-ios": "cd client && quasar dev -m cordova -T ios -e iPhone-6",
     "dev-server": "nodemon server/index.js",
+    "prod-ios": "cd client && quasar build -m cordova -T ios",
     "db:migrate": "knex migrate:latest --knexfile server/knexfile.js",
     "db:rollback": "knex migrate:rollback --knexfile server/knexfile.js"
   },
