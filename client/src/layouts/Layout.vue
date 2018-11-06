@@ -6,6 +6,9 @@
         :glossy="$q.theme === 'ios'"
         :inverted="$q.theme === 'ios'"
       >
+        <router-link to="/" class="title">
+          <img src="statics/ohia.ai_logo.svg" class="logo" />
+        </router-link>
         <q-toolbar-title>
           <router-link to="/" class="title">ohia.ai</router-link>
           <div slot="subtitle">
@@ -65,6 +68,10 @@ export default {
 </script>
 
 <style>
+.logo {
+  width: 36px;
+  height: 36px;
+}
 .title {
   text-decoration: none;
   color: white;
