@@ -34,6 +34,17 @@
               icon: 'camera_alt',
             }"
           />
+          <CameraButton
+            mode="library"
+            v-bind:button="{
+              flat: true,
+              round: true,
+              dense: true,
+              class: 'button',
+              size: 'lg',
+              icon: 'image_search',
+            }"
+          />
           <q-btn flat round dense class="button"
             size="lg" icon="help" to="/help" />
         </div>
@@ -59,10 +70,9 @@ export default {
   color: white;
 }
 .button {
-  margin-right: 90px;
+  margin-right: 54px;
 }
 .nav-bar {
-  padding-left: 14px;
   display: flex;
   justify-content: space-around;
 }

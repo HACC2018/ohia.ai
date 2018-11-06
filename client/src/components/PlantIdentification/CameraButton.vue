@@ -14,6 +14,9 @@ export default {
     text: {
       type: String,
     },
+    mode: {
+      type: String,
+    },
     button: {
       type: Object,
     },
@@ -29,11 +32,14 @@ export default {
         //   cordova-plugin-camera/index.html#cameracameraoptions--object
         quality: 50, // 50% of full image quality
         destinationType: camera.DestinationType.NATIVE_URI, // Return native uri for iOS
-        sourceType: camera.PictureSourceType.CAMERA, // Use camera
+        sourceType: view.mode === 'library'
+          ? camera.PictureSourceType.PHOTOLIBRARY // Use library
+          : camera.PictureSourceType.CAMERA, // Use camera
         allowEdit: false, // Allow editing of image before selection
         encodingType: camera.EncodingType.JPEG, // Or PNG
+        mediaType: camera.MediaType.PICTURE,
         correctOrientation: true, // Allow for correction if device is rotated
-        saveToPhotoAlbum: false, // Do not save the image to user Photos
+        saveToPhotoAlbum: true, // Save the image to user Photos
         cameraDirection: camera.Direction.BACK, // Use the back-facing camera
       };
 
