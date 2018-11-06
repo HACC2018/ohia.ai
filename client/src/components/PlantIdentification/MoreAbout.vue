@@ -14,7 +14,12 @@
           v-bind:key="pred.id"
           class="col-lg-4"
         >
-          <plant-candidate :prediction="pred" />
+          <plant-candidate
+            :imageId="imageId"
+            :imageSrc="imageSrc"
+            :predictions="predictions"
+            :prediction="pred"
+          />
         </div>
       </template>
     </div>
@@ -30,6 +35,12 @@ export default {
     PlantCandidate,
   },
   props: {
+    imageId: {
+      type: Number,
+    },
+    imageSrc: {
+      type: String,
+    },
     predictions: {
       type: Array,
     },

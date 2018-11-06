@@ -28,10 +28,9 @@
     >
       <q-btn
         flat
-        :to="`/plant/${prediction.id}`"
+        @click="viewPlantDetails"
       >
         {{ prediction.className }}
-
         <q-icon
           name="keyboard_arrow_right"
         />
@@ -45,6 +44,15 @@
 export default {
   name: 'PlantCandidate',
   props: {
+    imageId: {
+      type: Number,
+    },
+    imageSrc: {
+      type: String,
+    },
+    predictions: {
+      type: Array,
+    },
     prediction: {
       type: Object,
     },
@@ -54,7 +62,15 @@ export default {
       return `${Math.round(this.prediction.probability * 100)}%`;
     },
     viewPlantDetails() {
-      // TODO
+      this.$router.push({
+        name: 'details',
+        params: {
+          id: this.prediction.id + '', // eslint-disable-line
+          imageId: this.imageId,
+          imageSrc: this.imageSrc,
+          predictions: this.predictions,
+        },
+      });
     },
   },
 };

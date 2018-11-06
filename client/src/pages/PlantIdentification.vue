@@ -19,14 +19,18 @@
         <div
           class="col-sm-12 col-md-8"
         >
-          <more-about :predictions="predictions" />
+          <more-about
+            :imageId="imageId"
+            :imageSrc="imageSrc"
+            :predictions="predictions"
+          />
         </div>
       </div>
     </div>
     <div v-else align="center" class="absolute-center loading-block">
       <q-spinner color="primary" :size="84" />
       <div class="loading-text">
-        <q-title padding>Uploading and identifying...</q-title>
+        <q-card-title padding>Uploading and identifying...</q-card-title>
       </div>
     </div>
   </q-page>
@@ -52,12 +56,21 @@ export default {
     longitude: {
       type: Number,
     },
+    imageIdProp: {
+      type: Number,
+    },
+    imageSrcProp: {
+      type: String,
+    },
+    predictionsProp: {
+      type: Array,
+    },
   },
   data() {
     return {
-      imageId: 0,
-      imageSrc: '',
-      predictions: [],
+      imageId: this.imageIdProp ? this.imageIdProp : 0,
+      imageSrc: this.imageSrcProp ? this.imageSrcProp : '',
+      predictions: this.predictionsProp ? this.predictionsProp : [],
     };
   },
   mounted() {
@@ -102,7 +115,6 @@ export default {
         const url = `${process.env.API_HOST}/images/upload`;
         view.$axios.post(url, formData)
           .then((res) => {
-            console.log('res.data', JSON.stringify(res.data.predictions));
             const fullPath = filePath
               .replace('assets-library://', 'cdvfile://localhost/assets-library/');
             view.imageId = res.data.id;
