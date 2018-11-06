@@ -30,13 +30,15 @@ export default {
         // Refer to:
         //   https://cordova.apache.org/docs/en/latest/reference/
         //   cordova-plugin-camera/index.html#cameracameraoptions--object
-        quality: 50, // 50% of full image quality
+        quality: 10, // 10% of full image quality
         destinationType: camera.DestinationType.NATIVE_URI, // Return native uri for iOS
         sourceType: view.mode === 'library'
           ? camera.PictureSourceType.PHOTOLIBRARY // Use library
           : camera.PictureSourceType.CAMERA, // Use camera
         allowEdit: false, // Allow editing of image before selection
         encodingType: camera.EncodingType.JPEG, // Or PNG
+        targetWidth: 256,
+        targetHeight: 341,
         mediaType: camera.MediaType.PICTURE,
         correctOrientation: true, // Allow for correction if device is rotated
         saveToPhotoAlbum: true, // Save the image to user Photos
