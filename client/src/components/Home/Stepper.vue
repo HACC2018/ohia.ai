@@ -20,7 +20,7 @@
           >
             <div>
               To begin helping us identify plant species
-              in Hawaii, begin by allowing this application
+              in Hawaiʻi, begin by allowing this application
               access to your phone. If you choose to allow
               access and upload an image to this app,
               data about the image will be collected and stored,
@@ -38,7 +38,7 @@
               In addition, we request that you allow us to view your
               location to locate where the plant is located. When you
               take the picture, your GPS location will be recorded to
-              help the State of Hawaii protect and track native plants and
+              help the State of Hawaiʻi protect and track native plants and
               possibly eradicate invasive plants.
             </div>
           </q-timeline-entry>

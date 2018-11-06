@@ -77,7 +77,7 @@
         />
 
         <p class="text">
-          Mahalo for helping to identify the flora of Hawaii.
+          Mahalo for helping to identify the flora of Hawaiʻi.
         </p>
 
         <q-btn
