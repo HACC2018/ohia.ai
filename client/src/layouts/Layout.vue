@@ -9,7 +9,7 @@
         <router-link to="/" class="title">
           <img src="statics/ohia.ai_logo.svg" class="logo" />
         </router-link>
-        <q-toolbar-title>
+        <q-toolbar-title class="title-block">
           <router-link to="/" class="title">ohia.ai</router-link>
           <div slot="subtitle">
             Helping to identify native and invasive plants in Hawaiʻi
@@ -71,6 +71,9 @@ export default {
 .logo {
   width: 36px;
   height: 36px;
+}
+.title-block {
+  padding-left: 8px;
 }
 .title {
   text-decoration: none;
