@@ -25,7 +25,9 @@ const routes = [
     children: [
       {
         path: '',
+        name: 'details',
         component: () => import('pages/PlantDetails.vue'),
+        props: true,
       },
     ],
   },

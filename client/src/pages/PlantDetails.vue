@@ -2,12 +2,22 @@
   <q-page
     padding
   >
-    <q-btn
-      @click="goToPreviousPage"
-    >
-      <q-icon name="keyboard_arrow_left" />
-      Previous Page
-    </q-btn>
+    <template v-if="imageSrc">
+      <q-btn
+        @click="viewPlantIdentification"
+      >
+        <q-icon name="keyboard_arrow_left" />
+        Results
+      </q-btn>
+    </template>
+    <template v-else>
+      <q-btn
+        @click="goToPreviousPage"
+      >
+        <q-icon name="keyboard_arrow_left" />
+        Previous Page
+      </q-btn>
+    </template>
     <br />
     <br />
     <div
@@ -67,6 +77,17 @@ export default {
     PlantUses,
     PlantUploads,
   },
+  props: {
+    imageId: {
+      type: Number,
+    },
+    imageSrc: {
+      type: String,
+    },
+    predictions: {
+      type: Array,
+    },
+  },
   data() {
     return {
       fetching: true,
@@ -87,6 +108,16 @@ export default {
   methods: {
     goToPreviousPage() {
       this.$router.go(-1);
+    },
+    viewPlantIdentification() {
+      this.$router.push({
+        name: 'identify',
+        params: {
+          imageIdProp: this.imageId,
+          imageSrcProp: this.imageSrc,
+          predictionsProp: this.predictions,
+        },
+      });
     },
     fetchPlantDetails() {
       const plantUrl = `${process.env.API_HOST}/api/plant/${this.$route.params.id}`;

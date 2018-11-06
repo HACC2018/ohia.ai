@@ -1,5 +1,7 @@
 # Project-specific
 server/seeds/data
+modules.tar.gz
+weights.tar.gz
 
 # tensorflow models
 **/group[0-9]*-shard[0-9]*of[0-9]*
