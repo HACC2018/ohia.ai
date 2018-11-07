@@ -6,6 +6,8 @@ PlantNet 264,795 images 21.0 GB  436 plants
 
 
 
+
+
 |        model | filtered |  augmentation | top 1 accuracy | top 3 accuracy | top 5 accuracy |
 | ------------ | -------- | ------------- | -------------- | -------------- | -------------- |
 |  mobilenetv1 |       No |            No |       0.559082 |       0.788574 |       0.863770 |
