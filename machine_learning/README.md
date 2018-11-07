@@ -78,7 +78,7 @@ Many of the scraped images are of non-plants.  We filtered out the non-plant ima
 In machine learning, "training" referes to the process of learning from data.  
 
 ```
-python train.py --help
+>>> python train.py --help
 Usage: train.py [OPTIONS]
 
 Options:
