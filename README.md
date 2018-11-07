@@ -95,17 +95,7 @@ If you would rather follow the complete instructions and deploy to an iOS device
 
 ## Data Collection
 
-Machine learning involves learning from data, thus data collection is an integral part of our application.  The following is summary of the data that our team collected.
-
-| Source | Preprocessing | Image Count | Number of Classes (Plants) |
-| -------| ------------- |----------------- | -------------------------- |
-| Scraped | None | 21,070 | 42 |
-| Scraped | Removed non-plant images | 17,263 | 42 |
-| PlantNet | None | 264,795 | 9,968 |
-| PlantNet | Removed species with fewer than 100 images | 81,834 | 436 |
-| ImageNet | None | 1,281,167 | 1000 |
-
-For more details see [ohia.ai/data_collection](https://github.com/HACC2018/ohia.ai/tree/master/data_collection).
+Machine learning involves learning from data, thus data collection is an integral part of our application.  For more details see [ohia.ai/data_collection](https://github.com/HACC2018/ohia.ai/tree/master/data_collection).
 
 ## Machine Learning
 

@@ -1,16 +1,5 @@
 # ohia.ai Data Collection
 
-## Table of Contents
-
-* [Introduction](#introduction)
-* [Requirements](#requirements)
-* [Scraping](#scraping)
-* [Datasets](#datasets)
-   * [ImageNet](#imagenet)
-   * [PlantNet](#plantnet)
-
-## Introduction
-
 Machine learning involves learning from data, thus data collection is an integral part of our application.  Here is summary of the data that our team collected.
 
 | Source | Preprocessing | Number of Images | Number of Classes (Plants) |
@@ -20,6 +9,15 @@ Machine learning involves learning from data, thus data collection is an integra
 | PlantNet | None | 264,795 | 9,968 |
 | PlantNet | Removed species with fewer than 100 images | 81,834 | 436 |
 | ImageNet | None | 1,281,167 | 1000 |
+
+## Table of Contents
+
+* [Requirements](#requirements)
+* [Scraping](#scraping)
+* [Datasets](#datasets)
+   * [ImageNet](#imagenet)
+   * [PlantNet](#plantnet)
+
 
 ## Requirements
 

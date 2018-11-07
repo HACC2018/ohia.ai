@@ -1,8 +1,19 @@
 # ohia.ai Machine Learning
 
+Behind the scenes, ohia.ai is powered by machine learning and AI.  Our team utilizes modern deep learning techniques and large open source datasets to achieve highly accurate classification on a wide range of flora found throughout the Hawaiian Islands.  Here is a summary of our results
+
+|  Architecture | Pretraining | Augmentation | Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy |
+| ------------- | ----------- | ------------ | -------------- | -------------- | -------------- |
+|  MobileNet V1 |    ImageNet |           No |         0.5436 |         0.7618 |         0.8396 |
+|  MobileNet V1 |    ImageNet |          Yes |         0.7394 |         0.8856 |     **0.9257** |
+|  MobileNet V1 |    PlantNet |          Yes |         0.7376 |     **0.8874** |         0.9251 |
+|  MobileNet V2 |    PlantNet |          Yes |         0.7453 |         0.8850 |         0.9240 |
+| NASNet Mobile |    PlantNet |          Yes |     **0.7547** |         0.8774 |         0.9204 |
+
+The best model (with respect to Top 3 Accuracy) consisted of a MobileNetV1 architecture, pretraining on PlantNet, and data augmentation.
+
 ## Table of Contents
 
-* [Introduction](#introduction)
 * [Requirements](#requirements)
 * [Preprocessing](#preprocessing)
 * [Datasets](#datasets)
@@ -10,11 +21,7 @@
    * [Data Augmentation](#data-augmentation)
    * [Model Architectures](#model-architectures)
    * [Transfer Learning](#transfer-learning)
-* [Results](#results)
-
-## Introduction
-
-Behind the scenes, ohia.ai is powered by machine learning and AI.  Our team utilizes modern deep learning techniques and large open source datasets to achieve highly accurate classification on a wide range of flora found throughout the Hawaiian Islands.
+* [Validation](#validation)
 
 
 ## Requirements
@@ -111,23 +118,12 @@ Transfer learning allowed our team to reuse features learned by neural networks.
 
 The `--training_type` parameter defines the stage of training. 
 
-## Results
+## Validation
 
-We validate using a 10% validation set.  The `--seed` parameter specifies the random seed used in the training/validation split.  The metrics that we were concerned with were the
+We validate our results using a 10% validation set.  The `--seed` parameter specifies the random seed used in the training/validation split.  The metrics that we were concerned with were the
 
 * Top 1 Accuracy - The fraction of time the correct answer equals the top prediction.
 * Top 3 Accuracy - The fraction of time the correct answer was in the top 3 predictions.
 * Top 5 Accuracy - The fraction of time the correct answer was in the top 5 predictions.
-
-
-|  Architecture | Pretraining | Augmentation | Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy |
-| ------------- | ----------- | ------------ | -------------- | -------------- | -------------- |
-|  MobileNet V1 |    ImageNet |           No |         0.5436 |         0.7618 |         0.8396 |
-|  MobileNet V1 |    ImageNet |          Yes |         0.7394 |         0.8856 |     **0.9257** |
-|  MobileNet V1 |    PlantNet |          Yes |         0.7376 |     **0.8874** |         0.9251 |
-|  MobileNet V2 |    PlantNet |          Yes |         0.7453 |         0.8850 |         0.9240 |
-| NASNet Mobile |    PlantNet |          Yes |     **0.7547** |         0.8774 |         0.9204 |
-
-The best model consisted of a MobileNetV1 architecture, pretraining on PlantNet, and data augmentation.
 
  
