@@ -27,6 +27,7 @@ To run our script you will need:
 * [Keras](https://keras.io/) - High level API for neural network design and training
 * [PIL](https://pillow.readthedocs.io/en/5.3.x/) - Image processing tools
 * [Click](https://click.palletsprojects.com/en/7.x/) - CLI tools
+
 If these requirements make it impossible for you to use our code, please open an issue and we will try to accommodate you.
 
 
@@ -78,7 +79,7 @@ Many of the scraped images are of non-plants.  We filtered out the non-plant ima
 In machine learning, "training" referes to the process of learning from data.  
 
 ```
->>> python train.py --help
+python train.py --help
 Usage: train.py [OPTIONS]
 
 Options:
@@ -86,10 +87,10 @@ Options:
   --training_type INTEGER  Integer encoding: 0=fine-tune, 1=pretrain, 2=load pretrained then fine-tune.
   --seed INTEGER           Random seed.
   --batch_size INTEGER     Number of observations needed before updating weights.
-  --augmentation TEXT      If true then perform data augmentation.
+  --augmentation TEXT      Boolean flag.  If true then perform data augmentation.
   --gpu INTEGER            Which gpu to use.
   --n_thread INTEGER       Number of threads to use.
-  --save_model TEXT        If true then save the model in a tfjs format.
+  --save_model TEXT        Boolean flag.  If true then save the model in a tfjs format.
   --help                   Show this message and exit.
 ```
 
@@ -99,12 +100,13 @@ Options:
 Data augmentation is a technique used to create more realistic data for our models to train on.  Data augmentation is a common technique used to increase the performance of neural neworks [2]. Our team leverages the following data augmentation techniques:
 
 * Random crops (the center of the crop has a triangular distribution)
-* Random brightness transformations
 * Horizontal flips
+* Random brightness transformations
+
 
 The `--augmentation` parameter is a binary flag that turns on/off data augmentation.
 
-### Model Architechures
+### Model Architectures
 
 We used/compared the following state-of-the-art lightweight neural network architechures:
 
@@ -126,13 +128,23 @@ Transfer learning [3] allowed our team to reuse features learned by neural netwo
 The `--training_type` parameter defines the stage of training. 
 
 ## Results
-|            model | filtered |  augmentation | top 1 accuracy | top 3 accuracy | top 5 accuracy |
-| ---------------- | -------- | ------------- | -------------- | -------------- | -------------- |
-| mobilenetv1-1.00 |       No |            No |         0.6450 |         0.8559 |         0.9219 |
-| mobilenetv2-1.00 |       No |            No |         0.5521 |         0.7786 |         0.8698 |
-| mobilenetv2-1.30 |       No |            No |         0.5842 |         0.8290 |         0.8993 |
-| mobilenetv2-1.40 |       No |            No |         0.6068 |         0.8490 |         0.9149 |
-|     nasnetmobile |       No |            No |         0.5590 |         0.8056 |         0.8854 |
+
+We validate using a 10% validation set.  The metrics that we were concerened with were the
+
+* top 1 accuracy - the fraction of time the correct answer equals the top prediction
+* top 3 accuracy - the fraction of time the correct answer was in the top 3 predictions
+* top 5 accuracy - the fraction of time the correct answer was in the top 5 predictions
+
+
+|.  architechture |  pretraining |  augmentation | top 1 accuracy | top 3 accuracy | top 5 accuracy |
+| --------------- | ------------ | ------------- | -------------- | -------------- | -------------- |
+|     mobilenetv1 |     ImageNet |            No |         0.5521 |         0.7786 |         0.8698 |
+|     mobilenetv1 |     ImageNet |           yes |         0.5842 |         0.8290 |         0.8993 |
+| **mobilenetv1** | **PlantNet** |       **Yes** |     **0.6450** |     **0.8559** |     **0.9219** |
+|     mobilenetv2 |     PlantNet |           Yes |         0.6068 |         0.8490 |         0.9149 |
+|    nasnetmobile |     PlantNet |           Yes |         0.5590 |         0.8056 |         0.8854 |
+
+The best model consisted of a MobileNetV1 architechture, pretraining on PlantNet, and data augmentation.
 
 
 ## References
