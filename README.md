@@ -2,6 +2,15 @@
 
 An open Hawaiian indigenous plant identification and aggregation application. Developed for the 2018 Hawaii Annual Code Challenge.
 
+## Table of Contents
+
+* [Overview](#overview)
+* [Quick Start Application](#quick-start-application)
+* [Complete Application Setup](#complete-application-setup)
+* [Data Collection](#data-collection)
+* [Machine Learning](#machine-learning)
+* [Results](#results)
+
 ## Overview
 
 To get started, first read the introductory text under **Quick Start Application**. Or read the **Data Collection**, **Machine Learning**, and **Results** sections of this README. 
@@ -16,7 +25,7 @@ When ready for more information about each step of the process, visit any of the
 
 Our app was built for the iPhone 6 running on iOS version 12. However, deploying the app to an iPhone device is a long process, especially if your Mac is not up-to-date with the latest OS or Xcode version. Therefore, we recommend these quick start steps for getting up-and-running quickly on the browser. Note, however, that the main feature of the app, plant identification, will not work because the native iOS camera cannot run on the browser.
 
-If you would rather follow the complete instructions and deploy to an iOS device, scroll to Complete Application Setup (TODO) below.
+If you would rather follow the complete instructions and deploy to an iOS device, follow the steps under [Complete Application Setup](#complete-application-setup).
 
 ### Getting Started
 1. Clone this repository by running the following command in a terminal: `git clone git@github.com:HACC2018/ohia.ai.git`.
