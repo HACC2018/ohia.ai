@@ -2,12 +2,29 @@
 
 An open Hawaiian indigenous plant identification and aggregation application. Developed for the 2018 Hawaii Annual Code Challenge.
 
+## Overview
+
+To get started, first read the introductory text under **Quick Start Application**. Or read the **Data Collection**, **Machine Learning**, and **Results** sections of this README. 
+
+When ready for more information about each step of the process, visit any of the following:
+- [API Server](https://github.com/HACC2018/ohia.ai/tree/master/server)
+- [App Client](https://github.com/HACC2018/ohia.ai/tree/master/client)
+- [Data Collection](https://github.com/HACC2018/ohia.ai/tree/master/data_collection)
+- [Machine Learning](https://github.com/HACC2018/ohia.ai/tree/master/machine_learning)
+
 ## Quick Start Application
 
-Our app was built for the iPhone 6 running on iOS version 12. However, deploying the app to an iPhone device is a long process, especially if your Mac is not up-to-date with the latest OS or Xcode version. Therefore, we recommend these quick start steps for getting up-and-running quickly.
+Our app was built for the iPhone 6 running on iOS version 12. However, deploying the app to an iPhone device is a long process, especially if your Mac is not up-to-date with the latest OS or Xcode version. Therefore, we recommend these quick start steps for getting up-and-running quickly on the browser. Note, however, that the main feature of the app, plant identification, will not work because the native iOS camera cannot run on the browser.
+
+If you would rather follow the complete instructions and deploy to an iOS device, scroll to Complete Application Setup (TODO) below.
+
+### Getting Started
+1. Clone this repository by running the following command in a terminal: `git clone git@github.com:HACC2018/ohia.ai.git`.
+1. Change into the ohia.ai project directory: `cd ohia.ai`.
+1. When running anything related to the client or server, we require Python 2.7 to be installed, since that is the version that the [tfjs-node](https://github.com/tensorflow/tfjs-node) package supports. Switch your terminal to use Python 2.7 (more information [here](https://github.com/HACC2018/ohia.ai/tree/master/client)).
+1. Switch your terminal to use Node 10.12.0 (more information [here](https://github.com/HACC2018/ohia.ai/tree/master/client)).
 
 ### Install server dependencies and run the server
-1. If you haven't already, switch your terminal to [use Python 2.7](https://github.com/HACC2018/ohia.ai/tree/master/client) and [Node 10.12.0](https://github.com/HACC2018/ohia.ai/tree/master/client).
 1. From the project root directory, run `npm install`. Among other items, you should see "Downloading libtensorflow" and "Building TensorFlow Node.js bindings" run without error in your output.
 1. Create a `.env` file in the project root by copying the template in `.env.sample`.
 1. Source your environment by running: `source .env`.
@@ -55,19 +72,17 @@ Our app was built for the iPhone 6 running on iOS version 12. However, deploying
 1. Visit http://localhost:8080 to view the app.
 1. The app is [best viewed by enabling the Chrome device toolbar and setting the device to iPhone 6/7/8](https://s3-us-west-2.amazonaws.com/ohia.ai/chrome_device_toolbar.png).
 
-## Database
+## Complete Application Setup
 
-### Seed Plant Data
-1. Download a copy of the `plant_meta_vX.csv` from our Google Drive and delete columns after the `updated_at` column.
-    1. File > Download as > Comma-separated values
-1. Connect to the database and enter the password when prompted:
-    ```
-    psql -d PG_NAME -U PG_USERNAME -h PG_HOST -p PG_PORT
-    ```
-1. Run the following command to seed the `plants` table:
-    ```
-    \copy plants FROM '/absolute/path/to/plant_meta_vX.csv' delimiter ',' csv header
-    ```
+### Getting Started
+1. Clone this repository by running the following command in a terminal: `git clone git@github.com:HACC2018/ohia.ai.git`.
+1. Change into the ohia.ai project directory: `cd ohia.ai`.
+1. When running anything related to the client or server, we require Python 2.7 to be installed, since that is the version that the [tfjs-node](https://github.com/tensorflow/tfjs-node) package supports. Switch your terminal to use Python 2.7 (more information [here](https://github.com/HACC2018/ohia.ai/tree/master/client)).
+1. Switch your terminal to use Node 10.12.0 (more information [here](https://github.com/HACC2018/ohia.ai/tree/master/client)).
+
+### Installation and Execution
+1. Follow the instructions on the [API Server](https://github.com/HACC2018/ohia.ai/tree/master/server) README.
+1. Follow the instructions on the [App Client](https://github.com/HACC2018/ohia.ai/tree/master/client) README.
 
 ## Data Collection
 
