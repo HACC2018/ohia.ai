@@ -5,6 +5,8 @@ This README has multiple steps between installation and execution instructions. 
 1. Or you can follow, in order as written, *only* the **required** and **browser** steps if you would like to run the client on your browser.
 1. Lastly, you can choose the second option for now, and then later on, you can install the **iOS**-specific steps, in order as written.
 
+Run the app on your iOS device (iOS)
+
 ## Table of Contents
 
 * [Requirements](#requirements)
@@ -12,6 +14,7 @@ This README has multiple steps between installation and execution instructions. 
     * [Install Python](#install-python-required)
     * [Install Node.js](#install-nodejs-required)
 * [Execution](#execution)
+    * [Run the app on your iOS device (iOS)](#run-the-app-on-your-ios-device-ios)
 * [New Project Setup](#new-project-setup)
 * [Troubleshooting](#troubleshooting)
 
