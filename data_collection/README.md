@@ -21,9 +21,7 @@ Machine learning involves learning from data, thus data collection is an integra
 
 ## Requirements
 
-To run our R scripts you will need:
-
-* R version >= 3.5.1
+To run our R scripts you will need `R version >= 3.5.1` and the following packages:
 * [data.table](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html) - High performance data frames
 * [Tidyverse](https://www.tidyverse.org/l) - A collection of useful R packages
 * [rvest](https://github.com/hadley/rvest) - Web scraping utilities
@@ -31,10 +29,8 @@ To run our R scripts you will need:
 * [xml2](https://github.com/r-lib/xml2) - XML tools
 * [Rselenium](https://ropensci.org/tutorials/rselenium_tutorial/) - R language bindings for Selenium WebDriver
 
-To run our python scripts you will need:
-
-* python version >= 3.6
-* [pandas](https://pandas.pydata.org/) - Data frames for python
+To run our python scripts you will need `python version >= 3.6` and the following packages:
+* [pandas](https://pandas.pydata.org/) - Open source high-performance easy-to-use data structures and data analysis tools
 * [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - Framework for web scraping and parsing HTML and XML files
 * [selenium](https://pypi.org/project/selenium/) - Python language bindings for Selenium WebDriver
 * [json](https://docs.python.org/3/library/json.html) - Utilities for working with JSON files
@@ -44,20 +40,9 @@ If these requirements make it impossible for you to use our code, please open an
 
 ## Scraping
 
-Our team scraped data from multiple sources including but not limited:
+Our team scraped data from multiple sources including but not limited to : [Starr Environmental](http://starrenvironmental.com/images/), [Wild Life of Hawaii](https://wildlifeofhawaii.com/flowers/category/native-status/native-plants/), [Hawaiian Ethnobotony Online Database](http://data.bishopmuseum.org/ethnobotanydb/ethnobotany.php?b=list&amp;o=2), [Google Images](https://www.google.com/imghp?hl=en&tab=wi&authuser=0), [Instagram](https://www.instagram.com/?hl=en), [Flickr](https://www.flickr.com/), [Native Plants Hawaii](http://nativeplants.hawaii.edu/), [Wikicommons](https://commons.wikimedia.org/wiki/Main_Page), , [Canoe Plants of Ancient Hawaii](http://www.canoeplants.com/contents.html).
 
-* [Starr Environmental](http://starrenvironmental.com/images/)
-* [Wild Life of Hawaii](https://wildlifeofhawaii.com/flowers/category/native-status/native-plants/)
-* [Hawaiian Ethnobotony Online Database](http://data.bishopmuseum.org/ethnobotanydb/ethnobotany.php?b=list&amp;o=2)
-* [Canoe Plants of Ancient Hawaii](http://www.canoeplants.com/contents.html)
-* [Native Plants Hawaii](http://nativeplants.hawaii.edu/)
-
-* [Wikicommons](https://commons.wikimedia.org/wiki/Main_Page)
-* [Instagram](https://www.instagram.com/?hl=en)
-* [Flickr](https://www.flickr.com/)
-* [Google Images](https://www.google.com/imghp?hl=en&tab=wi&authuser=0)
-
-The data collected was filtered by license.  Automated collection was separated by plant genus, as it was mentioned some professionals may have difficulty in identifying species under non-flowering conditions. In addition to native plants, we collected images for common plants in the islands for general use. We used Rvest, Selenium, and a multitude of python libraries in an AWS EC2 instance to collect images. Resulting image dataset was noisy (including non-plant images). A relatively clean final dataset was ensured by manual duration by ohia.ai members.
+The data collected was filtered by license.  Our automated collection was separated by plant genus, as it was mentioned some professionals may have difficulty in identifying species under non-flowering conditions. In addition to native plants, we collected images for common plants in the islands for general use. We ran our scraping scripts locally and on an AWS EC2 instance.  The resulting image dataset was noisy (including non-plant images). A relatively clean final dataset was ensured by manual duration by ohia.ai members.
 
 
 ## Datasets
