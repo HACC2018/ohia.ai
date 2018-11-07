@@ -9,6 +9,7 @@
    * [Model Architectures](#model-architectures)
    * [Transfer Learning](#transfer-learning)
 * [Results](#results)
+* [References](#references)
 
 
 ## Introduction
