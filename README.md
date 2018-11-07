@@ -39,7 +39,7 @@ Behind the scenes, ohia.ai is powered by machine learning and AI.  Our team util
 
 
 |       Plant Name |     Top 1 Accuracy |     Top 3 Accuracy |     Top 5 Accuracy | Image Count |
-| --- | --- | --  | --- | --- |
+| :--- | ---: | ---:  | ---: | ---: |
 |         [Abutilon](https://github.com/HACC2018/ohia.ai/tree/master/machine_learning/results/Abutilon)         |  80.55% |  83.33% |  88.88% |   374 |
 |      [Achyranthes](https://github.com/HACC2018/ohia.ai/tree/master/machine_learning/results/Achyranthes)      |  53.12% |  65.62% |  78.12% |   258 |
 |        [Aleurites](https://github.com/HACC2018/ohia.ai/tree/master/machine_learning/results/Aleurites)        |  46.66% |  80.00% |  86.66% |   176 |
@@ -47,7 +47,7 @@ Behind the scenes, ohia.ai is powered by machine learning and AI.  Our team util
 |        [Anthurium](https://github.com/HACC2018/ohia.ai/tree/master/machine_learning/results/Anthurium)        |  73.91% |  97.10% |  97.10% |   758 |
 |       [Artocarpus](https://github.com/HACC2018/ohia.ai/tree/master/machine_learning/results/Artocarpus)       |  73.07% |  88.46% |  88.46% |   303 |
 |          [Bonamia](https://github.com/HACC2018/ohia.ai/tree/master/machine_learning/results/Bonamia)          |  66.66% |  66.66% |  66.66% |    44 |
-|    [Bougainvillea](https://github.com/HACC2018/ohia.ai/tree/master/machine_learning/results/Bougainvillea)    |  96.36% |  00.00% | 100.00% |   663 |
+|    [Bougainvillea](https://github.com/HACC2018/ohia.ai/tree/master/machine_learning/results/Bougainvillea)    |  96.36% | 100.00% | 100.00% |   663 |
 |        [Canavalia](https://github.com/HACC2018/ohia.ai/tree/master/machine_learning/results/Canavalia)        |  62.50% |  79.16% |  83.33% |   212 |
 |     [Chrysodracon](https://github.com/HACC2018/ohia.ai/tree/master/machine_learning/results/Chrysodracon)     |  63.63% |  81.81% |  81.81% |   276 |
 |            [Cocos](https://github.com/HACC2018/ohia.ai/tree/master/machine_learning/results/Cocos)            |  83.87% |  90.32% |  93.54% |   311 |
