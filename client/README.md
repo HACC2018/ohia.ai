@@ -40,7 +40,7 @@ This README has a lot of steps between installation and running instructions. Th
 1. Verify that Cordova is set up properly: `cordova requirements`.
 
 ### Install the client project dependencies (required)
-1. In the `/client` folder, run `npm install` (or you may use [yarn](https://yarnpkg.com/en/docs/install#windows-stable) instead).
+1. From the project root directory, install client dependencies: `npm run install:client` (or you may use [yarn](https://yarnpkg.com/en/docs/install#windows-stable) instead).
 
 ### Run the app in the browser (browser)
 1. See **Running: Run the app in the browser** below.
@@ -53,18 +53,15 @@ This README has a lot of steps between installation and running instructions. Th
 
 ## Running
 
-### Run the client Quasar project in the browser (browser)
-1. Navigate to the `/client` folder.
+### Run the app in the browser (browser)
 1. Run `npm run dev` to view the app in a browser.
 
 ### Run the app in the iOS simulator (iOS)
 
 #### Development
-1. Navigate to the `/client` folder.
 1. Run the following command to dev in the iOS simulator: `npm run dev-ios`. Make changes to a file and see your changes appear instantaneously in the simulator.
 
 #### Production
-1. Navigate to the `/client` folder.
 1. Run the following command to create a distribution for iOS: `npm run prod-ios`.
 1. In the terminal (or you can manually open the file instead), open the Xcode project workspace by running:
     ```
@@ -73,7 +70,13 @@ This README has a lot of steps between installation and running instructions. Th
 1. In Xcode, with the project workspace now open, select a device in the top left-hand corner, such as the `iPhone 6`, and then click the play button icon to run the project in the simulator.
 
 ### Run the app on your iOS device (iOS)
-1. TODO
+1. Run the following command to create a distribution for iOS: `npm run prod-ios`.
+1. In the terminal (or you can manually open the file instead), open the Xcode project workspace by running:
+    ```
+    open ./client/src-cordova/platforms/ios/ohia.ai.xcworkspace/
+    ```
+1. Connect your phone TODO
+1. In Xcode, with the project workspace now open, select a device in the top left-hand corner, such as the `iPhone 6`, and then click the play button icon to run the project in the simulator.
 
 ## New Project Setup
 
