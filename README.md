@@ -2,6 +2,59 @@
 
 An open Hawaiian indigenous plant identification and aggregation application. Developed for the 2018 Hawaii Annual Code Challenge.
 
+## Quick Start Application
+
+Our app was built for the iPhone 6 running on iOS version 12. However, deploying the app to an iPhone device is a long process, especially if your Mac is not up-to-date with the latest OS or Xcode version. Therefore, we recommend these quick start steps for getting up-and-running quickly.
+
+### Install server dependencies and run the server
+1. If you haven't already, switch your terminal to [use Python 2.7](https://github.com/HACC2018/ohia.ai/tree/master/client) and [Node 10.12.0](https://github.com/HACC2018/ohia.ai/tree/master/client).
+1. From the project root directory, run `npm install`. Among other items, you should see "Downloading libtensorflow" and "Building TensorFlow Node.js bindings" run without error in your output.
+1. Create a `.env` file in the project root by copying the template in `.env.sample`.
+1. Source your environment by running: `source .env`.
+1. You should now see these variables in your environment by running `env`.
+1. Run the server: `npm run dev-server`. You should see the following output:
+    ```
+    ▶ npm run dev-server
+
+    > ohia.ai@0.0.1 dev-server /path/to/ohia.ai
+    > nodemon server/index.js
+
+    [nodemon] 1.18.4
+    [nodemon] to restart at any time, enter `rs`
+    [nodemon] watching: *.*
+    [nodemon] starting `node server/index.js`
+    2018-11-07 07:25:31.386112: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.2 AVX AVX2 FMA
+    Server for ohia.ai listening on port 3000
+    ```
+
+### Install Vue.js and Quasar and run the client in a browser
+1. Open another terminal window and switch to Python 2.7 and Node 10.12.0.
+1. Source the environment: `source .env`.
+1. Install Vue CLI: `npm install -g @vue/cli`.
+1. Install Vue CLI addon: `npm install -g @vue/cli-init`.
+1. Install Quasar CLI: `npm install -g quasar-cli`.
+1. From the project root directory, install client dependencies: `npm run install:client`.
+1. Run `npm run dev` to view the app in a browser. You should see the following output:
+    ```
+    ▶ npm run install:client
+
+    > ohia.ai@0.0.1 install:client ~/ohia.ai
+    > cd client && npm install
+
+
+    > fsevents@1.2.4 install ~/ohia.ai/client/node_modules/fsevents
+    > node install
+
+    [fsevents] Success: "~/ohia.ai/client/node_modules/fsevents/lib/binding/Release/node-v64-darwin-x64/fse.node" already installed
+    Pass --update-binary to reinstall or --build-from-source to recompile
+    added 1333 packages from 612 contributors and audited 16152 packages in 23.649s
+    found 0 vulnerabilities
+
+    (python2)
+    ```
+1. Visit http://localhost:8080 to view the app.
+1. The app is [best viewed by enabling the Chrome device toolbar and setting the device to iPhone 6/7/8](https://s3-us-west-2.amazonaws.com/ohia.ai/chrome_device_toolbar.png).
+
 ## Database
 
 ### Seed Plant Data
@@ -15,7 +68,6 @@ An open Hawaiian indigenous plant identification and aggregation application. De
     ```
     \copy plants FROM '/absolute/path/to/plant_meta_vX.csv' delimiter ',' csv header
     ```
-
 
 ## Data Collection
 
@@ -36,7 +88,6 @@ For more details see [ohia.ai/data_collection](https://github.com/HACC2018/ohia.
 Behind the scenes, ohia.ai is powered by machine learning and AI.  Our team utilizes modern deep learning techniques and large open source datasets to achieve highly accurate classification on a wide range of flora found throughout the Hawaiian Islands. For more details see [ohia.ai/machine_learning](https://github.com/HACC2018/ohia.ai/tree/master/machine_learning).
 
 ## Results
-
 
 |       Plant Name |     Top 1 Accuracy |     Top 3 Accuracy |     Top 5 Accuracy | Image Count |
 | :--- | ---: | ---:  | ---: | ---: |
