@@ -21,8 +21,8 @@ If you would rather follow the complete instructions and deploy to an iOS device
 ### Getting Started
 1. Clone this repository by running the following command in a terminal: `git clone git@github.com:HACC2018/ohia.ai.git`.
 1. Change into the ohia.ai project directory: `cd ohia.ai`.
-1. When running anything related to the client or server, we require Python 2.7 to be installed, since that is the version that the [tfjs-node](https://github.com/tensorflow/tfjs-node) package supports. Switch your terminal to use Python 2.7 (more information [here](https://github.com/HACC2018/ohia.ai/tree/master/client)).
-1. Switch your terminal to use Node 10.12.0 (more information [here](https://github.com/HACC2018/ohia.ai/tree/master/client)).
+1. When running anything related to the client or server, we require Python 2.7 to be installed, since that is the version that the [tfjs-node](https://github.com/tensorflow/tfjs-node) package supports. Switch your terminal to use Python 2.7 (more information [here](https://github.com/HACC2018/ohia.ai/blob/docs/update-dev-docs/client/README.md#install-python-required)).
+1. Switch your terminal to use Node 10.12.0 (more information [here](https://github.com/HACC2018/ohia.ai/blob/docs/update-dev-docs/client/README.md#install-nodejs-required)).
 
 ### Install server dependencies and run the server
 1. From the project root directory, run `npm install`. Among other items, you should see "Downloading libtensorflow" and "Building TensorFlow Node.js bindings" run without error in your output.
@@ -77,8 +77,8 @@ If you would rather follow the complete instructions and deploy to an iOS device
 ### Getting Started
 1. Clone this repository by running the following command in a terminal: `git clone git@github.com:HACC2018/ohia.ai.git`.
 1. Change into the ohia.ai project directory: `cd ohia.ai`.
-1. When running anything related to the client or server, we require Python 2.7 to be installed, since that is the version that the [tfjs-node](https://github.com/tensorflow/tfjs-node) package supports. Switch your terminal to use Python 2.7 (more information [here](https://github.com/HACC2018/ohia.ai/tree/master/client)).
-1. Switch your terminal to use Node 10.12.0 (more information [here](https://github.com/HACC2018/ohia.ai/tree/master/client)).
+1. When running anything related to the client or server, we require Python 2.7 to be installed, since that is the version that the [tfjs-node](https://github.com/tensorflow/tfjs-node) package supports. Switch your terminal to use Python 2.7 (more information [here](https://github.com/HACC2018/ohia.ai/blob/docs/update-dev-docs/client/README.md#install-python-required)).
+1. Switch your terminal to use Node 10.12.0 (more information [here](https://github.com/HACC2018/ohia.ai/blob/docs/update-dev-docs/client/README.md#install-nodejs-required)).
 
 ### Installation and Execution
 1. Follow the instructions on the [API Server](https://github.com/HACC2018/ohia.ai/tree/master/server) README.
