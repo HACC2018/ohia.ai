@@ -14,7 +14,7 @@
 
 ## Introduction
 
-Behind the scenes, ohia.ai is powered by machine learning and AI.  Out team utilizes modern deep learning techniques and large open source datasets to achieve highly accurate classification on a wide range of flora found throughout the Hawaiiain Islands.
+Behind the scenes, ohia.ai is powered by machine learning and AI.  Our team utilizes modern deep learning techniques and large open source datasets to achieve highly accurate classification on a wide range of flora found throughout the Hawaiiain Islands.
 
 
 ## Requirements
@@ -71,9 +71,7 @@ The `Scraped` dataset consists of images from:
 * [Canoe Plants of Ancient Hawaii](http://www.canoeplants.com/contents.html)
 * [Native Plants Hawaii](http://nativeplants.hawaii.edu/)
 
-Many of the scraped images are of non-plants.  We filtered out the non-plant images before training our models.  
-
-See `data_collection` for more details.
+Many of the scraped images are of non-plants.  We filtered out the non-plant images before training our models.  See our data_collection dir for more details.
 
 
 ## Training
@@ -98,21 +96,35 @@ Options:
 
 ### Data Augmentation
 
-Data augmentation is a technique used to create more realistic data for our models to train on.  Our team leverages the following data augmentation techniques:
+Data augmentation is a technique used to create more realistic data for our models to train on.  Data augmentation is a common technique used to increase the performance of neural neworks [2]. Our team leverages the following data augmentation techniques:
 
 * Random crops (the center of the crop has a triangular distribution)
 * Horizontal flips
 * Random brightness transformations
 
+
+The `--augmentation` parameter is a binary flag that turns on/off data augmentation.
+
 ### Model Architechures
 
+We used/compared the following state-of-the-art lightweight neural network architechures:
+
+Architecture | Research Paper
+-- | -- 
+[MobileNet](https://keras.io/applications/#mobilenet) | [MobileNet: Efficient Convolutional Neural Networks for Mobile Vision Applications](https://arxiv.org/pdf/1704.04861.pdf)
+[MobileNetV2](https://keras.io/applications/#mobilenetv2) | [MobileNetV2: Inverted Residuals and Linear Bottlenecks](https://arxiv.org/abs/1801.04381)
+[NASNetMobile](https://keras.io/applications/#nasnet) | [Learning Transferable Architectures for Scalable Image Recognition](https://arxiv.org/abs/1707.07012)
+
+The `--model_name` parameter specifies which architechture to use.
+
 ### Transfer Learning
-Our team utilizes multi-stage transfer learning to mitigate the need for extremely large datasets.
+Transfer learning [3] allowed our team to reuse features learned by neural networks.  Our team utilizes multi-stage transfer learning to mitigate the need for extremely large datasets.
 
-* First, we obtain [base models](https://keras.io/applications/) which are pretrained on ImageNet.  These pretrained models have learned salient features of real-world images. By using these base models as a starting point, we can avoid having to train on 
-* Next, we retrain the base models on PlantNet.  This allows our neural networks to learn plant specific features in the images.   
-* Finally, we fine-tune our models on the scraped dataset which consists of images of plants found in Hawaii.
+1. Obtain [base models](https://keras.io/applications/) which are pretrained on ImageNet.  These pretrained models have learned salient features of real-world images. By using these base models as a starting point, we can avoid having to train on 
+2. Retrain the base models on PlantNet.  This allows our neural networks to learn plant specific features in the images.   
+3. Fine-tune our models on the scraped dataset which consists of images of plants found in Hawaii.
 
+The `--training_type` parameter defines the stage of training. 
 
 ## Results
 |            model | filtered |  augmentation | top 1 accuracy | top 3 accuracy | top 5 accuracy |
@@ -126,6 +138,7 @@ Our team utilizes multi-stage transfer learning to mitigate the need for extreme
 
 ## References
 * [1] [The Unreasonable Effectiveness of Data](https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/35179.pdf)
-* [2] [Transfer Learning](https://en.wikipedia.org/wiki/Transfer_learning)
-* [3] [Data Augmentation](https://medium.com/nanonets/how-to-use-deep-learning-when-you-have-limited-data-part-2-data-augmentation-c26971dc8ced)
+* [2] [Data Augmentation](https://medium.com/nanonets/how-to-use-deep-learning-when-you-have-limited-data-part-2-data-augmentation-c26971dc8ced)
+* [3] [Transfer Learning](https://en.wikipedia.org/wiki/Transfer_learning)
+
 
