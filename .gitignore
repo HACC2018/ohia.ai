@@ -9,12 +9,10 @@ weights.tar.gz
 # Data
 data/*
 
-# ipynb checkpoints
-**/*/.ipynb_checkpoints
-
 # specific files
 machine_learning/run.sh
-
+**/*/.ipynb_checkpoints
+**/*/__pycache__
 
 # Logs
 logs

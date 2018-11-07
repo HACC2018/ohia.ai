@@ -1,3 +1,9 @@
+"""
+File: get_samples.py
+Author: Matt Motoki
+Description: Creates a directory for each plant containing a small sample of images.
+"""
+
 import re, glob
 import numpy as np
 from PIL import Image

@@ -1,3 +1,10 @@
+"""
+File: train.py
+Author: Matt Motoki
+Description: Code to train customized neural networks for the HAAC 2018 Challenge.
+"""
+
+
 import click
 
 FILE_PATH = '/home/matt/repos/ohia.ai/data'

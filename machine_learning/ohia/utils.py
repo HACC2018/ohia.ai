@@ -1,3 +1,9 @@
+"""
+File: utils.py
+Author: Matt Motoki
+Description: I/O and image processing utilities.
+"""
+
 import os, re
 import numpy as np
 from PIL import Image

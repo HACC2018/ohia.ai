@@ -1,3 +1,9 @@
+"""
+File: metrics.py
+Author: Matt Motoki
+Description: Wrapper functions for common classification metrics.
+"""
+
 from keras import metrics
 
 def top_1_accuracy(y_true, y_pred):

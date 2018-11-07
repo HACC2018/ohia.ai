@@ -1,3 +1,9 @@
+"""
+File: preprocessing.py
+Author: Matt Motoki
+Description: Preprocess data for the HAAC 2018 Challenge.
+"""
+
 import os, re, glob, multiprocessing, click
 import numpy as np
 from PIL import Image
@@ -24,7 +30,6 @@ def resize_crop_and_save(f, input_dir, output_dir, crop):
         print(f'Skipping {f}')
         return(0)
     
-
 
 @click.command()
 @click.option('--input_dir', help='Input directory of images.', required=True)

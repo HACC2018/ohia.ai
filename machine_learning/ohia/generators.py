@@ -1,3 +1,9 @@
+"""
+File: generators.py
+Author: Matt Motoki
+Description: A custom generator created for the HAAC 2018 Challenge.
+"""
+
 import keras
 import numpy as np
 from PIL import Image

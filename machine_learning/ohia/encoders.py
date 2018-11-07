@@ -1,3 +1,9 @@
+"""
+File: encoders.py
+Author: Matt Motoki
+Description: Generalized encoder classes with a consistent Sklearn-like API
+"""
+
 import time
 import numpy as np
 import pandas as pd
