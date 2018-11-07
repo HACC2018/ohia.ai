@@ -5,6 +5,13 @@ This README has multiple steps between installation and execution instructions. 
 1. Or you can follow, in order as written, *only* the **required** and **browser** steps if you would like to run the client on your browser.
 1. Lastly, you can choose the second option for now, and then later on, you can install the **iOS**-specific steps, in order as written.
 
+## Table of contents
+
+* [Requirements](#requirements)
+* [Installation](#installation)
+* [Execution](#execution)
+* [New Project Setup](#new-project-setup)
+
 ## Requirements
 
 1. [Python](https://www.python.org/) version 2.7.x
