@@ -1,3 +1,4 @@
+
 <template>
   <q-page
     padding
@@ -82,7 +83,6 @@ export default {
     uploadAndIdentify(filePath) {
       const view = this;
       const CANDIDATE_COLORS = ['green', 'orange', 'red'];
-
       const displayErrorMessage = () => {
         view.$q.notify({
           color: 'negative',
@@ -95,65 +95,6 @@ export default {
         });
       };
       const convertImageToBlob = (result) => {
-
-        function dataURItoBlob(dataURI) {
-          // convert base64 to raw binary data held in a string
-          // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
-          var byteString = atob(dataURI.split(',')[1]);
-
-          // write the bytes of the string to an ArrayBuffer
-          var ab = new ArrayBuffer(byteString.length);
-
-          // create a view into the buffer
-          var ia = new Uint8Array(ab);
-
-          // set the bytes of the buffer to the correct values
-          for (var i = 0; i < byteString.length; i++) {
-              ia[i] = byteString.charCodeAt(i);
-          }
-
-          // write the ArrayBuffer to a blob, and you're done
-          var blob = new Blob([ab], {type: 'image/jpg'});
-          return blob;
-
-        }
-            
-        // initialize canvas
-        let img = document.createElement("img");
-        img.src = result.target.result;
-        let canvas = document.createElement("canvas");
-        let ctx = canvas.getContext("2d");
-
-        // resize smaller dimension
-        const SIZE = 224;
-        let width = img.width;
-        let height = img.height;        
-        if (height > width) {
-            if (width > SIZE) {
-                height *= SIZE / width;
-                width = SIZE;
-            }
-        } else {
-            if (height > SIZE) {
-                width *= SIZE / height;
-                height = SIZE;
-            }
-        }
-        
-        // resize canvas
-        canvas.width = width;
-        canvas.height = height;
-        
-
-        ctx.drawImage(img, 0, 0, width, height);
-        
-        // convert canvas to DataURL to then to Blob
-        const dataurl = canvas.toDataURL("image/jpg");
-        document.getElementById('output').src = dataurl;
-        
-        const blob = dataURItoBlob(dataurl);
-        console.log(blob, width, height);
-                
         // Create a blob based on the FileReader "result",
         // which we asked to be retrieved as an ArrayBuffer
         const arrayBufferView = new Uint8Array(result);
@@ -186,13 +127,13 @@ export default {
           .catch(() => {
             displayErrorMessage();
           });
-      }      
+      }
       window.resolveLocalFileSystemURL(filePath, (fileEntry) => {
         fileEntry.file((file) => {
           const reader = new FileReader();
           reader.onloadend = uploadImage;
           // Read the file as an ArrayBuffer
-          reader.readAsDataURL(file);
+          reader.readAsArrayBuffer(file);
         }, (err) => {
           console.error('Error retrieving the fileEntry file:', err);
           displayErrorMessage();
