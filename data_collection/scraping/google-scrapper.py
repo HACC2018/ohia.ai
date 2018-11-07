@@ -16,7 +16,8 @@ def download_img(term, max):
     # NEED TO DOWNLOAD CHROMEDRIVER, insert path to chromedriver inside parentheses in following line
     option = webdriver.ChromeOptions()
     option.add_argument('--kiosk')
-    browser = webdriver.Chrome(r"D:\Users\SoraBeast\Documents\_projects\web-object-detection\scrapper\chromedriver.exe", chrome_options = option)
+    driver_path = r"insert your driver's path here"
+    browser = webdriver.Chrome(driver_path, chrome_options = option)
     browser.get(url)
     header={'User-Agent':"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36"}
     counter = 0
