@@ -17,9 +17,7 @@ Behind the scenes, ohia.ai is powered by machine learning and AI.  Our team util
 
 ## Requirements
 
-To run our script you will need:
-
-* Python version >=3.6
+To run our script you will need `Python version >=3.6` and the following packages:
 * [NumPy](http://www.numpy.org/) - General purpose numerical computing
 * [SciPy](https://www.scipy.org/) - Scientific computing utilities
 * [Keras](https://keras.io/) - High level API for neural network design and training
@@ -120,13 +118,13 @@ We validate using a 10% validation set.  The `--seed` parameter specifies the ra
 * Top 5 Accuracy - The fraction of time the correct answer was in the top 5 predictions.
 
 
-| Architecture | Pretraining | Augmentation | Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy |
-| ------------ | ----------- | ------------ | -------------- | -------------- | -------------- |
-|  mobilenetv1 |    ImageNet |           No |         0.5436 |         0.7618 |         0.8396 |
-|  mobilenetv1 |    ImageNet |          Yes |         0.7394 |         0.8856 |     **0.9257** |
-|  mobilenetv1 |    PlantNet |          Yes |         0.7376 |     **0.8874** |         0.9251 |
-|  mobilenetv2 |    PlantNet |          Yes |         0.7453 |         0.8850 |         0.9240 |
-| nasnetmobile |    PlantNet |          Yes |     **0.7547** |         0.8774 |         0.9204 |
+|  Architecture | Pretraining | Augmentation | Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy |
+| ------------- | ----------- | ------------ | -------------- | -------------- | -------------- |
+|  MobileNet V1 |    ImageNet |           No |         0.5436 |         0.7618 |         0.8396 |
+|  MobileNet V1 |    ImageNet |          Yes |         0.7394 |         0.8856 |     **0.9257** |
+|  MobileNet V1 |    PlantNet |          Yes |         0.7376 |     **0.8874** |         0.9251 |
+|  MobileNet V2 |    PlantNet |          Yes |         0.7453 |         0.8850 |         0.9240 |
+| NASNet Mobile |    PlantNet |          Yes |     **0.7547** |         0.8774 |         0.9204 |
 
 The best model consisted of a MobileNetV1 architecture, pretraining on PlantNet, and data augmentation.
 

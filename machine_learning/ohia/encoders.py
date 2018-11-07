@@ -1,6 +1,6 @@
 """
 File: encoders.py
-Author: Matt Motoki
+Author: Team ohia.ai
 Description: Generalized encoder classes with a consistent Sklearn-like API
 """
 

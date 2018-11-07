@@ -1,6 +1,6 @@
 """
 File: get_samples.py
-Author: Matt Motoki
+Author: Team ohia.ai
 Description: Creates a directory for each plant containing a small sample of images.
 """
 

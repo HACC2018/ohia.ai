@@ -1,9 +1,8 @@
 """
 File: train.py
-Author: Matt Motoki
+Author: Team ohia.ai
 Description: Code to train customized neural networks for the HAAC 2018 Challenge.
 """
-
 
 import click
 

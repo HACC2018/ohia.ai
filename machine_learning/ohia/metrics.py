@@ -1,6 +1,6 @@
 """
 File: metrics.py
-Author: Matt Motoki
+Author: Team ohia.ai
 Description: Wrapper functions for common classification metrics.
 """
 

@@ -1,6 +1,6 @@
 """
 File: generators.py
-Author: Matt Motoki
+Author: Team ohia.ai
 Description: A custom generator created for the HAAC 2018 Challenge.
 """
 

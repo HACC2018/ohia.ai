@@ -1,6 +1,6 @@
 """
 File: utils.py
-Author: Matt Motoki
+Author: Team ohia.ai
 Description: I/O and image processing utilities.
 """
 

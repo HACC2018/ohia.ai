@@ -1,6 +1,6 @@
 """
 File: preprocessing.py
-Author: Matt Motoki
+Author: Team ohia.ai
 Description: Preprocess data for the HAAC 2018 Challenge.
 """
 
