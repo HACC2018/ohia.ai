@@ -67,15 +67,15 @@ Run the app on your iOS device (iOS)
 ### Install the client project dependencies (required)
 1. From the project root directory, install client dependencies: `npm run install:client` (or you may use [yarn](https://yarnpkg.com/en/docs/install#windows-stable) instead).
 
-### Run the app in the browser (browser)
+### Run app in the browser (browser)
 1. Follow **Execution: Source Environment Variables** below.
 1. Follow **Execution: Run the app in the browser** below.
 
-### Run the app in the iOS simulator (iOS)
+### Run app in the iOS simulator (iOS)
 1. Follow **Execution: Source Environment Variables** below.
 1. Follow **Execution: Run the app in the iOS simulator** below.
 
-### Run the app on your iOS device (iOS)
+### Run app on your iOS device (iOS)
 1. Follow **Execution: Source Environment Variables** below.
 1. Follow **Execution: Run the app on your iOS device** below.
 
