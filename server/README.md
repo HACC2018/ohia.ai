@@ -1,5 +1,11 @@
 # ohia.ai API Server
 
+## Table of Contents
+
+* [Requirements](#requirements)
+* [Installation and Execution](#installation-and-execution)
+* [Seeding the Database](#seeding-the-database)
+
 ## Requirements
 
 1. [Python](https://www.python.org/) version 2.7.x
@@ -7,7 +13,7 @@
 
 ## Installation and Execution
 
-1. If you haven't already, switch your terminal to [use Python 2.7](https://github.com/HACC2018/ohia.ai/tree/master/client) and [Node 10.12.0](https://github.com/HACC2018/ohia.ai/tree/master/client).
+1. If you haven't already, switch your terminal to [use Python 2.7](https://github.com/HACC2018/ohia.ai/blob/master/client/README.md#install-python-required) and [Node 10.12.0](https://github.com/HACC2018/ohia.ai/blob/master/client/README.md#install-nodejs-required).
 1. Perform all of the following steps from the project root directory.
 1. Run `npm install`. Among other items, you should see "Downloading libtensorflow" and "Building TensorFlow Node.js bindings" run without error in your output.
 1. Create a `.env` file by copying the template in `.env.sample`.
@@ -28,15 +34,15 @@
     Server for ohia.ai listening on port 3000
     ```
 
-## Database
+## Seeding the Database
 
 Perform all of the following steps from the project root directory.
 
-### Only During Development
+### Only During Development: Drop and Restore the Database
 1. If you would like to delete the database, run: `npm run db:rollback`.
 1. Then, run the following to restore the database: `npm run db:migrate`.
 
-### Seed Plant and Image Data
+### Seeding Plant and Image Data
 1. Create database tables if you haven't already: `npm run db:migrate`.
 1. Download a copy of the `plant_meta_vX.csv` from our Google Drive (where **X** is the latest version number) and delete columns after the `updated_at` column (if any).
     1. Open it in Google Sheets and go to File > Download as > Comma-separated values.
