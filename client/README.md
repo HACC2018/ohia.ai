@@ -1,7 +1,7 @@
 # ohia.ai App Client
 
 This README has multiple steps between installation and execution instructions. There are three ways you can follow the steps:
-1. Follow all the steps in order as written if you would like to run the client on your browser and the iOS simulator.
+1. Follow all the steps in order as written if you would like to run the client on your browser, the iOS simulator, and an iOS device.
 1. Or you can follow, in order as written, *only* the **required** and **browser** steps if you would like to run the client on your browser.
 1. Lastly, you can choose the second option for now, and then later on, you can install the **iOS**-specific steps, in order as written.
 
@@ -9,6 +9,12 @@ This README has multiple steps between installation and execution instructions. 
 
 1. [Python](https://www.python.org/) version 2.7.x
 1. [Node.js](https://nodejs.org/en/) version 10.12.0
+
+### Requirements for deploying to an iOS device
+
+1. macOS Mojave version 10.14
+1. Xcode version 10.0
+1. iPhone 6 running on iOS version 12.0.1
 
 ## Installation
 
@@ -84,7 +90,12 @@ This README has multiple steps between installation and execution instructions. 
 1. In Xcode, with the project workspace now open, select a device in the top left-hand corner, such as the `iPhone 6`, and then click the play button icon to run the project in the simulator.
 
 ### Run the app on your iOS device (iOS)
-1. Run the following command to create a distribution for iOS: `npm run prod-ios`. This will generate the following folders in `/client/src-cordova`:
+
+**Note that this app was optimized for an iPhone 6 running on iOS version 12.0.1. It was made to be run by Xcode version 10.0 running on macOS Mojave version 10.14. If you experience other problems below, it may be due to versioning issues.**
+
+1. If you do not have Mojave, you will need to upgrade your macOS through the App Store.
+1. Then you will need to upgrade your Xcode to version 10.0, for compatibility with running iOS version 12.0.1.
+1. Then when you're ready, in a terminal window, run the following command to create a distribution for iOS: `npm run prod-ios`. This will generate the following folders in `/client/src-cordova`:
     - `node_modules`
     - `platforms`
     - `plugins`
