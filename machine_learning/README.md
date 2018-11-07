@@ -86,10 +86,10 @@ Options:
   --training_type INTEGER  Integer encoding: 0=fine-tune, 1=pretrain, 2=load pretrained then fine-tune.
   --seed INTEGER           Random seed.
   --batch_size INTEGER     Number of observations needed before updating weights.
-  --augmentation TEXT      Boolean flag.  If true then perform data augmentation.
+  --augmentation TEXT      If true then perform data augmentation.
   --gpu INTEGER            Which gpu to use.
   --n_thread INTEGER       Number of threads to use.
-  --save_model TEXT        Boolean flag.  If true then save the model in a tfjs format.
+  --save_model TEXT        If true then save the model in a tfjs format.
   --help                   Show this message and exit.
 ```
 
@@ -99,9 +99,8 @@ Options:
 Data augmentation is a technique used to create more realistic data for our models to train on.  Data augmentation is a common technique used to increase the performance of neural neworks [2]. Our team leverages the following data augmentation techniques:
 
 * Random crops (the center of the crop has a triangular distribution)
-* Horizontal flips
 * Random brightness transformations
-
+* Horizontal flips
 
 The `--augmentation` parameter is a binary flag that turns on/off data augmentation.
 
