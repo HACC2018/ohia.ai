@@ -71,13 +71,52 @@ This README has a lot of steps between installation and running instructions. Th
 1. In Xcode, with the project workspace now open, select a device in the top left-hand corner, such as the `iPhone 6`, and then click the play button icon to run the project in the simulator.
 
 ### Run the app on your iOS device (iOS)
-1. Run the following command to create a distribution for iOS: `npm run prod-ios`.
+1. Run the following command to create a distribution for iOS: `npm run prod-ios`. This will generate the following folders in `/client/src-cordova`:
+    - `node_modules`
+    - `platforms`
+    - `plugins`
+    - `www`
+1. You will see the following, slightly above the tail end of the long output. Notice that the project is built for the iPhone XS Max Simulator. However, we will change this to build for an iPhone device.
+    ```
+    Building for iPhone XS Max Simulator
+    Building project: ~/ohia.ai/client/src-cordova/platforms/ios/ohia.ai.xcworkspace
+      Configuration: Release
+      Platform: emulator
+    Build settings from command line:
+        CONFIGURATION_BUILD_DIR = ~/ohia.ai/client/src-cordova/platforms/ios/build/emulator
+        SDKROOT = iphonesimulator12.0
+        SHARED_PRECOMPS_DIR = ~/ohia.ai/client/src-cordova/platforms/ios/build/sharedpch
+
+    Build settings from configuration file '~/ohia.ai/client/src-cordova/platforms/ios/cordova/build-release.xcconfig':
+        CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES
+        CODE_SIGN_ENTITLEMENTS = $(PROJECT_DIR)/$(PROJECT_NAME)/Entitlements-$(CONFIGURATION).plist
+        CODE_SIGN_IDENTITY = iPhone Distribution
+        ENABLE_BITCODE = NO
+        HEADER_SEARCH_PATHS = "$(TARGET_BUILD_DIR)/usr/local/lib/include" "$(OBJROOT)/UninstalledProducts/include" "$(OBJROOT)/UninstalledProducts/$(PLATFORM_NAME)/include" "$(BUILT_PRODUCTS_DIR)"
+        OTHER_LDFLAGS = -ObjC
+        SWIFT_OBJC_BRIDGING_HEADER = $(PROJECT_DIR)/$(PROJECT_NAME)/Bridging-Header.h
+
+     Build succeeded
+    ```
 1. In the terminal (or you can manually open the file instead), open the Xcode project workspace by running:
     ```
     open ./client/src-cordova/platforms/ios/ohia.ai.xcworkspace/
     ```
-1. Connect your phone TODO
-1. In Xcode, with the project workspace now open, select a device in the top left-hand corner, such as the `iPhone 6`, and then click the play button icon to run the project in the simulator.
+1. Connect your phone via USB to your Mac. Ensure that you see the charge signal next to the battery on your device, and that Xcode recognizes your device (see below that the device is recognized).
+    ![alt change_device](https://s3-us-west-2.amazonaws.com/ohia.ai/README/change_device.png)
+1. In Xcode, with the project workspace now open, select your device in the top left-hand corner (as in the image above).
+1. To run the project, follow the steps in the GIF below (reload this page if you would like to restart the GIF, which lasts a few minutes):
+    ![alt run_project](https://s3-us-west-2.amazonaws.com/ohia.ai/README/run_project.gif)
+    1. Attempt to run the project by pressing the Play button. You should see a build error as follows: `Signing for "ohia.ai" requires a development team.`
+    1. Click on the leftmost (folder) icon in the top left-hand corner, and under the General tab, under the Signing section, ensure that "Automatically manage signing" is checked. Below it, next to Team, select your development team.
+    1. If you don't have a development team, you will need to add your Apple ID to Xcode by going to the Xcode toolbar and clicking on Xcode > Preferences.... Then click on the Accounts tab and add your Apple ID by clicking on the + icon.
+    1. Not shown in the GIF but a picture is below, for reference: Click on the Manage Certificates... button after you have added your Apple ID. Your signing certificate should include an iOS Development Certificate. If not, you need to click on the + icon dropdown button and select iOS Development and continue from there.
+    1. After you successfully see an iOS Development Certificate listed when managing certificates, close out of all the modal windows, including Xcode preferences.
+    1. Go back to the General tab in the main project (center) panel, if it's not already open.
+    1. You should now be able to select your development team under the Signing section.
+    1. Ensure that your iPhone is unlocked, then click on the Play button again in Xcode. The installation should run successfully this time (you will see the ohia.ai app with the default iOS robot icon deployed to your phone); however the message `Could not launch "ohia.ai"` should appear.
+    1. On your iPhone device, follow the instructions from the Xcode modal: Go to Settings > General > Scroll down to Device Management and select it > Select the developer app (it should show your email) > Select `Trust "your email here"` > Select Trust on the modal. Then exit out of Settings.
+    1. While your iPhone is still unlocked, go back to Xcode and click on the Play button for the third time. It should now run successfully and you should see output in the console, which will appear on the bottom of the center panel.
 
 ## New Project Setup
 
