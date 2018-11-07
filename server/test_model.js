@@ -1,4 +1,5 @@
 
+// code modifiedd from https://github.com/tensorflow/tfjs-examples/tree/master/mobilenet
 const fs = require('fs');
 const path = require('path');
 const jpeg = require('jpeg-js');
@@ -8,13 +9,15 @@ const tf = require('@tensorflow/tfjs');
 require('@tensorflow/tfjs-node');
 
 // load dictionary mapping plant_ids to plant_names
-const PLANTNET_CLASSES = require('./models/plant_classes');
+const PLANTNET_CLASSES = require('./models/mobilenetv1-1.00/plantnet_classes');
+
 
 // set parameters
 const TOPK = 10;
 const IMAGE_SIZE = 224;
 const NUMBER_OF_CHANNELS = 3;
-const MODEL_PATH = 'file://' + path.resolve(__dirname, 'models', 'test_model', 'model.json');
+const MODEL_PATH = 'file://' + path.resolve(__dirname, 'models', 'mobilenetv1-1.00', 'model.json'); 
+
 
 // read image
 const readImage = path => {
@@ -28,9 +31,8 @@ const convertImageToByteArray = (image) => {
   const pixels = image.data;
   const numPixels = image.width * image.height;
   const values = new Int32Array(numPixels * NUMBER_OF_CHANNELS);
-
-  for (let i = 0; i < numPixels; i++) {
-    for (let channel = 0; channel < NUMBER_OF_CHANNELS; ++channel) {
+  for (let i = 0; i < numPixels; i++) {    
+    for (let channel = 0; channel < NUMBER_OF_CHANNELS; ++channel) {  
       values[i * NUMBER_OF_CHANNELS + channel] = pixels[i * 4 + channel];
     }
   }
@@ -39,44 +41,40 @@ const convertImageToByteArray = (image) => {
 
 // convert to 4d tensor and resize to 1 x h x w x c
 const convertImageToInput = (image) => {
-  // const outShape = [1, image.height, image.width, NUMBER_OF_CHANNELS];
-  // const input = tf.tensor4d(values, outShape, 'int32');
-
   const values = convertImageToByteArray(image);
   const shape = [1, image.height, image.width, NUMBER_OF_CHANNELS];
   let input = tf.tensor4d(values, shape, 'float32');
   input = tf.image.resizeBilinear(input, [224, 224]);
-  input = input.mul(tf.scalar(1/255.))  
+  input = input.mul(tf.scalar(1/255.));
+  input = tf.scalar(-1).add(input);
   return input
 };
 
-
 // computes topK probabilities and corresponding classes
-const getTopK = async (predictions) => {
-  // const values = await preds;
+const getTopK = async (probabilities) => {
 
-  // get sorted (descending) predictions and indexes
-  const valuesAndIndices = [];
-  for (let i = 0; i < predictions.length; i++) {
-    valuesAndIndices.push({pred: predictions[i], index: i});
+  // get sorted (descending) probabilities and indexes
+  const probsAndIndexs = [];
+  for (let i = 0; i < probabilities.length; i++) {
+    probsAndIndexs.push({prob: probabilities[i], index: i});
   }
-  valuesAndIndices.sort((a, b) => {
-    return b.pred - a.pred;
+  probsAndIndexs.sort((a, b) => {
+    return b.prob - a.prob;
   });
 
-  // 
-  const topkValues = new Float32Array(TOPK);
-  const topkIndices = new Int32Array(TOPK);
+  // get top k locations and labels
+  const topkProbs  = new Float32Array(TOPK);
+  const topkIndexs = new Int32Array(TOPK);
   for (let i = 0; i < TOPK; i++) {
-    topkValues[i] = valuesAndIndices[i].pred;
-    topkIndices[i] = valuesAndIndices[i].index;
+    topkProbs[i]  = probsAndIndexs[i].prob;
+    topkIndexs[i] = probsAndIndexs[i].index;
   }
 
   const topClassesAndProbs = [];
-  for (let i = 0; i < topkIndices.length; i++) {
+  for (let i = 0; i < topkIndexs.length; i++) {
     topClassesAndProbs.push({
-      className: PLANTNET_CLASSES[topkIndices[i]],
-      probability: topkValues[i]
+      className: PLANTNET_CLASSES[topkIndexs[i]],
+      probability: topkProbs[i]
     })
   }
   return topClassesAndProbs;
@@ -89,15 +87,17 @@ const detectPlant = async (imagePath) => {
   const input = convertImageToInput(image);
 
   const model = await tf.loadModel(MODEL_PATH);
-  const predictions = model.predict(input).dataSync();
-
-  
-  console.log('Identification Results:', getTopK(predictions));
+  const probabilities = model.predict(input).dataSync();
+  console.log('Identification Results:', getTopK(probabilities));
 };
 
 
-// const imagePath = path.resolve(__dirname, 'images', 'flowers.jpg');
-const imagePath = path.resolve(__dirname, 'images', 'mug.jpeg');
-// const imagePath = path.resolve(__dirname, 'images', 'cat.jpg');
+
+// const imagePath = path.resolve(__dirname, 'images', 'albutilon.jpg');
+// const imagePath = path.resolve(__dirname, 'images', 'bougainvillea.jpg');
+// const imagePath = path.resolve(__dirname, 'images', 'hibiscus.jpg');
+const imagePath = path.resolve(__dirname, 'images', 'rubus.jpg');
+// const imagePath = path.resolve(__dirname, 'images', 'mug.jpeg');
+
 detectPlant(imagePath);
 

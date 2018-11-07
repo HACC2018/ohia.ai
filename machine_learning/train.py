@@ -216,7 +216,7 @@ def main(model_name, training_type, seed, batch_size, augmentation, n_thread, gp
     valid_generator = PlantNetGenerator(
         valid_files, valid_ids, n_classes,
         batch_size=batch_size,
-        augment=augmentation,
+        augment=False,
         shuffle=False
     )
 

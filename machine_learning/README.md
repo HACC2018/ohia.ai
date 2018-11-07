@@ -53,7 +53,8 @@ In our experiments we resize the smaller dimension of image to 224 pixels.  This
 
 
 ## Datasets
-Deep learning is notorious for needing large amounts of data to perform well [1](https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/35179.pdf).  Our models are trained on a number of different datasets: custom scraped data, [PlantNet](https://www.imageclef.org/lifeclef/2017/plant), [ImageNet](http://www.image-net.org/).  See our `data_collection/README.md` for more details.
+Deep learning is notorious for needing large amounts of data to perform well [[1](https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/35179.pdf)].  Our models are trained on a number of different datasets: custom scraped data, [PlantNet](https://www.imageclef.org/lifeclef/2017/plant), [ImageNet](http://www.image-net.org/).  For more details see [ohia.ai/data_collection](https://github.com/HACC2018/ohia.ai/tree/master/data_collection).
+
 
 
 ## Training
@@ -68,14 +69,14 @@ Options:
   --training_type INTEGER  Integer encoding: 0=fine-tune, 1=pretrain, 2=load pretrained then fine-tune.
   --seed INTEGER           Random seed.
   --batch_size INTEGER     Number of observations needed before updating weights.
-  --augmentation TEXT      Boolean flag.  If true then perform data augmentation.
+  --augmentation TEXT      If true then perform data augmentation.
   --gpu INTEGER            Which gpu to use.
   --n_thread INTEGER       Number of threads to use.
-  --save_model TEXT        Boolean flag.  If true then save the model in a tfjs format.
+  --save_model TEXT        If true then save the model in a tfjs format.
   --help                   Show this message and exit.
 ```
 
-Our training was performed on two NVIDIA GeForce GTX 1080 Ti GPUs.  You can specify which gpu to use using the `--gpu` parameter.  Because of the large size of the data, we created a generator to stream data in batches onto the GPU in parallel.  The `--n_thread` determines the number of CPU cores to use in the generator.  The `--batch_size` parameter determines the size of the batch, we used 32.  
+Our training was performed on two NVIDIA GeForce GTX 1080 Ti GPUs.  You can specify which gpu to use using the `--gpu` parameter.  Because of the large size of the data, we created a generator to stream data in batches onto the GPU in parallel.  The `--n_thread` determines the number of CPU cores to use in the generator.  The `--batch_size` parameter determines the size of the batch, we used a batch size of 32.  
 
 
 ### Data Augmentation
@@ -104,9 +105,9 @@ The `--model_name` parameter specifies which architecture to use.  Use the `--sa
 ### Transfer Learning
 Transfer learning allowed our team to reuse features learned by neural networks.  Our team utilizes multi-stage transfer learning to mitigate the need for extremely large datasets.
 
-1. Obtain base models which are pretrained on ImageNet.  These pretrained models have learned salient features of real-world images. By using these base models as a starting point, we can avoid having to train on 
+1. Obtain base models which are pretrained on ImageNet.  Starting with pretrained models allows us to resuse the salient features of real-world images learned from ImageNet. 
 2. Retrain the base models on PlantNet.  This allows our neural networks to learn plant specific features in the images.   
-3. Fine-tune our models on the scraped dataset which consists of images of plants found in Hawaii.
+3. Fine-tune our models on the scraped dataset which consists of images of plants found in Hawaii.  This step ensures that our model has learned to make predictions on images in its intended use case.
 
 The `--training_type` parameter defines the stage of training. 
 
@@ -122,10 +123,10 @@ We validate using a 10% validation set.  The `--seed` parameter specifies the ra
 | Architecture | Pretraining | Augmentation | Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy |
 | ------------ | ----------- | ------------ | -------------- | -------------- | -------------- |
 |  mobilenetv1 |    ImageNet |           No |         0.5436 |         0.7618 |         0.8396 |
-|  mobilenetv1 |    ImageNet |          yes |         0.7394 |         0.8856 |         0.9257 |
-|  mobilenetv1 |    PlantNet |          Yes |         0.7376 |         0.8874 |         0.9251 |
+|  mobilenetv1 |    ImageNet |          Yes |         0.7394 |         0.8856 |     **0.9257** |
+|  mobilenetv1 |    PlantNet |          Yes |         0.7376 |     **0.8874** |         0.9251 |
 |  mobilenetv2 |    PlantNet |          Yes |         0.7453 |         0.8850 |         0.9240 |
-| nasnetmobile |    PlantNet |          Yes |         0.7547 |         0.8774 |         0.9204 |
+| nasnetmobile |    PlantNet |          Yes |     **0.7547** |         0.8774 |         0.9204 |
 
 The best model consisted of a MobileNetV1 architecture, pretraining on PlantNet, and data augmentation.
 

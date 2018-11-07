@@ -10,7 +10,10 @@ weights.tar.gz
 data/*
 
 # ipynb checkpoints
-.ipynb_checkpoints
+**/*/.ipynb_checkpoints
+
+# specific files
+machine_learning/run.sh
 
 
 # Logs

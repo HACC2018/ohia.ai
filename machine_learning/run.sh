@@ -15,7 +15,7 @@ python preprocess.py \
   --n_thread 20
 
 
- # Augmentation
+# Augmentation
 python train.py \
   --model_name mobilenetv1 \
   --training_type 0 \

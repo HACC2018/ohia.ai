@@ -15,13 +15,24 @@ An open Hawaiian indigenous plant identification and aggregation application. De
     ```
     \copy plants FROM '/absolute/path/to/plant_meta_vX.csv' delimiter ',' csv header
     ```
-    
+
+
+## Data Collection
+
+Machine learning involves learning from data, thus data collection is an integral part of our application.  Here is summary of the data that our team collected.
+
+| Source | Preprocessing | Number of Images | Number of Classes (Plants) |
+| -------| ------------- |----------------- | -------------------------- |
+| Scraped | None | 21,070 | 42 |
+| Scraped | Removed non-plant images | 17,263 | 42 |
+| PlantNet | None | 264,795 | 9,968 |
+| PlantNet | Removed species with fewer than 100 images | 81,834 | 436 |
+| ImageNet | None | 1,281,167 | 1000 |
+
+For more details see [ohia.ai/data_collection](https://github.com/HACC2018/ohia.ai/tree/master/data_collection).
+
 ## Machine Learning
 
 Behind the scenes, ohia.ai is powered by machine learning and AI.  Our team utilizes modern deep learning techniques and large open source datasets to achieve highly accurate classification on a wide range of flora found throughout the Hawaiian Islands.
 
-To run custom models:
-1. Preprocess data using `python machine_learning/preprocess.py`
-2. Train models using `python machine_learning/train.py`
-
-See our `machine_learning/README.md` for more details.
+For more details see [ohia.ai/machine_learning](https://github.com/HACC2018/ohia.ai/tree/master/data_collection).
