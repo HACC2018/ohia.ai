@@ -12,7 +12,7 @@
 
 ## Introduction
 
-Behind the scenes, ohia.ai is powered by machine learning and AI.  Out team utilizes modern deep learning frameworks and large open source datasets to achieve high accuracy classification on a wide range of flora found throughout the Hawaiiain Islands.
+Behind the scenes, ohia.ai is powered by machine learning and AI.  Out team utilizes modern deep learning techniques and large open source datasets to achieve highly accurate classification on a wide range of flora found throughout the Hawaiiain Islands.
 
 
 ## Requirements
@@ -30,32 +30,40 @@ If these requirements make it impossible for you to use our code, please open an
 
 ## Preprocessing
 
+Run `preprocess.py` to 
+
 
 ## Training
 
 
 ### Datasets
-Deep learning is notorious for needing large amounts of data to perform well [1]
+Deep learning is notorious for needing large amounts of data to perform well [1].  Our models are trained on a number of different datasets:
 
+| Source | Preprocessing | Number of Images | Number of Classes (Plants) |
+| -------| ------------- |----------------- | -------------------------- |
+| Scraped | None | 21,070 | 42 |
+| Scraped | Removed non-plant images | 17,263 | 42 |
+| PlantNet | None | 264,795 | 9,968 |
+| PlantNet | Removed species with fewer than 100 images | 81,834 | 436 |
+| ImageNet | None | 1,281,167 | 1000 |
 
+The `Scraped` dataset consists of images from:
+* [Starr Environmental](http://starrenvironmental.com/images/)
+* [Wild Life of Hawaii](https://wildlifeofhawaii.com/flowers/category/native-status/native-plants/)
+* [Hawaiian Ethnobotony Online Database](http://data.bishopmuseum.org/ethnobotanydb/ethnobotany.php?b=list&amp;o=2)
+* [Canoe Plants of Ancient Hawaii](http://www.canoeplants.com/contents.html)
+* [Native Plants Hawaii](http://nativeplants.hawaii.edu/)
 
-| Source            | Number of Images | Number of Classes (Plants) |
-| ----------------- | ---------------- | -------------------------- |
-| Scraped           | 21,070           | 42                         |
-| Filtered Scraped  | 17,263           | 42                         |
-| PlantNet          | 264,795          | 9,968                      |
-| Filtered PlantNet | 81,834           | 436                        |
-| ImageNet          | 1,281,167        | 1000                       |
-
-
-Run `preprocess.py` to 
+See `data_collection` for more details.
 
 
 ### Models
-- Recent state-of-the-art [English word vectors](https://fasttext.cc/docs/en/english-vectors.html).
-- Word vectors for [157 languages trained on Wikipedia and Crawl](https://github.com/facebookresearch/fastText/blob/master/docs/crawl-vectors.md).
-- Models for [language identification](https://fasttext.cc/docs/en/language-identification.html#content) and [various supervised tasks](https://fasttext.cc/docs/en/supervised-models.html#content).
 
+Our team utilizes multi-stage transfer-learning to mitigate the need for extremely large datasets.
+
+* First, we obtain [base models](https://keras.io/applications/) which are pretrained on ImageNet.  These pretrained models have learned salient features of real-world images. By using these base models as a starting point, we can avoid having to train on 
+* Next, we retrain the base models on PlantNet.  This allows our neural networks to learn plant specific features in the images.   
+* Finally, we fine-tune our models on the scraped dataset which consists of images of plants found in Hawaii.
 
 ### Results
 |            model | filtered |  augmentation | top 1 accuracy | top 3 accuracy | top 5 accuracy |
