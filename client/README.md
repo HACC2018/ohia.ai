@@ -7,6 +7,7 @@ This README has a lot of steps between installation and running instructions. Th
 
 ## Requirements
 
+1. [Python](https://www.python.org/) version 2.7.x
 1. [Node.js](https://nodejs.org/en/) version 10.12.0
 
 ## Installation
@@ -51,7 +52,7 @@ This README has a lot of steps between installation and running instructions. Th
 ### Run the app on your iOS device (iOS)
 1. See **Running: Run the app on your iOS device** below.
 
-## Running
+## Execution
 
 ### Run the app in the browser (browser)
 1. Run `npm run dev` to view the app in a browser.
