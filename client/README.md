@@ -9,6 +9,8 @@ This README has multiple steps between installation and execution instructions. 
 
 * [Requirements](#requirements)
 * [Installation](#installation)
+    * [Install Python](#install-python-required)
+    * [Install Node.js](#install-nodejs-required)
 * [Execution](#execution)
 * [New Project Setup](#new-project-setup)
 
