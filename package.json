@@ -12,7 +12,8 @@
     "dev-server": "nodemon server/index.js",
     "prod-ios": "cd client && quasar build -m cordova -T ios",
     "db:migrate": "knex migrate:latest --knexfile server/knexfile.js",
-    "db:rollback": "knex migrate:rollback --knexfile server/knexfile.js"
+    "db:rollback": "knex migrate:rollback --knexfile server/knexfile.js",
+    "install:client": "cd client && npm install"
   },
   "author": "Team ohia.ai",
   "license": "MIT",
