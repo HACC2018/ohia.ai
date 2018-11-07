@@ -1,4 +1,3 @@
-
 ## Table of contents
 
 * [Introduction](#introduction)
@@ -131,12 +130,12 @@ The `--training_type` parameter defines the stage of training.
 
 We validate using a 10% validation set.  The metrics that we were concerened with were the
 
-* top 1 accuracy - the fraction of time the correct answer equals the top prediction
-* top 3 accuracy - the fraction of time the correct answer was in the top 3 predictions
-* top 5 accuracy - the fraction of time the correct answer was in the top 5 predictions
+* Top 1 Accuracy - the fraction of time the correct answer equals the top prediction
+* Top 3 Accuracy - the fraction of time the correct answer was in the top 3 predictions
+* Top 5 Accuracy - the fraction of time the correct answer was in the top 5 predictions
 
 
-|.  architechture |  pretraining |  augmentation | top 1 accuracy | top 3 accuracy | top 5 accuracy |
+|   Architechture |  Pretraining |  Augmentation | Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy |
 | --------------- | ------------ | ------------- | -------------- | -------------- | -------------- |
 |     mobilenetv1 |     ImageNet |            No |         0.5521 |         0.7786 |         0.8698 |
 |     mobilenetv1 |     ImageNet |           yes |         0.5842 |         0.8290 |         0.8993 |
