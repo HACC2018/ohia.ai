@@ -54,25 +54,7 @@ In our experiements we resize the smaller dimension of image to 224 pixels.  Thi
 
 
 ## Datasets
-Deep learning is notorious for needing large amounts of data to perform well [1].  Our models are trained on a number of different datasets:
-
-| Source | Preprocessing | Number of Images | Number of Classes (Plants) |
-| -------| ------------- |----------------- | -------------------------- |
-| Scraped | None | 21,070 | 42 |
-| Scraped | Removed non-plant images | 17,263 | 42 |
-| [PlantNet](https://www.imageclef.org/lifeclef/2017/plant) | None | 264,795 | 9,968 |
-| [PlantNet](https://www.imageclef.org/lifeclef/2017/plant) | Removed species with fewer than 100 images | 81,834 | 436 |
-| [ImageNet](http://www.image-net.org/) | None | 1,281,167 | 1000 |
-
-
-Our team scraped datas from the following sites:
-* [Starr Environmental](http://starrenvironmental.com/images/)
-* [Wild Life of Hawaii](https://wildlifeofhawaii.com/flowers/category/native-status/native-plants/)
-* [Hawaiian Ethnobotony Online Database](http://data.bishopmuseum.org/ethnobotanydb/ethnobotany.php?b=list&amp;o=2)
-* [Canoe Plants of Ancient Hawaii](http://www.canoeplants.com/contents.html)
-* [Native Plants Hawaii](http://nativeplants.hawaii.edu/)
-
-Many of the scraped images are of non-plants.  We filtered out the non-plant images before training our models.  See our data_collection dir for more details.
+Deep learning is notorious for needing large amounts of data to perform well [1].  Our models are trained on a number of different datasets: custom scraped data, [PlantNet](https://www.imageclef.org/lifeclef/2017/plant), [ImageNet](http://www.image-net.org/).  See our data_collection directory for more details.
 
 
 ## Training
@@ -116,7 +98,7 @@ Architecture | Research Paper
 [MobileNetV2](https://keras.io/applications/#mobilenetv2) | [MobileNetV2: Inverted Residuals and Linear Bottlenecks](https://arxiv.org/abs/1801.04381)
 [NASNetMobile](https://keras.io/applications/#nasnet) | [Learning Transferable Architectures for Scalable Image Recognition](https://arxiv.org/abs/1707.07012)
 
-The `--model_name` parameter specifies which architechture to use.
+The `--model_name` parameter specifies which architechture to use.  Use the `--save_model` parameter to save the model in a format that can be used by TensorflowJS.
 
 ### Transfer Learning
 Transfer learning [3] allowed our team to reuse features learned by neural networks.  Our team utilizes multi-stage transfer learning to mitigate the need for extremely large datasets.
