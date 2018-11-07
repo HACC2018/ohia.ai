@@ -1,6 +1,6 @@
 # ohia.ai App Client
 
-This README has a lot of steps between installation and running instructions. There are three ways you can follow the steps:
+This README has multiple steps between installation and execution instructions. There are three ways you can follow the steps:
 1. Follow all the steps in order as written if you would like to run the client on your browser and the iOS simulator.
 1. Or you can follow, in order as written, *only* the **required** and **browser** steps if you would like to run the client on your browser.
 1. Lastly, you can choose the second option for now, and then later on, you can install the **iOS**-specific steps, in order as written.
@@ -11,6 +11,11 @@ This README has a lot of steps between installation and running instructions. Th
 1. [Node.js](https://nodejs.org/en/) version 10.12.0
 
 ## Installation
+
+### Install Python (required)
+1. Download and install Anaconda or Miniconda: https://conda.io/docs/user-guide/install/download.html.
+1. In a terminal, create a new conda environment for Python 2.7: `conda create --name python2 python=2.7`.
+1. Activate the current terminal window to use the conda environment: `source activate python2`.
 
 ### Install Node.js (required)
 1. Install [Node Version Manager](https://github.com/creationix/nvm) by running the following in a terminal:
@@ -44,15 +49,23 @@ This README has a lot of steps between installation and running instructions. Th
 1. From the project root directory, install client dependencies: `npm run install:client` (or you may use [yarn](https://yarnpkg.com/en/docs/install#windows-stable) instead).
 
 ### Run the app in the browser (browser)
-1. See **Running: Run the app in the browser** below.
+1. Follow **Execution: Source Environment Variables** below.
+1. Follow **Execution: Run the app in the browser** below.
 
 ### Run the app in the iOS simulator (iOS)
-1. See **Running: Run the app in the iOS simulator** below.
+1. Follow **Execution: Source Environment Variables** below.
+1. Follow **Execution: Run the app in the iOS simulator** below.
 
 ### Run the app on your iOS device (iOS)
-1. See **Running: Run the app on your iOS device** below.
+1. Follow **Execution: Source Environment Variables** below.
+1. Follow **Execution: Run the app on your iOS device** below.
 
 ## Execution
+
+### Source Environment Variables
+1. If you haven't done so already, in the client terminal window and from the project root directory, create a `.env` file by copying the template in `.env.sample`.
+1. Source your environment by running: `source .env`.
+1. You should now see these variables in your environment by running `env`.
 
 ### Run the app in the browser (browser)
 1. Run `npm run dev` to view the app in a browser.
