@@ -59,12 +59,12 @@ Deep learning is notorious for needing large amounts of data to perform well [1]
 | -------| ------------- |----------------- | -------------------------- |
 | Scraped | None | 21,070 | 42 |
 | Scraped | Removed non-plant images | 17,263 | 42 |
-| PlantNet | None | 264,795 | 9,968 |
-| PlantNet | Removed species with fewer than 100 images | 81,834 | 436 |
-| ImageNet | None | 1,281,167 | 1000 |
+| [PlantNet](https://www.imageclef.org/lifeclef/2017/plant) | None | 264,795 | 9,968 |
+| [PlantNet](https://www.imageclef.org/lifeclef/2017/plant) | Removed species with fewer than 100 images | 81,834 | 436 |
+| [ImageNet](http://www.image-net.org/) | None | 1,281,167 | 1000 |
 
 
-The `Scraped` dataset consists of images from:
+Our team scraped datas from the following sites:
 * [Starr Environmental](http://starrenvironmental.com/images/)
 * [Wild Life of Hawaii](https://wildlifeofhawaii.com/flowers/category/native-status/native-plants/)
 * [Hawaiian Ethnobotony Online Database](http://data.bishopmuseum.org/ethnobotanydb/ethnobotany.php?b=list&amp;o=2)
@@ -120,7 +120,7 @@ The `--model_name` parameter specifies which architechture to use.
 ### Transfer Learning
 Transfer learning [3] allowed our team to reuse features learned by neural networks.  Our team utilizes multi-stage transfer learning to mitigate the need for extremely large datasets.
 
-1. Obtain [base models](https://keras.io/applications/) which are pretrained on ImageNet.  These pretrained models have learned salient features of real-world images. By using these base models as a starting point, we can avoid having to train on 
+1. Obtain base models which are pretrained on ImageNet.  These pretrained models have learned salient features of real-world images. By using these base models as a starting point, we can avoid having to train on 
 2. Retrain the base models on PlantNet.  This allows our neural networks to learn plant specific features in the images.   
 3. Fine-tune our models on the scraped dataset which consists of images of plants found in Hawaii.
 
