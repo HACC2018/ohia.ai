@@ -53,7 +53,7 @@ This README has a lot of steps between installation and running instructions. Th
 
 ## Running
 
-### Run the client Quasar project in the browser (browser)
+### Run the app in the browser (browser)
 1. Run `npm run dev` to view the app in a browser.
 
 ### Run the app in the iOS simulator (iOS)
