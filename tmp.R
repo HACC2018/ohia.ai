@@ -1,6 +1,4 @@
 
-
-plant_list <- dir('data/preprocessed_images/scraped_filtered')
-for (p in plant_list) {
-  dir.create(sprintf('machine_learning/results/%s', p))
-}
+library(data.table)
+results <- fread('machine_learning/results/results.csv')
+results
