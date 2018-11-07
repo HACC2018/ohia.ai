@@ -173,8 +173,9 @@ def main(model_name, training_type, seed, batch_size, augmentation, n_thread, gp
     from keras import callbacks
     from sklearn.model_selection import train_test_split
 
+    from ohia.generators import PlantNetGenerator
     from ohia.encoders import FastLabelEncoder
-    from ohia.utils import PlantNetGenerator, make_dir
+    from ohia.utils import make_dir
 
     # make directory for current experiment
     model_path = get_model_path(model_name, 1, seed, batch_size, augmentation)
@@ -188,7 +189,7 @@ def main(model_name, training_type, seed, batch_size, augmentation, n_thread, gp
         pretrain_file = None
 
     # get list of images and labels
-    image_dir = 'plantnet_filtered'if training_type==2 else 'scraped_filtered'
+    image_dir = 'plantnet_filtered'if training_type==1 else 'scraped_filtered'
     file_list = glob.glob(f'{FILE_PATH}/preprocessed_images/{image_dir}/**/*.jpg', recursive=True)
     label_list = [re.split('/', f)[-2] for f in file_list]
 

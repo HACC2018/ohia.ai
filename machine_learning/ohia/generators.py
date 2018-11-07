@@ -1,11 +1,11 @@
 import keras
-
+import numpy as np
 from PIL import Image
 from skimage.exposure import adjust_gamma
-from ./utils import crop_squre, resize_smaller_dim
+from ohia.utils import crop_square, resize_smaller_dim
 
 class PlantNetGenerator(keras.utils.Sequence):
-    
+
     def __init__(self,
                  file_list,
                  label_ids,

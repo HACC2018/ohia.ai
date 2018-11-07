@@ -18,10 +18,10 @@ An open Hawaiian indigenous plant identification and aggregation application. De
     
 ## Machine Learning
 
-Behind the scenes, ohia.ai is powered by machine learning and AI.  Our team utilizes modern deep learning techniques and large open source datasets to achieve highly accurate classification on a wide range of flora found throughout the Hawaiiain Islands.
+Behind the scenes, ohia.ai is powered by machine learning and AI.  Our team utilizes modern deep learning techniques and large open source datasets to achieve highly accurate classification on a wide range of flora found throughout the Hawaiian Islands.
 
-To run our custom models:
-1. Preprocess data using `python machine_learning/preprocess.py`. 
-2. Train models using `python machine_learning/train.py`.  
+To run custom models:
+1. Preprocess data using `python machine_learning/preprocess.py`
+2. Train models using `python machine_learning/train.py`
 
 See our `machine_learning/README.md` for more details.

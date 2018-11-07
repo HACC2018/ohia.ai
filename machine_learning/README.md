@@ -14,7 +14,7 @@
 
 ## Introduction
 
-Behind the scenes, ohia.ai is powered by machine learning and AI.  Our team utilizes modern deep learning techniques and large open source datasets to achieve highly accurate classification on a wide range of flora found throughout the Hawaiiain Islands.
+Behind the scenes, ohia.ai is powered by machine learning and AI.  Our team utilizes modern deep learning techniques and large open source datasets to achieve highly accurate classification on a wide range of flora found throughout the Hawaiian Islands.
 
 
 ## Requirements
@@ -50,11 +50,11 @@ Options:
   --help               Show this message and exit.
 ```
 
-In our experiements we resize the smaller dimension of image to 224 pixels.  This size produces a good tradeoff between having high resolution images and high accuracy and being able to process the images quickly.  
+In our experiments we resize the smaller dimension of image to 224 pixels.  This size produces a good tradeoff between having high resolution images and high accuracy and being able to process the images quickly.  
 
 
 ## Datasets
-Deep learning is notorious for needing large amounts of data to perform well [1].  Our models are trained on a number of different datasets: custom scraped data, [PlantNet](https://www.imageclef.org/lifeclef/2017/plant), [ImageNet](http://www.image-net.org/).  See our data_collection directory for more details.
+Deep learning is notorious for needing large amounts of data to perform well [1].  Our models are trained on a number of different datasets: custom scraped data, [PlantNet](https://www.imageclef.org/lifeclef/2017/plant), [ImageNet](http://www.image-net.org/).  See our `data_collection/README.md` for more details.
 
 
 ## Training
@@ -90,7 +90,7 @@ The `--augmentation` parameter is a binary flag that turns on/off data augmentat
 
 ### Model Architectures
 
-We used/compared the following state-of-the-art lightweight neural network architechures:
+We used/compared the following state-of-the-art lightweight neural network architectures:
 
 Architecture | Research Paper
 -- | -- 
@@ -120,14 +120,16 @@ We validate using a 10% validation set.  The metrics that we were concerened wit
 
 |   Architechture |  Pretraining |  Augmentation | Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy |
 | --------------- | ------------ | ------------- | -------------- | -------------- | -------------- |
-|     mobilenetv1 |     ImageNet |            No |         0.5521 |         0.7786 |         0.8698 |
-|     mobilenetv1 |     ImageNet |           yes |         0.5842 |         0.8290 |         0.8993 |
-| **mobilenetv1** | **PlantNet** |       **Yes** |     **0.6450** |     **0.8559** |     **0.9219** |
-|     mobilenetv2 |     PlantNet |           Yes |         0.6068 |         0.8490 |         0.9149 |
-|    nasnetmobile |     PlantNet |           Yes |         0.5590 |         0.8056 |         0.8854 |
+|     mobilenetv1 |     ImageNet |            No |         0.5436 |         0.7618 |         0.8396 |
+|     mobilenetv1 |     ImageNet |           yes |         0.7394 |         0.8856 |         0.9257 |
+|     mobilenetv1 |     PlantNet |           Yes |         0.7376 |         0.8874 |         0.9251 |
+|     mobilenetv2 |     PlantNet |           Yes |         0.7453 |         0.8850 |         0.9240 |
+|    nasnetmobile |     PlantNet |           Yes |         0.7547 |         0.8774 |         0.9204 |
 
-The best model consisted of a MobileNetV1 architechture, pretraining on PlantNet, and data augmentation.
+The best model consisted of a MobileNetV1 architecture, pretraining on PlantNet, and data augmentation.
 
+ 
+    
 
 ## References
 * [1] [The Unreasonable Effectiveness of Data](https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/35179.pdf)

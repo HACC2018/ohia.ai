@@ -9,6 +9,9 @@ weights.tar.gz
 # Data
 data/*
 
+# ipynb checkpoints
+.ipynb_checkpoints
+
 
 # Logs
 logs
