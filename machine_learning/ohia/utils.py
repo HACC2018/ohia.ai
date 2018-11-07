@@ -1,11 +1,12 @@
-import re, keras
+import os, re, keras
 import numpy as np
 from PIL import Image
+from skimage.exposure import adjust_gamma
 
-def predict_lr(model, images):
-    preds  = np.squeeze(model.predict(images[:,:,::-1]))[:,:,::-1]
-    preds += np.squeeze(model.predict(images))
-    return preds/2
+# create a directory if it doesn't already exist
+def make_dir(dir_name):
+    if not os.path.exists(dir_name):
+        os.makedirs(dir_name)
 
 def resize_smaller_dim(img, size=224):
     """ Resize the smaller dimension on an image
@@ -129,18 +130,17 @@ class PlantNetGenerator(keras.utils.Sequence):
         if self.augment:
             for i, f in enumerate(batch_files):
                 img = Image.open(f)
-                img = crop_square(img, 'triangular')
-                img = 2*np.array(img, dtype=np.float)/255. - 1.0
-                img = keras.preprocessing.image.random_brightness(img, (0.75,  1.25))
-                if np.random.rand()>0.5:
-                    img = img[:,::-1,:]
-                X[i] = img
+                img = crop_square(img, 'triangular')                       # random crop
+                img = np.array(img, dtype=np.float)/255                    # convert to [0, 1] array
+                img = adjust_gamma(img, np.random.triangular(0.5, 1, 2.5)) # brightness transformation
+                if np.random.rand()>0.5: img = img[:,::-1,:]               # horizontal flip
+                X[i] = 2*img - 1.0                                         # center pixel values
         else:
             for i, f in enumerate(batch_files):
                 img = Image.open(f)
-                img = crop_square(img)
-                img = 2*np.array(img, dtype=np.float)/255. - 1.0
-                X[i] = img
+                img = crop_square(img)                  # center crop
+                img = np.array(img, dtype=np.float)/255 # convert to [0, 1] array
+                X[i] = 2*img - 1.0                      # center pixel values
         return X, y
     
     def on_epoch_end(self):
