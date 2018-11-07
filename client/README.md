@@ -13,6 +13,7 @@ This README has multiple steps between installation and execution instructions. 
     * [Install Node.js](#install-nodejs-required)
 * [Execution](#execution)
 * [New Project Setup](#new-project-setup)
+* [Troubleshooting](#troubleshooting)
 
 ## Requirements
 
@@ -100,7 +101,7 @@ This README has multiple steps between installation and execution instructions. 
 
 ### Run the app on your iOS device (iOS)
 
-**Note that this app was optimized for an iPhone 6 running on iOS version 12.0.1. It was made to be run by Xcode version 10.0 running on macOS Mojave version 10.14. If you experience other problems below, it may be due to versioning issues.**
+**Note that this app was optimized for an iPhone 6 running on iOS version 12.0.1. It was made to be run by Xcode version 10.0 running on macOS Mojave version 10.14. If you experience other problems below, it may be due to versioning issues. Check the [Troubleshooting](#troubleshooting) section first.**
 
 1. If you do not have Mojave, you will need to upgrade your macOS through the App Store.
 1. Then you will need to upgrade your Xcode to version 10.0, for compatibility with running iOS version 12.0.1.
@@ -135,6 +136,7 @@ This README has multiple steps between installation and execution instructions. 
     ```
     open ./client/src-cordova/platforms/ios/ohia.ai.xcworkspace/
     ```
+1. Change to the Legacy Build System, since Xcode 10 has issues with the New Build System: https://stackoverflow.com/questions/53050108/xcode-10-how-to-switch-to-old-build-system.
 1. Connect your phone via USB to your Mac. Ensure that you see the charge signal next to the battery on your device, and that Xcode recognizes your device (see below that the device is recognized).
     ![alt change_device](https://s3-us-west-2.amazonaws.com/ohia.ai/README/change_device.png)
 1. In Xcode, with the project workspace now open, select your device in the top left-hand corner (as in the image above).
@@ -178,3 +180,25 @@ This README has multiple steps between installation and execution instructions. 
 1. Add Cordova Quasar Mode to the Quasar `/client` folder: `quasar mode -a cordova`.
 1. Change into the newly generated `/client/src-cordova` folder.
 1. Add a Cordova platform (can also replace `ios` with `android`): `cordova platform add ios`.
+
+## Troubleshooting
+
+### Code Signing Error: ohia.ai has conflicting provisioning settings
+
+1. If you keep getting this error when running `npm run prod-ios`:
+    ```
+    Code Signing Error: ohia.ai has conflicting provisioning settings. ohia.ai is automatically signed for development, but a conflicting code signing identity iPhone Distribution has been manually specified. Set the code signing identity value to "iPhone Developer" in the build settings editor, or switch to manual signing in the project editor.
+    Code Signing Error: Code signing is required for product type 'Application' in SDK 'iOS 12.0'
+    ```
+1. Open the file `/client/src-cordova/platforms/ios/cordova/build-release.xcconfig` and change from:
+    ```
+    CODE_SIGN_IDENTITY = iPhone Distribution
+    CODE_SIGN_IDENTITY[sdk=iphoneos*] = iPhone Distribution
+    ```
+    to:
+    ```
+    CODE_SIGN_IDENTITY = iPhone Developer
+    CODE_SIGN_IDENTITY[sdk=iphoneos*] = iPhone Developer
+    ```
+1. Then run `npm run prod-ios` again.
+
