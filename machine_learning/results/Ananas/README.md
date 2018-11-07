@@ -1,12 +1,11 @@
 
 # Ananas
 
-[back to root](https://github.com/HACC2018/ohia.ai#results)
-
 | Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | 
 | --- | --- | --- |
 | 86.00% | 90.00% | 96.00% | 
 
+[← back to root](https://github.com/HACC2018/ohia.ai#results)
 
 ## Typical Images
 The following is a random sample of Ananas images.

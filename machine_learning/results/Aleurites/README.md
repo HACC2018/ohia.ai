@@ -1,12 +1,11 @@
 
 # Aleurites
 
-[back to root](https://github.com/HACC2018/ohia.ai#results)
-
 | Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | 
 | --- | --- | --- |
 | 46.67% | 80.00% | 86.67% | 
 
+[← back to root](https://github.com/HACC2018/ohia.ai#results)
 
 ## Typical Images
 The following is a random sample of Aleurites images.
