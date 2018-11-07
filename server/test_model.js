@@ -97,7 +97,7 @@ const detectPlant = async (imagePath) => {
 
 
 // const imagePath = path.resolve(__dirname, 'images', 'flowers.jpg');
-// const imagePath = path.resolve(__dirname, 'images', 'mug.jpeg');
-const imagePath = path.resolve(__dirname, 'images', 'cat.jpg');
+const imagePath = path.resolve(__dirname, 'images', 'mug.jpeg');
+// const imagePath = path.resolve(__dirname, 'images', 'cat.jpg');
 detectPlant(imagePath);
 

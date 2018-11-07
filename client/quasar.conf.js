@@ -1,4 +1,5 @@
 // Configuration for your app
+const config = require('./config');
 
 module.exports = function (ctx) {
   return {
@@ -19,8 +20,17 @@ module.exports = function (ctx) {
     ],
     supportIE: false,
     build: {
+      env: ctx.dev
+        ? {
+          NODE_ENV: JSON.stringify(config.NODE_ENV),
+          API_HOST: JSON.stringify(config.API_HOST),
+        }
+        : {
+          NODE_ENV: JSON.stringify(config.NODE_ENV),
+          API_HOST: JSON.stringify(config.API_HOST),
+        },
       scopeHoisting: true,
-      // vueRouterMode: 'history',
+      vueRouterMode: 'history',
       // vueCompiler: true,
       // gzip: true,
       // analyze: true,
@@ -44,6 +54,7 @@ module.exports = function (ctx) {
       components: [
         'QLayout',
         'QLayoutHeader',
+        'QLayoutFooter',
         'QLayoutDrawer',
         'QPageContainer',
         'QPage',
@@ -80,13 +91,16 @@ module.exports = function (ctx) {
         'QInput',
         'QFab',
         'QFabAction',
+        'QItemSeparator',
+        'QModal',
+        'QSpinner',
       ],
       directives: [
-        'Ripple'
+        'Ripple',
       ],
       // Quasar plugins
       plugins: [
-        'Notify'
+        'Notify',
       ]//,
       // config: {
       //   cordova: {

@@ -8,7 +8,10 @@
       <q-card-separator />
 
       <q-card-main>
-        <q-timeline responsive color="secondary">
+        <q-timeline
+          responsive
+          color="primary"
+        >
           <q-timeline-entry
             title="Allow us to use your camera."
             side="right"
@@ -72,20 +75,33 @@
 
       <q-card-separator />
 
-      <q-card-actions>
-        <q-btn flat>Detect Plant</q-btn>
+      <q-card-actions
+        align="center"
+      >
+        <div class="actions">
+          <CameraButton
+            v-bind:button="{ color: 'primary' }"
+            text="I'm ready to detect plants"
+          />
+        </div>
       </q-card-actions>
     </q-card>
   </div>
 </template>
 
 <script>
-export default {
+import CameraButton from '../PlantIdentification/CameraButton';
 
+export default {
+  name: 'Stepper',
+  components: {
+    CameraButton,
+  },
 };
 </script>
 
-
 <style>
-
+.actions {
+  margin: 16px;
+}
 </style>

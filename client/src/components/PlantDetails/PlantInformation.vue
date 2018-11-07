@@ -2,21 +2,31 @@
   <q-card>
     <q-card-media>
       <img
-        src="https://www.hawaiimagazine.com/sites/default/files/field/image/25040492391_b5f4f063c2_k.jpg"
+        :src="image"
       >
     </q-card-media>
 
     <q-card-title>
-      Metrosideros polymorpha
+      {{ plant_name }}
 
       <div
         slot="right"
         class="row items-center"
       >
+        <span>
+          {{ status }}
+        </span>
+        <span>・</span>
         <span
-          class="text-red"
+          :class="{
+            'text-red': endangered === 'Endangered' ? true : null,
+            'text-pink': endangered === 'Threatened' ? true : null,
+            'text-deep-orange': endangered === 'Candidate for listing'? true : null,
+            'text-orange': endangered === 'Species of concern'? true : null,
+            'text-green': endangered === 'Not listed by state' ? true : null,
+          }"
         >
-          Endangered
+          {{ endangered }}
         </span>
       </div>
     </q-card-title>
@@ -24,24 +34,64 @@
     <q-card-separator />
 
     <q-card-main>
-      <p>
-        <span>Genus・</span>
-        <span class="text-faded">Metrosideros</span>
+      <p v-if="genus">
+        <span>
+          Genus・
+        </span>
+
+        <span class="text-faded">
+          {{ genus }}
+        </span>
       </p>
 
-      <p>
-        <span>Species・</span>
-        <span class="text-faded">Polymorpha</span>
+      <p v-if="species">
+        <span>
+          Species・
+        </span>
+
+        <span class="text-faded">
+          {{ species }}
+        </span>
       </p>
 
-      <p>
-        <span>Common Name・</span>
-        <span class="text-faded">'Ohi'a lehua</span>
+      <p v-if="common_name">
+        <span>
+          Common Name・
+        </span>
+
+        <span class="text-faded">
+          {{ common_name }}
+        </span>
       </p>
 
-      <p>
-        <span>Hawaiian Name・</span>
-        <span class="text-faded">'Ohi'a lehua</span>
+      <p v-if="hawaiian_name">
+        <span>
+          Hawaiian Name・
+        </span>
+
+        <span class="text-faded">
+          {{ hawaiian_name }}
+        </span>
+      </p>
+
+      <p v-if="scientific_name">
+        <span>
+          Scientific Name・
+        </span>
+
+        <span class="text-faded">
+          {{ scientific_name }}
+        </span>
+      </p>
+
+      <p v-if="description">
+        <span>
+          Description・
+        </span>
+
+        <span class="text-faded">
+          {{ description }}
+        </span>
       </p>
     </q-card-main>
   </q-card>
@@ -53,19 +103,31 @@ export default {
     image: {
       type: String,
     },
-    endangered: {
-      type: String,
-    },
     genus: {
       type: String,
     },
     species: {
       type: String,
     },
-    commonName: {
+    plant_name: {
       type: String,
     },
-    hawaiianName: {
+    common_name: {
+      type: String,
+    },
+    hawaiian_name: {
+      type: String,
+    },
+    scientific_name: {
+      type: String,
+    },
+    status: {
+      type: String,
+    },
+    description: {
+      type: String,
+    },
+    endangered: {
       type: String,
     },
   },

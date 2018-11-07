@@ -1,20 +1,24 @@
 <template>
   <q-card>
+    <q-card-title>Browse the flora of Hawaii</q-card-title>
+    <q-card-separator />
     <q-card-main>
-
       <q-table
         grid
-        hide-header
+        :pagination.sync="serverPagination"
         :data="tableData"
         :columns="columns"
         :filter="filter"
-        :selection="selection"
-        :selected.sync="selected"
-        :visible-columns="visibleColumns"
-        row-key="name"
+        :loading="loading"
+        row-key="plant_name"
+        @request="request"
       >
-        <template slot="top-right" slot-scope="props">
-          <q-search hide-underline clearable v-model="filter" />
+        <template slot="top" slot-scope="props">
+          <q-search
+            hide-underline
+            clearable
+            v-model="filter"
+          />
         </template>
 
         <div
@@ -24,22 +28,34 @@
           :style="props.selected ? 'transform: scale(0.95);' : ''"
         >
           <q-card
-            class="transition-generic cursor-pointer"
+            class="transition-generic"
             :class="props.selected ? 'bg-grey-2' : ''"
             @click.native="props.selected = !props.selected"
           >
-            <q-card-title class="relative-position">
-              {{ props.row.name }}
+            <q-card-title
+              class="relative-position"
+            >
+              {{ props.row.plant_name }}
             </q-card-title>
 
             <q-card-separator />
 
-            <q-card-media>
-              <img :src="props.row.image" />
+            <q-card-media
+              v-if="props.row.plantImages && props.row.plantImages.length > 0"
+            >
+              <img :src="props.row.plantImages[0].image_url" />
             </q-card-media>
 
-            <q-card-actions align=center>
-              <q-btn flat>Information <q-icon name="keyboard_arrow_right" /></q-btn>
+            <q-card-actions align="center">
+              <q-btn
+                flat
+                :to="`/plant/${props.row.id}`"
+              >
+                Information
+                <q-icon
+                  name="keyboard_arrow_right"
+                />
+              </q-btn>
             </q-card-actions>
           </q-card>
         </div>
@@ -52,70 +68,77 @@
 export default {
   data() {
     return {
-      tableData: [
-        {
-          name: 'Metrosideros polymorpha',
-          image: 'https://www.casaegiardino.it/images/2015/04/20150320_101549-600x450.jpg',
-          desc: 'hi',
-        },
-        {
-          name: 'Acacia Koa',
-          image: 'https://farm2.staticflickr.com/1366/5187357067_639509a494_o.jpg',
-          desc: 'hi',
-        },
-        {
-          name: 'Argemone Glauca',
-          image: 'https://www.molokaiseedcompany.com/wp-content/uploads/2017/08/Argemone_glauca_glauca-31-sized.jpg',
-          desc: 'hi',
-        },
-      ],
-      columns: [
-        {
-          name: 'desc',
-          required: true,
-          label: 'Dessert (100g serving)',
-          align: 'left',
-          field: 'name',
-          sortable: true,
-        },
-        {
-          name: 'calories', label: 'Calories', field: 'calories', sortable: true,
-        },
-        {
-          name: 'fat', label: 'Fat (g)', field: 'fat', sortable: true,
-        },
-      ],
+      serverPagination: {
+        page: 1,
+        rowsNumber: 9,
+        rowsPerPage: 9,
+      },
+      tableData: [],
+      columns: [],
       filter: '',
-      visibleColumns: [
-        'desc', 'fat', 'carbs', 'protein', 'sodium', 'calcium', 'iron',
-      ],
       separator: 'horizontal',
       selection: 'multiple',
-      selected: [
-        // initial selection
-        {
-          name: 'Ice cream sandwich',
-        },
-      ],
-      pagination: {
-        page: 2,
-      },
-      paginationControl: {
-        rowsPerPage: 3,
-        page: 1,
-      },
-      loading: false,
+      selected: [],
+      loading: true,
       dark: true,
-      selectedSecond: [
-        {
-          name: 'Eclair',
-        },
-      ],
     };
+  },
+  methods: {
+    request({ pagination }) {
+      // we set QTable to "loading" state
+      this.loading = true;
+
+      // we do the server data fetch, based on pagination and filter received
+      // (using Axios here, but can be anything; parameters vary based on backend implementation)
+
+      const offset = (pagination.page - 1) * pagination.rowsPerPage;
+      const url = `${process.env.API_HOST}/api/plants/${pagination.rowsPerPage}/${offset}`;
+      this.$axios
+        .get(url)
+        .then(({ data }) => {
+          // updating pagination to reflect in the UI
+          this.serverPagination = pagination;
+
+          // then we update the rows with the fetched ones
+          this.tableData = data;
+
+          // finally we tell QTable to exit the "loading" state
+          this.loading = false;
+        })
+        .catch(() => {
+          this.loading = false;
+        });
+    },
+  },
+  mounted() {
+    // once mounted, we need to trigger the initial server data fetch
+    const url = `${process.env.API_HOST}/api/count/plant`;
+    this.$axios
+      .get(url)
+      .then((response) => {
+        const { data } = response;
+
+        // specify the number of rows in total
+        this.serverPagination.rowsNumber = data.count;
+      })
+      .then(() => {
+        // invoke request method to get initial data
+
+        this.request({
+          pagination: this.serverPagination,
+          filter: this.filter,
+        });
+
+        // finish loading
+        this.loading = false;
+      })
+      .catch((err) => {
+        console.log(err);
+        this.loading = false;
+      });
   },
 };
 </script>
 
 <style>
-
 </style>

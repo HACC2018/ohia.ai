@@ -10,14 +10,12 @@ require('@tensorflow/tfjs-node');
 
 // load dictionary mapping plant_ids to plant_names
 const PLANTNET_CLASSES = require('./models/mobilenetv1-1.00/plantnet_classes');
-// const PLANTNET_CLASSES = require('./models/nasnetmobile/plantnet_classes');
 
 
 // set parameters
 const TOPK = 10;
 const IMAGE_SIZE = 224;
 const NUMBER_OF_CHANNELS = 3;
-// const MODEL_PATH = 'file://' + path.resolve(__dirname, 'models', 'nasnetmobile', 'model.json'); 
 const MODEL_PATH = 'file://' + path.resolve(__dirname, 'models', 'mobilenetv1-1.00', 'model.json'); 
 
 
@@ -25,7 +23,6 @@ const MODEL_PATH = 'file://' + path.resolve(__dirname, 'models', 'mobilenetv1-1.
 const readImage = path => {
   const buf = fs.readFileSync(path)
   const pixels = jpeg.decode(buf, true)
-  
   return pixels
 }
 
@@ -44,8 +41,6 @@ const convertImageToByteArray = (image) => {
 
 // convert to 4d tensor and resize to 1 x h x w x c
 const convertImageToInput = (image) => {
-  // const image_data =  new ImageData(image.data, image.width, image.height)
-  // let input = tf.fromPixels(image_data, shape, 'float32');
   const values = convertImageToByteArray(image);
   const shape = [1, image.height, image.width, NUMBER_OF_CHANNELS];
   let input = tf.tensor4d(values, shape, 'float32');
@@ -99,13 +94,9 @@ const detectPlant = async (imagePath) => {
 
 
 // const imagePath = path.resolve(__dirname, 'images', 'albutilon.jpg');
-<<<<<<< HEAD
 // const imagePath = path.resolve(__dirname, 'images', 'bougainvillea.jpg');
 // const imagePath = path.resolve(__dirname, 'images', 'hibiscus.jpg');
 const imagePath = path.resolve(__dirname, 'images', 'rubus.jpg');
-=======
-const imagePath = path.resolve(__dirname, 'images', 'bougainvillia.jpg');
->>>>>>> custom-model-tensorflowjs
 // const imagePath = path.resolve(__dirname, 'images', 'mug.jpeg');
 
 detectPlant(imagePath);

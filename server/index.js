@@ -4,23 +4,27 @@ const request = require('request');
 const AWS = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
+const cors = require('cors');
 const config = require('./config');
 const Model = require('./model');
+const resources = require('./resources');
+const knex = require('./knex')();
 
-const knex = require('knex')({
-  client: 'pg',
-  connection: {
-    host: config.db.host,
-    port: config.db.port,
-    user: config.db.username,
-    password: config.db.password,
-    database: config.db.name,
-    charset: 'utf8',
+const bookshelf = require('bookshelf')(knex);
+bookshelf.plugin('pagination');
+
+const PlantImage = bookshelf.Model.extend({
+  tableName: 'plant_images',
+  plant() {
+    return this.belongsTo(Plant, 'plant_id');
   },
 });
-const bookshelf = require('bookshelf')(knex);
-const Plant = require('./models/Plant')(knex);
-const PlantImage = require('./models/PlantImage')(knex);
+const Plant = bookshelf.Model.extend({
+  tableName: 'plants',
+  plantImages() {
+    return this.hasMany(PlantImage);
+  },
+});
 
 const app = express();
 const s3 = new AWS.S3({
@@ -57,6 +61,9 @@ const upload = multer({
   }),
 });
 
+// CORS
+app.use(cors());
+
 // Middleware
 app.use(bodyParser.json({ // JSON request data
   limit: FILE_SIZE_LIMIT,
@@ -68,7 +75,17 @@ app.use(bodyParser.urlencoded({ // Form request data
   parameterLimit: PARAM_LIMIT,
 })); 
 
+// Required for browser requests
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//   res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+//   next();
+// });
+
 // Routes
+app.use('/api', resources);
+
 app.post('/images/upload', upload.array('image', 1), (req, res) => {
   console.log('req.body', req.body);
   console.log('req.files', req.files);
@@ -86,12 +103,12 @@ app.post('/images/upload', upload.array('image', 1), (req, res) => {
   // Save the image to the database
   return new PlantImage({
     identified: false,
-    latitude: meta.latitude,
-    longitude: meta.longitude,
+    latitude: meta.latitude !== 'null' ? meta.latitude : null,
+    longitude: meta.longitude !== 'null' ? meta.longitude : null,
     image_url: image.location,
   })
     .save()
-    .then(() => {
+    .then((saved) => {
       // Download and produce a buffer with the image data
       request({
         url: image.location,
@@ -99,14 +116,38 @@ app.post('/images/upload', upload.array('image', 1), (req, res) => {
       }, (err, resp, buffer) => {
         // Make predictions
         return Model.detectPlant(buffer)
-          .then((predictions) => {
-            console.log('predictions', predictions);
-            return res.json({
-              success: true,
-              name: image.key,
-              size: image.size,
-              predictions,
-            });
+          .then((probabilities) => {
+            let predictions = probabilities.slice(0, 3);
+            const plantNames = predictions.map(pred => pred.className);
+
+            return Plant
+              .where('plant_name', 'IN', plantNames)
+              .fetchAll({
+                columns: ['id', 'plant_name'],
+                withRelated: ['plantImages'],
+              })
+              .then((models) => {
+                const plants = models.serialize();
+                predictions = predictions.map(pred => {
+                  let match = plants.find(item =>
+                    item.plant_name === pred.className);
+                  match = match ? match : { id: 0, plantImages: [] };
+                  return {
+                    ...pred,
+                    id: match.id,
+                    plantImages: match.plantImages,
+                  };
+                });
+                console.log('predictions', predictions);
+
+                return res.json({
+                  success: true,
+                  id: saved.serialize().id,
+                  name: image.key,
+                  size: image.size,
+                  predictions,
+                });
+              });
           })
           .catch((err) => {
             console.error('Error making predictions:', err);
