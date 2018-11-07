@@ -1,9 +1,9 @@
 
 # PLANT_PLACEHOLDER
 
-| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | 
-| --- | --- | --- |
-| TOP_1_PLACEHOLDER | TOP_3_PLACEHOLDER | TOP_5_PLACEHOLDER | 
+| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | Image Count | 
+| --- | --- | --- | --- |
+| TOP_1_PLACEHOLDER | TOP_3_PLACEHOLDER | TOP_5_PLACEHOLDER | COUNT_PLACEHOLDER | 
 
 [← back to root](https://github.com/HACC2018/ohia.ai#results)
 

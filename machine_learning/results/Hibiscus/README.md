@@ -1,9 +1,9 @@
 
 # Hibiscus
 
-| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | 
-| --- | --- | --- |
-| 77.82% | 91.63% | 95.40% | 
+| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | Image Count | 
+| --- | --- | --- | --- |
+| 77.82% | 91.63% | 95.40% | 2151 | 
 
 [← back to root](https://github.com/HACC2018/ohia.ai#results)
 

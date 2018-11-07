@@ -1,9 +1,9 @@
 
 # Cyperus
 
-| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | 
-| --- | --- | --- |
-| 78.57% | 91.84% | 94.90% | 
+| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | Image Count | 
+| --- | --- | --- | --- |
+| 78.57% | 91.84% | 94.90% | 871 | 
 
 [← back to root](https://github.com/HACC2018/ohia.ai#results)
 

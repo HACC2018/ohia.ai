@@ -1,9 +1,9 @@
 
 # Nothocestrum
 
-| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | 
-| --- | --- | --- |
-| 37.50% | 50.00% | 75.00% | 
+| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | Image Count | 
+| --- | --- | --- | --- |
+| 37.50% | 50.00% | 75.00% | 64 | 
 
 [← back to root](https://github.com/HACC2018/ohia.ai#results)
 

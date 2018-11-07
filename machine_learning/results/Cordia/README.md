@@ -1,9 +1,9 @@
 
 # Cordia
 
-| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | 
-| --- | --- | --- |
-| 36.00% | 64.00% | 72.00% | 
+| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | Image Count | 
+| --- | --- | --- | --- |
+| 36.00% | 64.00% | 72.00% | 209 | 
 
 [← back to root](https://github.com/HACC2018/ohia.ai#results)
 

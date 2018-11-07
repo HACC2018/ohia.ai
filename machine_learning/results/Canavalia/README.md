@@ -1,9 +1,9 @@
 
 # Canavalia
 
-| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | 
-| --- | --- | --- |
-| 62.50% | 79.17% | 83.33% | 
+| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | Image Count | 
+| --- | --- | --- | --- |
+| 62.50% | 79.17% | 83.33% | 212 | 
 
 [← back to root](https://github.com/HACC2018/ohia.ai#results)
 

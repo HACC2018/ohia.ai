@@ -1,9 +1,9 @@
 
 # Artocarpus
 
-| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | 
-| --- | --- | --- |
-| 73.08% | 88.46% | 88.46% | 
+| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | Image Count | 
+| --- | --- | --- | --- |
+| 73.08% | 88.46% | 88.46% | 303 | 
 
 [← back to root](https://github.com/HACC2018/ohia.ai#results)
 

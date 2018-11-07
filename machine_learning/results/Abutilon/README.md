@@ -1,9 +1,9 @@
 
 # Abutilon
 
-| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | 
-| --- | --- | --- |
-| 80.56% | 83.33% | 88.89% | 
+| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | Image Count | 
+| --- | --- | --- | --- |
+| 80.56% | 83.33% | 88.89% | 374 | 
 
 [← back to root](https://github.com/HACC2018/ohia.ai#results)
 

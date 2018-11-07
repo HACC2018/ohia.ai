@@ -1,9 +1,9 @@
 
 # Anthurium
 
-| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | 
-| --- | --- | --- |
-| 73.91% | 97.10% | 97.10% | 
+| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | Image Count | 
+| --- | --- | --- | --- |
+| 73.91% | 97.10% | 97.10% | 758 | 
 
 [← back to root](https://github.com/HACC2018/ohia.ai#results)
 

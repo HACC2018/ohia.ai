@@ -1,9 +1,9 @@
 
 # Chrysodracon
 
-| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | 
-| --- | --- | --- |
-| 63.64% | 81.82% | 81.82% | 
+| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | Image Count | 
+| --- | --- | --- | --- |
+| 63.64% | 81.82% | 81.82% | 276 | 
 
 [← back to root](https://github.com/HACC2018/ohia.ai#results)
 

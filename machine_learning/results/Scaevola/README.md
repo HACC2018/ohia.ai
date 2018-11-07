@@ -1,9 +1,9 @@
 
 # Scaevola
 
-| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | 
-| --- | --- | --- |
-| 70.67% | 84.00% | 90.67% | 
+| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | Image Count | 
+| --- | --- | --- | --- |
+| 70.67% | 84.00% | 90.67% | 689 | 
 
 [← back to root](https://github.com/HACC2018/ohia.ai#results)
 

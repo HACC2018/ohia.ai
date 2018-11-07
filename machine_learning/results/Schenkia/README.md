@@ -1,9 +1,9 @@
 
 # Schenkia
 
-| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | 
-| --- | --- | --- |
-| 12.50% | 50.00% | 62.50% | 
+| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | Image Count | 
+| --- | --- | --- | --- |
+| 12.50% | 50.00% | 62.50% | 48 | 
 
 [← back to root](https://github.com/HACC2018/ohia.ai#results)
 

@@ -1,9 +1,9 @@
 
 # Senecio
 
-| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | 
-| --- | --- | --- |
-| 80.81% | 92.93% | 94.95% | 
+| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | Image Count | 
+| --- | --- | --- | --- |
+| 80.81% | 92.93% | 94.95% | 854 | 
 
 [← back to root](https://github.com/HACC2018/ohia.ai#results)
 

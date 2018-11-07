@@ -1,9 +1,9 @@
 
 # Cocos
 
-| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | 
-| --- | --- | --- |
-| 83.87% | 90.32% | 93.55% | 
+| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | Image Count | 
+| --- | --- | --- | --- |
+| 83.87% | 90.32% | 93.55% | 311 | 
 
 [← back to root](https://github.com/HACC2018/ohia.ai#results)
 

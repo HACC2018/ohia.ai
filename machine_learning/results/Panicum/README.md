@@ -1,9 +1,9 @@
 
 # Panicum
 
-| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | 
-| --- | --- | --- |
-| 58.06% | 90.32% | 98.39% | 
+| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | Image Count | 
+| --- | --- | --- | --- |
+| 58.06% | 90.32% | 98.39% | 580 | 
 
 [← back to root](https://github.com/HACC2018/ohia.ai#results)
 

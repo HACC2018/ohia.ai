@@ -14,9 +14,13 @@ for (plant in results$labels) {
   template <- find_replace(template, 'TOP_1_PLACEHOLDER', sprintf('%0.2f%%', 100*DT$top_1))
   template <- find_replace(template, 'TOP_3_PLACEHOLDER', sprintf('%0.2f%%', 100*DT$top_3))
   template <- find_replace(template, 'TOP_5_PLACEHOLDER', sprintf('%0.2f%%', 100*DT$top_5))
+  template <- find_replace(template, 'COUNT_PLACEHOLDER', DT$counts)
   
   f <- file(sprintf('results/%s/README.md', plant))
   writeLines(as.character(template), f)
   close(f)
   
 }
+
+
+results

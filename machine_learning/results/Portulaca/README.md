@@ -1,9 +1,9 @@
 
 # Portulaca
 
-| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | 
-| --- | --- | --- |
-| 61.84% | 82.89% | 82.89% | 
+| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | Image Count | 
+| --- | --- | --- | --- |
+| 61.84% | 82.89% | 82.89% | 623 | 
 
 [← back to root](https://github.com/HACC2018/ohia.ai#results)
 

@@ -1,9 +1,9 @@
 
 # Pseudognaphalium
 
-| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | 
-| --- | --- | --- |
-| 66.67% | 85.19% | 94.44% | 
+| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | Image Count | 
+| --- | --- | --- | --- |
+| 66.67% | 85.19% | 94.44% | 420 | 
 
 [← back to root](https://github.com/HACC2018/ohia.ai#results)
 

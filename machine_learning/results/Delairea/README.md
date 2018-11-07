@@ -1,9 +1,9 @@
 
 # Delairea
 
-| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | 
-| --- | --- | --- |
-| 71.43% | 100.00% | 100.00% | 
+| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | Image Count | 
+| --- | --- | --- | --- |
+| 71.43% | 100.00% | 100.00% | 111 | 
 
 [← back to root](https://github.com/HACC2018/ohia.ai#results)
 

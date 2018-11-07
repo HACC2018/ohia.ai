@@ -1,9 +1,9 @@
 
 # Plumeria
 
-| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | 
-| --- | --- | --- |
-| 79.21% | 89.11% | 91.09% | 
+| Top 1 Accuracy | Top 3 Accuracy | Top 5 Accuracy | Image Count | 
+| --- | --- | --- | --- |
+| 79.21% | 89.11% | 91.09% | 741 | 
 
 [← back to root](https://github.com/HACC2018/ohia.ai#results)
 
