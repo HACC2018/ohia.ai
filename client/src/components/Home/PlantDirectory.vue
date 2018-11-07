@@ -1,6 +1,6 @@
 <template>
   <q-card>
-    <q-card-title>Browse the flora of Hawaii</q-card-title>
+    <q-card-title>Browse the flora of Hawaiʻi</q-card-title>
     <q-card-separator />
     <q-card-main>
       <q-table

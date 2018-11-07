@@ -13,14 +13,14 @@
           color="primary"
         >
           <q-timeline-entry
-            title="Allow us to use your camera."
+            title="Allow us to use your camera and photos."
             side="right"
             subtitle="Step 1"
             icon="camera"
           >
             <div>
               To begin helping us identify plant species
-              in Hawaii, begin by allowing this application
+              in Hawaiʻi, when prompted, allow this application
               access to your phone. If you choose to allow
               access and upload an image to this app,
               data about the image will be collected and stored,
@@ -35,23 +35,22 @@
             icon="place"
           >
             <div>
-              In addition, we request that you allow us to view your
-              location to locate where the plant is located. When you
-              take the picture, your GPS location will be recorded to
-              help the State of Hawaii protect and track native plants and
-              possibly eradicate invasive plants.
+              In addition, we request that you allow us to store your
+              location. When you take the image or upload an existing photo,
+              your GPS location will be recorded to help the State of Hawaiʻi
+              protect and track native plants and possibly eradicate invasive plants.
             </div>
           </q-timeline-entry>
 
           <q-timeline-entry
-            title="Snap the image."
+            title="Snap the image or upload an existing photo."
             side="right"
             subtitle="Step 3"
             icon="camera_alt"
           >
             <div>
               While taking the image of the plant, keep in mind:
-              take photos that are close, in focus and well lit.
+              take photos that are close, in focus, and well-lit.
               If possible, frame only one plant species in your photo.
             </div>
           </q-timeline-entry>
@@ -63,11 +62,13 @@
             icon="sort_by_alpha"
           >
             <div>
-              After taking the image, you will be taken to a classification
-              page and presented with our top three guesses of what species
-              that plant you took a picture is. If you know for sure what it
-              is, please select one of our selected guesses or enter the actual
-              genus of the plant. If you are not sure, select "I don't know".
+              After taking the image or uploading an existing photo,
+              you will be taken to a classification page and
+              presented with our top three guesses of what species
+              that plant is. If you know for sure what it
+              is, please select one of our three guesses or enter the actual
+              common, scientific, or Hawaiian name of the plant.
+              If you are not sure, select "I don't know".
             </div>
           </q-timeline-entry>
         </q-timeline>

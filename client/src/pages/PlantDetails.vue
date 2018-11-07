@@ -15,7 +15,7 @@
         @click="goToPreviousPage"
       >
         <q-icon name="keyboard_arrow_left" />
-        Previous Page
+        Plants
       </q-btn>
     </template>
     <br />
