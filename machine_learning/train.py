@@ -153,11 +153,11 @@ def get_model(model_name, n_classes, training_type, pretrain_file=None):
 
 @click.option('--seed', default=1, help='Random seed.')
 @click.option('--batch_size', default=32, help='Number of observations needed before updating weights.')
-@click.option('--augmentation', default=False, help='Boolean flag.  If true then perform data augmentation.')
+@click.option('--augmentation', default=False, help='If true then perform data augmentation.')
 
 @click.option('--gpu', default=0, help='Id of gpu to use.')
 @click.option('--n_thread', default=1, help='Number of threads to use.')
-@click.option('--save_model', default=False, help='Boolean flag.  If true then save the model in a tfjs format.')
+@click.option('--save_model', default=False, help='If true then save the model in a tfjs format.')
 
 
 def main(model_name, training_type, seed, batch_size, augmentation, n_thread, gpu, save_model):

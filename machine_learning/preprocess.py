@@ -6,7 +6,6 @@ from ohia.utils import resize_smaller_dim, crop_square, make_dir
 from functools import partial
 
 
-
 # create wrapper to parallelize
 def resize_crop_and_save(f, input_dir, output_dir, crop):
     try:
@@ -33,7 +32,7 @@ def resize_crop_and_save(f, input_dir, output_dir, crop):
 @click.option('--file_path', default='/home/matt/repos/ohia.ai/data', help='Absolute path to data directories.')
 @click.option('--min_count', default=1, help='Minimum numbers of images needed to create a class.')
 @click.option('--n_thread', default=1, help='Number of threads to use.')
-@click.option('--crop', default=False, help='Boolean flag. If true then take a center crop of the image')
+@click.option('--crop', default=False, help='Either: "center", "triangular" or "uniform".')
 def main(input_dir, output_dir, min_count, n_thread, crop):
 
     # get list of images
