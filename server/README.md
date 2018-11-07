@@ -4,6 +4,7 @@
 
 * [Requirements](#requirements)
 * [Installation and Execution](#installation-and-execution)
+* [Deployment](#deployment)
 * [Seeding the Database](#seeding-the-database)
 
 ## Requirements
@@ -33,6 +34,23 @@
     2018-11-07 07:25:31.386112: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.2 AVX AVX2 FMA
     Server for ohia.ai listening on port 3000
     ```
+    
+## Deployment
+
+1. Create an Amazon S3 bucket that enables public images.
+1. Create a PostgreSQL RDS instance with the following specs:
+    ```
+    - 20 GiB storage
+    - PostgreSQL 10.5-R1
+    - db.t2.micro -- 1 vCPU, 1GiB RAM
+    - DB instance identifier: ohia-db-dev
+    - Public accessibility: Yes
+    - Availability zone: us-west-2a
+    - VPC security groups: default (actually ohia-public-sg-prod)
+    ```
+1. Create an EC2 instance and install Node, `git`, `nginx`, and `pm2` to it.
+1. Fork this repository and clone the fork to the EC2 server.
+1. Install the project on the server, set up nginx, and run the Node server as a pm2 process.
 
 ## Seeding the Database
 
