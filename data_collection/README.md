@@ -51,10 +51,8 @@ In addition to manually obtaining collecting data, our team utilized large open 
 
 ### ImageNet
 
-ImageNet is an ongoing research effort to provide researchers around the world an easily accessible image database.  It is used as a benchmark on many computer vision tasks. ImageNet however does not have any categories for plants but we were still able to utilize this dataset in the form of transfer learning.  For more details see [ohia.ai/machine_learning](https://github.com/HACC2018/ohia.ai/tree/master/data_collection).
+ImageNet is an ongoing research effort to provide researchers around the world an easily accessible image database.  It is used as a benchmark on many computer vision tasks. ImageNet however does not have any categories for plants but we were still able to utilize this dataset in the form of transfer learning.  
 
 ### PlantNet
 
-PlantNet is a large open source data consisting of only plants.  The raw data has over 250,000 images of nearly 10,000 species of plant.  Predicting all 10,000 species would be a very difficult task especially since more than 95% of the species had fewer than 100 images.  Our team filtered out the species with fewer than 100 images and used the resulting dataset to train specialized models.  These specialized models outperformed models that did not take advantage of these valuable source of data.  For more details see [ohia.ai/machine_learning](https://github.com/HACC2018/ohia.ai/tree/master/data_collection).
-
-
+PlantNet is a large open source data consisting of only plants.  The raw data has over 250,000 images of nearly 10,000 species of plant.  Predicting all 10,000 species would be a very difficult task especially since more than 95% of the species had fewer than 100 images.  Our team filtered out the species with fewer than 100 images and used the resulting dataset to train specialized models.  These specialized models outperformed models that did not take advantage of these valuable source of data.
