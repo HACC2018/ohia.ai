@@ -10,6 +10,7 @@ An open Hawaiian indigenous plant identification and aggregation application. De
 * [Data Collection](#data-collection)
 * [Machine Learning](#machine-learning)
 * [Results](#results)
+* [Usage](#usage)
 
 ## Overview
 
@@ -147,3 +148,14 @@ Behind the scenes, ohia.ai is powered by machine learning and AI.  Our team util
 |    [Tetramolopium](https://github.com/HACC2018/ohia.ai/tree/master/machine_learning/results/Tetramolopium)    |  65.00% |  90.00% |  95.00% |   146 |
 |       [Tibouchina](https://github.com/HACC2018/ohia.ai/tree/master/machine_learning/results/Tibouchina)       |  33.33% | 100.00% | 100.00% |    26 |
 |            [Vigna](https://github.com/HACC2018/ohia.ai/tree/master/machine_learning/results/Vigna)            |  50.00% |  68.75% |  75.00% |   101 |
+
+
+## Usage
+
+<p align="center"> <img src="/figures/screenshots/screenshot1.jpg?raw=true">  </p>    
+    
+<p align="center"> <img src="/figures/screenshots/screenshot2.jpg?raw=true"> </p>
+
+<p align="center"> <img src="/figures/screenshots/screenshot3.jpg?raw=true"> </p>
+
+<p align="center"> <img src="/figures/screenshots/screenshot4.jpg?raw=true"> </p>
