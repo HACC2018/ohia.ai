@@ -5,6 +5,7 @@
 * [Requirements](#requirements)
 * [Installation and Execution](#installation-and-execution)
 * [Deployment](#deployment)
+* [Known Server Issues](#known-server-issues)
 * [Seeding the Database](#seeding-the-database)
 
 ## Requirements
@@ -51,6 +52,29 @@
 1. Create an EC2 instance and install Node, `git`, `nginx`, and `pm2` to it.
 1. Fork this repository and clone the fork to the EC2 server.
 1. Install the project on the server, set up nginx, and run the Node server as a pm2 process.
+
+## Known Server Issues
+
+When running `pm2 logs` on the EC2 server:
+- There are errors about the port being in use, yet the API server is still accessible via Postman or the ohia.ai app:
+    ```
+    Error: listen EADDRINUSE :::3000
+    ```
+- There are errors about the bucket being required, but images nevertheless get uploaded to S3:
+    ```
+    Error: bucket is required
+    0|index  |     at new S3Storage (/home/ec2-user/ohia.ai/node_modules/multer-s3/index.js:84:29)
+    ```
+- There are `tfjs-node` errors, even if the model is able to make predictions and return them to the client:
+    ```
+    Registration of backend tensorflow failed
+    2|index  | Error: /home/ec2-user/ohia.ai/node_modules/@tensorflow/tfjs-node/build/Release/tfjs_binding.node: invalid ELF header
+    ```
+- The server keeps exiting and restarting:
+    ```
+    App [index:2] exited with code [1] via signal [SIGINT]
+    PM2      | App [index:2] starting in -fork mode-
+    ```
 
 ## Seeding the Database
 
