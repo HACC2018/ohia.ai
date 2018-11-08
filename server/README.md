@@ -21,6 +21,7 @@
 1. Create a `.env` file by copying the template in `.env.sample`.
 1. Source your environment by running: `source .env`.
 1. You should now see these variables in your environment by running `env`.
+1. Add the machine learning model weight files from [our Google Drive](https://drive.google.com/drive/folders/1rOyizBeTlXasRRi34Coasr-TJgtJatHz) by first downloading and unzipping `weights.tar.gz` using the command `tar xzf weights.tar.gz`, followed by replacing the `/server/models/mobilenetv1-1.00` folder with the respective unzipped folder.
 1. Run the server: `npm run dev-server`. You should see the following output:
     ```
     ▶ npm run dev-server
