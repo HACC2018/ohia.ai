@@ -1,6 +1,6 @@
 # ohia.ai
 
-An open Hawaiian indigenous plant identification and aggregation application. Developed for the 2018 Hawaii Annual Code Challenge.
+An open Hawaiian indigenous plant identification and aggregation application. Developed for the 2018 Hawaii Annual Code Challenge.  Learn more about the challenge and our app at [devpost](https://devpost.com/software/ohia-ai).
 
 ## Table of Contents
 
