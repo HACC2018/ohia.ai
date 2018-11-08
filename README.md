@@ -177,7 +177,7 @@ Behind the scenes, ohia.ai is powered by machine learning and AI.  Our team util
 <p align="center"> <img src="/figures/screenshots/screenshot7.jpg?raw=true"> </p>
 
 
-# Sponsors:
+# Sponsors
 ![HACC](figures/HACC.png)
 ![Sponsors](figures/sponsors.png)
 ![Partners](figures/partners.png)
