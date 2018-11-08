@@ -154,9 +154,9 @@ Behind the scenes, ohia.ai is powered by machine learning and AI.  Our team util
 ## Usage
 
 ### Find info on the plants of Hawai'i.
-<p align="center"> <img src="/figures/screenshots/screenshot2.jpg?raw=true"> </p>
+<p align="center"> <img src="/figures/screenshots/screenshot1.jpg?raw=true"> </p>
 
-### Easy to follow steps.
+### Easy-to-follow steps.
 <p align="center"> <img src="/figures/screenshots/screenshot2.jpg?raw=true"> </p>
 
 ### AI produces top 3 most likely predictions of plant identity.
@@ -165,8 +165,11 @@ Behind the scenes, ohia.ai is powered by machine learning and AI.  Our team util
 ### An example of most probable plant identity.
 <p align="center"> <img src="/figures/screenshots/screenshot4.jpg?raw=true"> </p>
 
-### Detailed Hawai'i related information on native plants, including endangerment status.
+### Detailed Hawai'i-related information on native plants, including endangerment status.
 <p align="center"> <img src="/figures/screenshots/screenshot5.jpg?raw=true"> </p>
 
 ### Historical uses of plants and gallery of uploaded images.
 <p align="center"> <img src="/figures/screenshots/screenshot6.jpg?raw=true"> </p>
+
+### Confirm the plant's identity.
+<p align="center"> <img src="/figures/screenshots/screenshot7.jpg?raw=true"> </p>
