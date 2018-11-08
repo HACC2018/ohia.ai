@@ -11,7 +11,7 @@ An open Hawaiian indigenous plant identification and aggregation application. De
 * [Machine Learning](#machine-learning)
 * [Results](#results)
 * [Usage](#usage)
-* [HACC 2018](#hacc-2018)
+* [Sponsors](#sponsors)
 
 # Overview
 
@@ -178,6 +178,6 @@ Behind the scenes, ohia.ai is powered by machine learning and AI.  Our team util
 
 
 # Sponsors:
-<img src="/figures/HACC.jpg?raw=true">
-<img src="/figures/sponsors.png?raw=true">
-<img src="/figures/partners.png?raw=true">
+![HACC](figures/HACC.png)
+![Sponsors](figures/sponsors.png)
+![Partners](figures/partners.png)
