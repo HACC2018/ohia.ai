@@ -96,7 +96,7 @@ If you would rather follow the complete instructions and deploy to an iOS device
 
 ## Data Collection
 
-Machine learning involves learning from data, thus data collection is an integral part of our application.  For more details see [ohia.ai/data_collection](https://github.com/HACC2018/ohia.ai/tree/master/data_collection).
+Machine learning involves learning from data, thus data collection is an integral part of our application.  For more details see [ohia.ai/data_collection](https://github.com/HACC2018/ohia.ai/tree/master/data_collection).  View the scraped data in [our Google Drive](https://drive.google.com/drive/folders/1lgRqxc8dWflkXn8a2dRB8GBswCe_bZpZ), within the `images` folder.
 
 ## Machine Learning
 
