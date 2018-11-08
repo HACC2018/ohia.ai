@@ -4,7 +4,7 @@
 
 An open Hawaiian indigenous plant identification and aggregation application. Developed for the 2018 Hawaii Annual Code Challenge.  Learn more about the challenge and our app at [devpost](https://devpost.com/software/ohia-ai).
 
-## Table of Contents
+# Table of Contents
 
 * [Overview](#overview)
 * [Quick Start Application](#quick-start-application)
@@ -14,7 +14,7 @@ An open Hawaiian indigenous plant identification and aggregation application. De
 * [Results](#results)
 * [Usage](#usage)
 
-## Overview
+# Overview
 
 To get started, first read the introductory text under **Quick Start Application**. Or read the **Data Collection**, **Machine Learning**, and **Results** sections of this README. 
 
@@ -25,19 +25,19 @@ When ready for more information about each step of the process, visit any of the
 - [Data Collection](https://github.com/HACC2018/ohia.ai/tree/master/data_collection)
 - [Machine Learning](https://github.com/HACC2018/ohia.ai/tree/master/machine_learning)
 
-## Quick Start Application
+# Quick Start Application
 
 Our app was built for the iPhone 6 running on iOS version 12. However, deploying the app to an iPhone device is a long process, especially if your Mac is not up-to-date with the latest OS or Xcode version. Therefore, we recommend these quick start steps for getting up-and-running quickly on the browser. Note, however, that the main feature of the app, plant identification, will not work because the native iOS camera cannot run on the browser.
 
 If you would rather follow the complete instructions and deploy to an iOS device, follow the steps under [Complete Application Setup](#complete-application-setup).
 
-### Getting Started
+## Getting Started
 1. Clone this repository by running the following command in a terminal: `git clone git@github.com:HACC2018/ohia.ai.git`.
 1. Change into the ohia.ai project directory: `cd ohia.ai`.
 1. When running anything related to the client or server, we require Python 2.7 to be installed, since that is the version that the [tfjs-node](https://github.com/tensorflow/tfjs-node) package supports. Switch your terminal to use Python 2.7 (more information [here](https://github.com/HACC2018/ohia.ai/blob/master/client/README.md#install-python-required)).
 1. Switch your terminal to use Node 10.12.0 (more information [here](https://github.com/HACC2018/ohia.ai/blob/master/client/README.md#install-nodejs-required)).
 
-### Install server dependencies and run the server
+## Install server dependencies and run the server
 1. From the project root directory, run `npm install`. Among other items, you should see "Downloading libtensorflow" and "Building TensorFlow Node.js bindings" run without error in your output.
 1. Create a `.env` file in the project root by copying the template in `.env.sample`.
 1. Source your environment by running: `source .env`.
@@ -58,7 +58,7 @@ If you would rather follow the complete instructions and deploy to an iOS device
     Server for ohia.ai listening on port 3000
     ```
 
-### Install Vue.js and Quasar and run the client in a browser
+## Install Vue.js and Quasar and run the client in a browser
 1. Open another terminal window and switch to Python 2.7 and Node 10.12.0.
 1. Source the environment: `source .env`.
 1. Install Vue CLI: `npm install -g @vue/cli`.
@@ -86,27 +86,27 @@ If you would rather follow the complete instructions and deploy to an iOS device
 1. Visit http://localhost:8080 to view the app.
 1. The app is [best viewed by enabling the Chrome device toolbar and setting the device to iPhone 6/7/8](https://s3-us-west-2.amazonaws.com/ohia.ai/chrome_device_toolbar.png).
 
-## Complete Application Setup
+# Complete Application Setup
 
-### Getting Started
+## Getting Started
 1. Clone this repository by running the following command in a terminal: `git clone git@github.com:HACC2018/ohia.ai.git`.
 1. Change into the ohia.ai project directory: `cd ohia.ai`.
 1. When running anything related to the client or server, we require Python 2.7 to be installed, since that is the version that the [tfjs-node](https://github.com/tensorflow/tfjs-node) package supports. Switch your terminal to use Python 2.7 (more information [here](https://github.com/HACC2018/ohia.ai/blob/master/client/README.md#install-python-required)).
 1. Switch your terminal to use Node 10.12.0 (more information [here](https://github.com/HACC2018/ohia.ai/blob/master/client/README.md#install-nodejs-required)).
 
-### Installation and Execution
+## Installation and Execution
 1. Follow the instructions on the [API Server](https://github.com/HACC2018/ohia.ai/tree/master/server) README.
 1. Follow the instructions on the [App Client](https://github.com/HACC2018/ohia.ai/tree/master/client) README.
 
-## Data Collection
+# Data Collection
 
 Machine learning involves learning from data, thus data collection is an integral part of our application.  For more details see [ohia.ai/data_collection](https://github.com/HACC2018/ohia.ai/tree/master/data_collection).  View the scraped data in [our Google Drive](https://drive.google.com/drive/folders/1lgRqxc8dWflkXn8a2dRB8GBswCe_bZpZ), within the `images` folder, and our plant metadata within the `plant_meta` folder.
 
-## Machine Learning
+# Machine Learning
 
 Behind the scenes, ohia.ai is powered by machine learning and AI.  Our team utilizes modern deep learning techniques and large open source datasets to achieve highly accurate classification on a wide range of flora found throughout the Hawaiian Islands. For more details see [ohia.ai/machine_learning](https://github.com/HACC2018/ohia.ai/tree/master/machine_learning).
 
-## Results
+# Results
 
 |       Plant Name |     Top 1 Accuracy |     Top 3 Accuracy |     Top 5 Accuracy | Image Count |
 | :--- | ---: | ---:  | ---: | ---: |
@@ -154,25 +154,25 @@ Behind the scenes, ohia.ai is powered by machine learning and AI.  Our team util
 |            [Vigna](https://github.com/HACC2018/ohia.ai/tree/master/machine_learning/results/Vigna)            |  50.00% |  68.75% |  75.00% |   101 |
 
 
-## Usage
+# Usage
 
-### Find info on the plants of Hawai'i.
+## Find info on the plants of Hawai'i.
 <p align="center"> <img src="/figures/screenshots/screenshot1.jpg?raw=true"> </p>
 
-### Easy-to-follow steps.
+## Easy-to-follow steps.
 <p align="center"> <img src="/figures/screenshots/screenshot2.jpg?raw=true"> </p>
 
-### AI produces top 3 most likely predictions of plant identity.
+## AI produces top 3 most likely predictions of plant identity.
 <p align="center"> <img src="/figures/screenshots/screenshot3.jpg?raw=true"> </p>    
 
-### An example of most probable plant identity.
+## An example of most probable plant identity.
 <p align="center"> <img src="/figures/screenshots/screenshot4.jpg?raw=true"> </p>
 
-### Detailed Hawai'i-related information on native plants, including endangerment status.
+## Detailed Hawai'i-related information on native plants, including endangerment status.
 <p align="center"> <img src="/figures/screenshots/screenshot5.jpg?raw=true"> </p>
 
-### Historical uses of plants and gallery of uploaded images.
+## Historical uses of plants and gallery of uploaded images.
 <p align="center"> <img src="/figures/screenshots/screenshot6.jpg?raw=true"> </p>
 
-### Confirm the plant's identity.
+## Confirm the plant's identity.
 <p align="center"> <img src="/figures/screenshots/screenshot7.jpg?raw=true"> </p>
