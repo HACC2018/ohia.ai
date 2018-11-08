@@ -17,6 +17,7 @@ An open Hawaiian indigenous plant identification and aggregation application. De
 To get started, first read the introductory text under **Quick Start Application**. Or read the **Data Collection**, **Machine Learning**, and **Results** sections of this README. 
 
 When ready for more information about each step of the process, visit any of the following:
+- [Plant Identification Challenge Requirements](https://github.com/HACC2018/ohia.ai/issues/11)
 - [API Server](https://github.com/HACC2018/ohia.ai/tree/master/server)
 - [App Client](https://github.com/HACC2018/ohia.ai/tree/master/client)
 - [Data Collection](https://github.com/HACC2018/ohia.ai/tree/master/data_collection)
