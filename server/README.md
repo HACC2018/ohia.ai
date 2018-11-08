@@ -62,9 +62,9 @@ Perform all of the following steps from the project root directory.
 
 ### Seeding Plant and Image Data
 1. Create database tables if you haven't already: `npm run db:migrate`.
-1. Download a copy of the `plant_meta_vX.csv` from our Google Drive (where **X** is the latest version number) and delete columns after the `updated_at` column (if any).
+1. Download a copy of the `plant_meta_vX.csv` from [our Google Drive](https://drive.google.com/drive/folders/1tH7L96inE8mpNV9dcm7nkPieXd7f4DYZ) (where **X** is the latest version number) and delete columns after the `updated_at` column (if any).
     1. Open it in Google Sheets and go to File > Download as > Comma-separated values.
-1. Download a copy of the `plant_images_vY.csv` from our Google Drive (where **Y** is the latest version number).
+1. Download a copy of the `plant_images_vY.csv` from [our Google Drive](https://drive.google.com/drive/folders/1tH7L96inE8mpNV9dcm7nkPieXd7f4DYZ) (where **Y** is the latest version number).
 1. Connect to the database and enter the password when prompted:
     ```
     psql -d PG_NAME -U PG_USERNAME -h PG_HOST -p PG_PORT
