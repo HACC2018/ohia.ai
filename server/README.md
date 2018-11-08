@@ -4,6 +4,7 @@
 
 * [Requirements](#requirements)
 * [Installation and Execution](#installation-and-execution)
+    * [If deploying the client to an iOS device](#if-deploying-the-client-to-an-ios-device)
 * [Deployment](#deployment)
 * [Known Server Issues](#known-server-issues)
 * [Seeding the Database](#seeding-the-database)
@@ -36,6 +37,12 @@
     2018-11-07 07:25:31.386112: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.2 AVX AVX2 FMA
     Server for ohia.ai listening on port 3000
     ```
+    
+### If deploying the client to an iOS device
+1. You might want to install ngrok via `npm install -g ngrok`.
+1. Once installed, you can run `ngrok http 3000` to have a random URL, such as `https://ef7107dd.ngrok.io`, point to your `http://localhost:3000` server for a full 8 hours. Note that you can keep ngrok up, even if you stop or restart your Node server.
+1. Be sure to change `API_HOST` in your `.env` file to `https://ef7107dd.ngrok.io` (whatever the URL is), and then re-source it with `source .env` before running `npm run dev-server` again.
+1. Note that you should also re-source your environment in the terminal window for building the client code, before running `npm run prod-ios` again.
     
 ## Deployment
 
